@@ -21,7 +21,7 @@ class Infraestructura():
     
     @eficiencia.setter
     def eficiencia(self, nueva_efic :int):
-        if nueva_efic > 0 or nueva_efic < 100:
-            self._eficiencia = nueva_efic
-        else:
+        if nueva_efic < 0 or nueva_efic > 100:
             raise ValueError(f"Eficiencia inválida ({nueva_efic}). Debe valer entre 0 y 100.")
+        else:
+            self._eficiencia = nueva_efic
