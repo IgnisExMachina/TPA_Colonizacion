@@ -20,36 +20,44 @@ class Colono():
 
     @property
     def nivel(self):
-        return self._nombre
+        return self._nivel
 
     @property
     def genero(self):
         return self._genero
 
     @nombre.setter
-    def nombre(self, nombre):
-        #comprobar str no vacio
+    def nombre(self, nombre: str):
+        if not nombre:
+            raise ValueError("El nombre no puede estar vacio")
         self._nombre = nombre
 
     @nombre_colonia.setter
-    def nombre_colonia(self, nombre_colonia):
-        #comprobar str no vacio
+    def nombre_colonia(self, nombre_colonia: str):
+        if not nombre_colonia:
+            raise ValueError("El nombre de la colonia no puede estar vacio")
         self._nombre_colonia = nombre_colonia
 
     @edad.setter
-    def edad(self, edad):
-        #comprobar str no vacio
+    def edad(self, edad: int):
+        if edad < 0:
+            raise ValueError("La edad debe ser positiva")
         self._edad = edad
 
     @nivel.setter
-    def nivel(self, nivel):
-        #comprobar str no vacio
+    def nivel(self, nivel: int):
+        if nivel < 0:
+            raise ValueError("El nivel debe ser positivo")
         self._nivel = nivel
 
     @genero.setter
-    def genero(self, genero):
-        #comprobar str no vacio
+    def genero(self, genero: str):
+        if genero != "M" or genero != "F":
+            raise ValueError("Genero invalido")
         self._genero = genero
     
-    
-    
+    def subir_nivel(self):
+        self.nivel += 1
+
+    def envejecer(self):
+        self.edad += 1
