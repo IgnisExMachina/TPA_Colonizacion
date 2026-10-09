@@ -2,8 +2,8 @@ class Recursos () :
 
     def __init__(self, rareza : str , cantidad : int): # Falta agregar Aplicacion
 
-        self.rareza = rareza
-        self.cantidad = cantidad
+        self._rareza = rareza
+        self._cantidad = cantidad
 
 
     @property
