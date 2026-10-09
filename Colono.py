@@ -52,7 +52,7 @@ class Colono():
 
     @genero.setter
     def genero(self, genero: str):
-        if genero != "M" or genero != "F":
+        if genero != "M" and genero != "F":
             raise ValueError("Genero invalido")
         self._genero = genero
     
