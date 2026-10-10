@@ -21,7 +21,7 @@ class Colonia:
 
     def verColonos(self): #! PONERLO MÁS BONITO CADA COLONO
         for colono in self.colonos:
-            print(colono.nombre)
+            print(colono)
 
     def agregarRecurso(self, recurso: Recursos):
         self.recursos.append(recurso)
