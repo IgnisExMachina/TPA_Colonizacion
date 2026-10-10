@@ -1,10 +1,12 @@
+#! FALTA PONER EL SETTER Y GETTER DE OCUPADO
 class Colono():
-    def __init__(self, nombre: str, nombre_colonia: str, edad: int, nivel: int, genero: str):
+    def __init__(self, nombre: str, nombre_colonia: str, edad: int, nivel: int, genero: str,):
         self.nombre = nombre
         self.nombre_colonia = nombre_colonia
         self.edad = edad
         self.nivel = nivel
         self.genero = genero
+        self.ocupado = False
 
     @property
     def nombre(self):
@@ -25,6 +27,10 @@ class Colono():
     @property
     def genero(self):
         return self._genero
+
+    @property
+    def ocupado(self):
+        return self._ocupado
 
     @nombre.setter
     def nombre(self, nombre: str):
@@ -55,7 +61,14 @@ class Colono():
         if genero != "M" and genero != "F":
             raise ValueError("Genero invalido")
         self._genero = genero
-    
+
+    @ocupado.setter
+    def ocupado(self, ocupado: bool):
+        self._ocupado = ocupado
+
+    def __str__(self):
+        return f"Nombre: {self.nombre}\nColonia: {self.nombre_colonia}\nEdad: {self.edad}\nNivel: {self.nivel}\nGenero: {"Masculino" if self.genero == "M" else "Femenino"}\nOcupado? {"Si" if self.ocupado else "No"}"
+
     def subir_nivel(self):
         self.nivel += 1
 
