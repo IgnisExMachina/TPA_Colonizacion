@@ -1,3 +1,4 @@
+#! FALTA PONER EL SETTER Y GETTER DE OCUPADO
 class Colono():
     def __init__(self, nombre: str, nombre_colonia: str, edad: int, nivel: int, genero: str,):
         self.nombre = nombre
