@@ -1,10 +1,10 @@
 from Colono import Colono
-from infraestructura import Infraestructura #CAMBIAR LA MAYÚSCULA DE INFRAESTRUCTURAS
+from Infraestructura import Infraestructura
 from Recursos import Recursos
 
 
 class Colonia:
-    def __init__(self, nombreColonia: str, colonos: list = None, recursos: list = None, infraestructuras: list = None):
+    def __init__(self, nombre: str, colonos: list = None, recursos: list = None, infraestructuras: list = None):
         if colonos is None and recursos is None and infraestructuras is None:
             self.colonos = []
             self.recursos = []
@@ -14,7 +14,7 @@ class Colonia:
             self.recursos = recursos
             self.infraestructuras = infraestructuras
 
-        self.nombreColonia = nombreColonia
+        self.nombre = nombre
 
     def agregarColono(self, colono: Colono):
         self.colonos.append(colono)
@@ -31,14 +31,22 @@ class Colonia:
             print(recurso.tipo)
             print(recurso.cantidad)
 
+    def agregarInfraestructuras(self, infraestructura: Infraestructura):
+        self.infraestructuras.append(infraestructura)
+
+    def verInfraestructuras(self):
+        for infraestructura in self.infraestructuras:
+            print(infraestructura.tipo)
+            print(infraestructura.eficiencia)
+
 
     @property #getter
-    def nombreColonia(self):
-        return self.nombreColonia
+    def nombre(self):
+        return self._nombre
 
-    @nombreColonia.setter
-    def nombreColonia(self, nombreColonia: str):
-        self._nombreColonia = nombreColonia
+    @nombre.setter
+    def nombre(self, nombre: str):
+        self._nombre = nombre
 
     
     
@@ -49,11 +57,3 @@ class Colonia:
 
 
 #PRUEBAS---------------------
-
-colono = Colono( "Dani", "kukusclan", 19, 3, "M")
-
-print(colono.nombre)
-
-colonia1 = Colonia("Kukusclan colonia", None, None, None)
-colonia1.agregarColono(colono)
-colonia1.verColonos()

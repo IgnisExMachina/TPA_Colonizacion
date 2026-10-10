@@ -1,10 +1,11 @@
 class Colono():
-    def __init__(self, nombre: str, nombre_colonia: str, edad: int, nivel: int, genero: str):
+    def __init__(self, nombre: str, nombre_colonia: str, edad: int, nivel: int, genero: str,):
         self.nombre = nombre
         self.nombre_colonia = nombre_colonia
         self.edad = edad
         self.nivel = nivel
         self.genero = genero
+        self.ocupado = False
 
     @property
     def nombre(self):
