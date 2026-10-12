@@ -63,5 +63,19 @@ class Infraestructura():
                 return False
         return True
     
-    # def construir(self, recurso: Recursos): 
-    # falta definir este metodo
+    def construir(self, recursos_colonia: list) -> bool:
+        if not self.comprobar_recursos(recursos_colonia):
+            print(f"No hay suficientes recursos en la colonia para construir {self.tipo}.")
+            return False
+        
+        for recurso_req, cantidad_req in self.coste.items():
+            for rec in recursos_colonia:
+                if rec.tipo == recurso_req:
+                    rec.cantidad -= cantidad_req
+                    break
+
+        print(f"¡{self.tipo} construida con éxito!")
+        print("Recursos utilizados:")
+        for recurso_req, cantidad_req in self.coste.items():
+            print(f"\t- {recurso_req}|{cantidad_req}")
+        return True
