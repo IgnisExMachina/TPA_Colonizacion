@@ -20,8 +20,13 @@ class Colonia:
         self.colonos.append(colono)
 
     def verColonos(self): #! PONERLO MÁS BONITO CADA COLONO
+        texto = ""
+        if not self.colonos:
+            return "No hay colonos en este planeta."
         for colono in self.colonos:
-            print(colono)
+            texto += f"{colono}\n"
+        return texto
+
 
     def agregarRecurso(self, recurso: Recursos):
         self.recursos.append(recurso)
