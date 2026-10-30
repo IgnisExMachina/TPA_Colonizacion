@@ -1,6 +1,4 @@
-from infraestructura import Infraestructura
-
-class Recurso () :
+class Recursos () :
     RECURSOS = {
         "Madera" : {"Puente": 20, "Granja" : 15},
         "Piedra" : {"Puente" : 10 , "Castillo" : 50 , "Muralla": 30},
