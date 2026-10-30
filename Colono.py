@@ -67,7 +67,7 @@ class Colono():
         self._ocupado = ocupado
 
     def __str__(self):
-        return f"Nombre: {self.nombre}\nColonia: {self.nombre_colonia}\nEdad: {self.edad}\nNivel: {self.nivel}\nGenero: {"Masculino" if self.genero == "M" else "Femenino"}\nOcupado? {"Si" if self.ocupado else "No"}"
+        return f"Nombre: {self.nombre}\nColonia: {self.nombre_colonia}\nEdad: {self.edad}\nNivel: {self.nivel}\nGenero: {'Masculino' if self.genero == 'M' else 'Femenino'}\nOcupado? {'Si' if self.ocupado else 'No'}"
 
     def subir_nivel(self):
         self.nivel += 1
