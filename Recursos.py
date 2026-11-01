@@ -6,7 +6,7 @@ class Recursos () :
         "Hierro" : {"Castillo": 30}
     }
 
-    def __init__(self, rareza : str , cantidad : int, tipo : str): # Falta agregar Aplicacion
+    def __init__(self, rareza : str , cantidad : int, tipo : str):
         self.rareza = rareza
         self.cantidad = cantidad
         self.tipo = tipo
@@ -27,7 +27,7 @@ class Recursos () :
     def rareza (self, rareza) :
         self._rareza = rareza
 
-    @rareza.setter         
+    @tipo.setter         
     def tipo (self, tipo) :
         self._tipo = tipo
 
