@@ -1,6 +1,6 @@
 from Colonia import Colonia
 from Colono import Colono
-from Infraestructura import Infraestructura
+from Infraestructura.Infraestructura import Infraestructura
 from Recursos import Recursos
 class Planeta:
     def __init__(self, nombrePlaneta: str):

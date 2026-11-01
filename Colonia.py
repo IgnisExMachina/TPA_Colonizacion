@@ -1,5 +1,5 @@
 from Colono import Colono
-from Infraestructura import Infraestructura
+from Infraestructura.Infraestructura import Infraestructura
 from Recursos import Recursos
 
 
