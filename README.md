@@ -124,3 +124,7 @@ Este proyecto se distribuye bajo los términos de la licencia detallada en el ar
 Proyecto desarrollado por: Mateo Guinsburg, Aitor Casares, Ignacio Compaired, Daniel Ortiz
 
 ## Contribuidores
+
+<a href="https://github.com/IgnisExMachina/TPA_Colonizacion/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=IgnisExMachina/TPA_Colonizacion" alt="Contribuidores del proyecto" />
+</a>
