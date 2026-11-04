@@ -5,7 +5,6 @@ from Recursos import Recursos
 
 
 class ColoniaTest:
-
     def __init__(self, nombre: str):
         self.nombre = nombre
 
