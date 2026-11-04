@@ -6,14 +6,10 @@ class Recursos () :
         "Hierro" : {"Castillo": 30}
     }
 
-    def __init__(self, rareza : str , cantidad : int, tipo : str):
-        self.rareza = rareza
+# ? RAREZAS : Común, Raro, Escaso
+    def __init__(self, tipo: str, cantidad : int):
         self.cantidad = cantidad
         self.tipo = tipo
-
-    @property
-    def rareza (self) :
-        return self._rareza
 
     @property
     def tipo (self) :
@@ -23,11 +19,6 @@ class Recursos () :
     def cantidad (self) :
         return self._cantidad
     
-    @rareza.setter         
-    def rareza (self, rareza) :
-        if not isinstance (rareza, str) :
-            raise ValueError(f"La rareza debe ser una cadena de texto.")
-        self._rareza = rareza
 
     @tipo.setter         
     def tipo (self, tipo : str) :
