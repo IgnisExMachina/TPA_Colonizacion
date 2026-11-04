@@ -1,0 +1,70 @@
+{
+    "A": {
+        "colonos": [
+            {
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "__clase__": "Colono"
+            }
+        ],
+        "recursos": [
+            {
+                "rareza": "Común",
+                "cantidad": 20,
+                "tipo": "Madera",
+                "__clase__": "Recursos"
+            }
+        ],
+        "infraestructuras": null,
+        "nombre": "Kukusclan",
+        "__clase__": "Colonia"
+    },
+    "B": {
+        "colonos": [
+            {
+                "nombre": "Rubén",
+                "nombre_colonia": "La sociedad de la nieve",
+                "edad": 30,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "__clase__": "Colono"
+            }
+        ],
+        "recursos": {
+            "Hierro": 30,
+            "Madera": 2
+        },
+        "infraestructuras": null,
+        "nombre": "La sociedad de la nieve",
+        "__clase__": "Colonia"
+    },
+    "C": {
+        "colonos": [
+            {
+                "nombre": "Elena",
+                "nombre_colonia": "Sociópatas",
+                "edad": 22,
+                "nivel": 1,
+                "genero": "F",
+                "ocupado": false,
+                "__clase__": "Colono"
+            }
+        ],
+        "recursos": [
+            {
+                "rareza": "Común",
+                "cantidad": 10,
+                "tipo": "Agua",
+                "__clase__": "Recursos"
+            }
+        ],
+        "infraestructuras": null,
+        "nombre": "Sociópatas",
+        "__clase__": "Colonia"
+    }
+}
