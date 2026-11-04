@@ -4,7 +4,7 @@ from threading import Timer
 import queue
 
 class GestorEventos: #Un gestor de eventos por cada colonia -> añadir a constructor de colonia?
-    posibles_tipos = ["enemigos", "tormenta"]
+    posibles_tipos = ["enemigos", "tormenta", "visitas", "averia", "desastre"]
 
     def __init__(self, eventos_env: queue.Queue, min_interval: float = 5.0, max_interval: float = 15.0, size: int =5):
         self.eventos_env = eventos_env #eventos a enviar
@@ -18,7 +18,14 @@ class GestorEventos: #Un gestor de eventos por cada colonia -> añadir a constru
     #Generar cola
     def generar_evento(self) -> Evento:
         tipo = random.choice(GestorEventos.posibles_tipos)
-        severidad = random.randint(1, 5)
+        if tipo == "desastre": #si saca desastre, 9 de 10 veces genera otro evento
+            unlucky = random.randint(1, 10)
+            if unlucky == 10:
+                severidad = 5
+            else:
+                return self.generar_evento()
+        else:
+            severidad = random.randint(1, 5)
         return Evento(tipo, severidad)
 
     def rellenar(self):
@@ -56,13 +63,12 @@ class GestorEventos: #Un gestor de eventos por cada colonia -> añadir a constru
 if __name__ == '__main__':
     import time
 
-    cola = queue.Queue()
-    gestor = GestorEventos(cola, min_interval=3, max_interval=8)
+    gestor = GestorEventos(queue.Queue(), min_interval=3, max_interval=8)
     gestor.iniciar()
 
     try:
         while True:
-            evento = cola.get()
+            evento = gestor.eventos_env.get()
             print(f"[{time.strftime('%H:%M:%S')}] {evento!r}")
     except KeyboardInterrupt:
         gestor.detener()
