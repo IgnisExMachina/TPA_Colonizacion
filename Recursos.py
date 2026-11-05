@@ -38,7 +38,7 @@ class Recursos () :
         self._cantidad = cantidad
 
     def mostrar_recursos (self) :
-        print (f"Con {self.tipo} (Rareza: {self.rareza}) puedes construir: ")
+        print (f"Con {self.tipo} puedes construir: ")
         for infra, coste in self.RECURSOS [self.tipo].items () :
             print (f"\t{infra} | {coste}")
 
