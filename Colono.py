@@ -1,5 +1,9 @@
 #! FALTA PONER EL SETTER Y GETTER DE OCUPADO
 class Colono():
+    NOMBRES = {
+        "NOMBRE" : ["María Carmen", "Antonio", "María", "Manuel", "José", "Francisco", "David", "Carmen", "Daniel", "Javier", "Juan", "José Antonio", "Francisco Javier", "Carlos", "Alejandro", "José Luis", "Ana María", "Jesús", "Laura", "María Pilar"],
+        "APELLIDO" : ["García", "Rodríguez", "González", "Fernández", "López", "Martínez", "Sánchez", "Pérez", "Gómez", "Martín", "Jiménez", "Hernández", "Ruiz", "Díaz", "Moreno", "Muñoz", "Álvarez", "Romero", "Gutiérrez", "Alonso"]
+    }
     def __init__(self, nombre: str, nombre_colonia: str, edad: int, nivel: int, genero: str,):
         self.nombre = nombre
         self.nombre_colonia = nombre_colonia

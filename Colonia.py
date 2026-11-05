@@ -84,23 +84,37 @@ class Colonia:
             evento = self._stream.__next__()
             match evento.tipo:
                 case "tormenta":
-                    #tormenta siempre quita recursos. severidad actúa como multiplicador
-                    pass
-                case "enemigos":
-                    #enemigos matan colonos igual a la severidad
-                    pass
-                case "visitas":
-                    #multi de cantidad de visitantes. se pueden unir a la colonia o no
-                    pass
-                case "averia":
-                    #afectan a las infraestructuras. 1-2 eficiencia *1/2, 3-4 eficiencia ->0, 5 desaparece
-                    pass
-                case "desastre":
-                    #Meteorito. rocks fall, everyone dies.
-                    pass
 
+                    for tipo in self.recursos:
+                        if evento.severidad > self.recursos[tipo]:
+                            self.consumirRecurso(tipo= tipo, cantidad= self.recursos[tipo])#OJO
+                        else:
+                            self.consumirRecurso(tipo= tipo, cantidad= evento.severidad)  
+                case "enemigos":
+                    for i in range(evento.severidad):
+                        if not self.colonos:
+                            break
+                        print(f"{evento.titulo}! {self.colonos.pop().nombre} muere en combate")#a interfaz
+                case "visitas":
+                    print(f"{evento.severidad} colono(s) se unen a la colonia!") #a interfaz
+                    for i in range(evento.severidad):
+                        self.agregarColono(Colono(nombre= ' '.join([random.choice(Colono.NOMBRES["NOMBRE"]), random.choice(Colono.NOMBRES["APELLIDO"])]), nombre_colonia= self.nombre, edad= random.randint(18, 80), nivel= random.randint(1, 10), genero= random.choice(["M", "F"])))
+                case "averia":
+                    if not self.infraestructuras:
+                        print("Deberia hacer reroll")
+                    else:
+                        averiado = random.choice(self.infraestructuras)
+                        if evento.severidad == 1 or evento.severidad == 2:
+                            averiado.eficiencia = int(averiado.eficiencia * 1/2)
+                        elif evento.severidad == 3 or evento.severidad == 4:
+                            averiado.eficiencia = int(averiado.eficiencia * 1/4)
+                        else:
+                            self.infraestructuras.remove(averiado)
+                case "desastre":
+                    print("Impacto de meteorito. Colonia destruida.")
+                    del self
 
 
 if __name__ == '__main__':
-    colo1 = Colonia("Agartha", colonos=[Colono("Pepe", "Agartha", 90, 3, "M"), Colono("Pepa", "Agartha", 90, 3, "F")], recursos=[Recursos("Rara", 50, "Madera"), Recursos("Comun", 70, "Hierro")], infraestructuras=[Infraestructura("Castillo"), Infraestructura("Granja")])
+    colo1 = Colonia("Agartha", colonos=[Colono("Pepe", "Agartha", 90, 3, "M"), Colono("Pepa", "Agartha", 90, 3, "F")], recursos={"Madera": 10, "Hierro": 20}, infraestructuras=[Infraestructura("Castillo"), Infraestructura("Granja")])
     colo1.procesar_eventos()
