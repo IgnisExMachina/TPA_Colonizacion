@@ -8,17 +8,16 @@ import queue
 import random 
 
 class Colonia:
-    def __init__(self, nombre: str, colonos: list = None, recursos: list = None, infraestructuras: list = None):
+    def __init__(self, nombre: str, colonos: list = None, recursos: dict = None, infraestructuras: list = None):
         if colonos is None and recursos is None and infraestructuras is None:
             self.colonos = []
-            self.recursos = []
+            self.recursos = {}
             self.infraestructuras = []
         else:
             self.colonos = colonos
             self.recursos = recursos
             self.infraestructuras = infraestructuras
-
-        self.nombre = nombre
+            self.nombre = nombre
 
         self._gestor = Gestor(queue.Queue(), min_interval=3, max_interval=8)
         self._stream = self.iniciar_gestor()
@@ -35,13 +34,25 @@ class Colonia:
         return texto
 
 
-    def agregarRecurso(self, recurso: Recursos):
-        self.recursos.append(recurso)
+    def agregarRecurso(self, tipo: str, cantidad: int):
+        if tipo in self.recursos :
+            self.recursos[tipo] += cantidad
+        else:
+            self.recursos[tipo] = cantidad
+
+    def consumirRecurso(self, tipo: str, cantidad: int):
+        if tipo in self.recursos and self.recursos[tipo] >= cantidad:
+            self.recursos[tipo] -= cantidad
+            print("Recursos restados correctamente")
+            return
+        print("Los recursos NO SE HAN RESTADO BIEN")
 
     def verRecursos(self):
-        for recurso in self.recursos:
-            print(recurso.tipo)
-            print(recurso.cantidad)
+        if not self.recursos:
+            print("No hay recursos todavía")
+            return
+        for tipo, cantidad in self.recursos.items():
+            print(f"- {tipo}: {cantidad}")
 
     def agregarInfraestructuras(self, infraestructura: Infraestructura):
         self.infraestructuras.append(infraestructura)

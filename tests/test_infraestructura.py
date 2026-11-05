@@ -12,16 +12,16 @@ class ColoniaTest:
 @pytest.fixture
 def recursos_suficientes():
     return [
-        Recursos(tipo="Madera", rareza="Común", cantidad=50),
-        Recursos(tipo="Agua", rareza="Común", cantidad=50),
+        Recursos(tipo="Madera", cantidad=50),
+        Recursos(tipo="Agua", cantidad=50),
     ]
 
 
 @pytest.fixture
 def recursos_insuficientes():
     return [
-        Recursos(tipo="Madera", rareza="Común", cantidad=5),
-        Recursos(tipo="Agua", rareza="Común", cantidad=5),
+        Recursos(tipo="Madera", cantidad=5),
+        Recursos(tipo="Agua", cantidad=5),
     ]
 
 
@@ -69,8 +69,8 @@ def test_reparacion_infraestructura():
 
     # Recursos necesarios para reparar (mitad de 15 Madera -> 7, mitad de 35 Agua -> 17)
     recursos_para_reparar = [
-        Recursos(tipo="Madera", rareza="Común", cantidad=10),
-        Recursos(tipo="Agua", rareza="Común", cantidad=20),
+        Recursos(tipo="Madera", cantidad=10),
+        Recursos(tipo="Agua", cantidad=20),
     ]
 
     reparado = granja.reparar(recursos_para_reparar)
