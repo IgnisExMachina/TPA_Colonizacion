@@ -1,11 +1,10 @@
-from Recursos import Recursos
-
 class Infraestructura():
     COSTES = {
-        "Puente": {"Madera": 20, "Piedra": 10},
+        "Puente": {"Madera": 10, "Piedra": 10},
         "Castillo": {"Piedra": 50, "Hierro": 30, "Agua": 20},
         "Muralla": {"Piedra": 30},
         "Granja": {"Madera": 15, "Agua": 35},
+        "Mina": {"Madera": 10, "Hierro": 10, "Agua": 10},
     }
 
     def __init__(self, tipo: str, eficiencia: int = 100):
@@ -51,34 +50,21 @@ class Infraestructura():
         for recurso, cantidad in self.coste.items():
             print(f"\t- {recurso}|{cantidad}")
 
-    def comprobar_recursos(self, recursos_colonia: list) -> bool:
-        if not isinstance(recursos_colonia, list):
-            raise TypeError("Los recursos de la colonia deben ser una lista.")
+    def comprobar_recursos(self, recursos_colonia: dict) -> bool:
+        if not isinstance(recursos_colonia, dict):
+            raise TypeError("Los recursos de la colonia deben ser un diccionario.")
         for recurso_req, cantidad_req in self.coste.items():
-            recurso_encontrado = None
-            #busca los recursos necesarios de COSTES en los recursos de la colonia
-            for rec in recursos_colonia:
-                if rec.tipo == recurso_req:
-                    recurso_encontrado = rec
-                    break
-            #si la colonia no tiene el recurso
-            if recurso_encontrado is None:
+            if recurso_req not in recursos_colonia or recursos_colonia[recurso_req] < cantidad_req:
                 return False
-            #si el recurso no es suficiente
-            if recurso_encontrado.cantidad < cantidad_req:
-                return False
-        return True
+        return True    
     
-    def construir(self, recursos_colonia: list) -> bool:
+    def construir(self, recursos_colonia: dict) -> bool:
         if not self.comprobar_recursos(recursos_colonia):
             print(f"No hay suficientes recursos en la colonia para construir {self.tipo}.")
             return False
         
         for recurso_req, cantidad_req in self.coste.items():
-            for rec in recursos_colonia:
-                if rec.tipo == recurso_req:
-                    rec.cantidad -= cantidad_req
-                    break
+            recursos_colonia[recurso_req] -= cantidad_req
 
         print(f"¡{self.tipo} construida con éxito!")
         print("Recursos utilizados:")
@@ -93,7 +79,7 @@ class Infraestructura():
         self.eficiencia -= 10
         return True
 
-    def reparar(self, recursos_colonia: list) -> bool:
+    def reparar(self, recursos_colonia: dict) -> bool:
         #Calculamos el coste de reparación (50% de los recursos necesarios para su creacion)
         coste_reparacion = {}
         for nombre_recurso, cant_original in self.coste.items():
@@ -113,10 +99,7 @@ class Infraestructura():
 
         #Descontamos los recursos
         for recurso_req, cantidad_req in coste_reparacion.items():
-            for rec_colonia in recursos_colonia:
-                if rec_colonia.tipo == recurso_req:
-                    rec_colonia.cantidad -= cantidad_req
-                    break
+            recursos_colonia[recurso_req] -= cantidad_req
 
         self._coste = coste_original
         self.eficiencia = 100

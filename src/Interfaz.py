@@ -3,10 +3,9 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 import random
 
-from Recursos import Recursos
-from Colono import Colono
-from Colonia import Colonia
-from GestorPersistencia import GestorPersistencia
+from src.Colono import Colono
+from src.Colonia import Colonia
+from src.GestorPersistencia import GestorPersistencia
 
 class Interfaz:
     def __init__(self):
@@ -27,7 +26,7 @@ class Interfaz:
                 "A": Colonia(
                     nombre="Kukusclan", 
                     colonos=[Colono("Alfredo", "Kukusclan", 25, 1, "M")], 
-                    recursos=[Recursos("Común", 20, "Madera")], 
+                    recursos={"Madera": 20}, 
                     infraestructuras=None
                 ),
                 "B": Colonia(
@@ -39,7 +38,7 @@ class Interfaz:
                 "C": Colonia(
                     nombre="Sociópatas", 
                     colonos=[Colono("Elena", "Sociópatas" ,22, 1, "F")], 
-                    recursos=[Recursos("Común", 10, "Agua")], 
+                    recursos={"Agua": 10}, 
                     infraestructuras=None
                 ),
             }
