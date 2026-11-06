@@ -1,23 +1,31 @@
-from Colono import Colono
-from Infraestructura.Infraestructura import Infraestructura
-from Recursos import Recursos
+from src.Colono import Colono
+from src.Infraestructura.Infraestructura import Infraestructura
 
-from GestorEventos import GestorEventos as Gestor
-from Evento import Evento
+from src.GestorEventos import GestorEventos as Gestor
+from src.Evento import Evento
 import queue
 import random 
 
 class Colonia:
+    RECURSOS_BASE = {"Madera": 10, "Piedra": 10, "Agua": 10, "Hierro": 10}
     def __init__(self, nombre: str, colonos: list = None, recursos: dict = None, infraestructuras: list = None):
-        if colonos is None and recursos is None and infraestructuras is None:
+        self.nombre = nombre
+        
+        if colonos is None:
             self.colonos = []
-            self.recursos = {}
-            self.infraestructuras = []
         else:
             self.colonos = colonos
-            self.recursos = recursos
+
+        if infraestructuras is None:
+            self.infraestructuras = []
+        else:
             self.infraestructuras = infraestructuras
-            self.nombre = nombre
+        
+        self.recursos = self.RECURSOS_BASE.copy()
+        
+        if recursos:
+            for tipo, cantidad in recursos.items():
+                self.recursos[tipo] = cantidad
 
         self._gestor = Gestor(queue.Queue(), min_interval=3, max_interval=8)
         self._stream = self.iniciar_gestor()
@@ -37,15 +45,16 @@ class Colonia:
     def agregarRecurso(self, tipo: str, cantidad: int):
         if tipo in self.recursos :
             self.recursos[tipo] += cantidad
+            print(f"Se han añadido {cantidad} de {tipo}. Total: {self.recursos[tipo]}")
         else:
-            self.recursos[tipo] = cantidad
+            print(f"Error: El recurso {tipo} no existe en el sistema.")
 
     def consumirRecurso(self, tipo: str, cantidad: int):
         if tipo in self.recursos and self.recursos[tipo] >= cantidad:
             self.recursos[tipo] -= cantidad
-            print("Recursos restados correctamente")
+            print(f"Se han consumido {cantidad} de {tipo}. Restante: {self.recursos[tipo]}")
             return
-        print("Los recursos NO SE HAN RESTADO BIEN")
+        print(f"Error: No hay suficientes recursos de {tipo} o el recurso no existe.")
 
     def verRecursos(self):
         if not self.recursos:

@@ -1,4 +1,4 @@
-from Infraestructura.Infraestructura import Infraestructura
+from src.Infraestructura.Infraestructura import Infraestructura
 
 class Muralla(Infraestructura):
     def __init__(self, eficiencia: int = 100):
