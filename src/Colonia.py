@@ -1,8 +1,8 @@
-from src.Colono import Colono
-from src.Infraestructura.Infraestructura import Infraestructura
+from Colono import Colono
+from Infraestructura.Infraestructura import Infraestructura
 
-from src.GestorEventos import GestorEventos as Gestor
-from src.Evento import Evento
+from GestorEventos import GestorEventos as Gestor
+from Evento import Evento
 import queue
 import random 
 
