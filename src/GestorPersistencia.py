@@ -2,13 +2,13 @@ import json
 import logging
 from pathlib import Path
 
-from src.Colonia import Colonia
-from src.Colono import Colono
-from src.Infraestructura.Castillo import Castillo
-from src.Infraestructura.Granja import Granja
-from src.Infraestructura.Muralla import Muralla
-from src.Infraestructura.Puente import Puente
-from src.Infraestructura.Mina import Mina
+from Colonia import Colonia
+from Colono import Colono
+from Infraestructura.Castillo import Castillo
+from Infraestructura.Granja import Granja
+from Infraestructura.Muralla import Muralla
+from Infraestructura.Puente import Puente
+from Infraestructura.Mina import Mina
 
 logging.basicConfig(
     level=logging.INFO,

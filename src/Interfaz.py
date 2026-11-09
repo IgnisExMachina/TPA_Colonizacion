@@ -3,9 +3,9 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 import random
 
-from src.Colono import Colono
-from src.Colonia import Colonia
-from src.GestorPersistencia import GestorPersistencia
+from Colono import Colono
+from Colonia import Colonia
+from GestorPersistencia import GestorPersistencia
 
 class Interfaz:
     def __init__(self):

@@ -1,4 +1,4 @@
-from src.Evento import Evento
+from Evento import Evento
 import random
 from threading import Timer
 import queue
