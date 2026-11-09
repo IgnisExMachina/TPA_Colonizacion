@@ -1,0 +1,29 @@
+{
+    "A": {
+        "nombre": "Kukusclan",
+        "colonos": [
+            {
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "__clase__": "Colono"
+            }
+        ],
+        "infraestructuras": [],
+        "recursos": {
+            "Madera": 20,
+            "Piedra": 10,
+            "Agua": 10,
+            "Hierro": 10
+        },
+        "gestor": {
+            "min_interval": 3,
+            "max_interval": 8,
+            "size": 5,
+            "activo": false,
+            "__clase__": "GestorEventos"
+        },
+        "stream": 

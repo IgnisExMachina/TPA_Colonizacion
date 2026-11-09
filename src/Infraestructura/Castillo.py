@@ -1,6 +1,6 @@
 from Infraestructura import Infraestructura
 
-class Castillo(Infraestructura):
+class Castillo(Infraestructura.Infraestructura):
     def __init__(self, eficiencia: int = 100):
         super().__init__(tipo="Castillo", eficiencia=eficiencia)
 
