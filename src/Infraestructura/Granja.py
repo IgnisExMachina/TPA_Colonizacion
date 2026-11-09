@@ -1,6 +1,6 @@
 from Infraestructura import Infraestructura
 
-class Granja(Infraestructura):
+class Granja(Infraestructura.Infraestructura):
     def __init__(self, eficiencia: int = 100):
         super().__init__(tipo="Granja", eficiencia=eficiencia)
 
