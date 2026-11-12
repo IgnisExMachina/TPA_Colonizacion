@@ -1,10 +1,11 @@
 from Colono import Colono
-from Infraestructura.Infraestructura import Infraestructura
+
+import Infraestructura
 
 from GestorEventos import GestorEventos as Gestor
-from Evento import Evento
+import threading
 import queue
-import random 
+import random
 
 class Colonia:
     RECURSOS_BASE = {"Madera": 10, "Piedra": 10, "Agua": 10, "Hierro": 10}
@@ -29,6 +30,9 @@ class Colonia:
 
         self._gestor = Gestor(queue.Queue(), min_interval=3, max_interval=8)
         self._stream = self.iniciar_gestor()
+
+        self._thread = None
+        self._active = False
 
     def agregarColono(self, colono: Colono):
         self.colonos.append(colono)
@@ -63,7 +67,7 @@ class Colonia:
         for tipo, cantidad in self.recursos.items():
             print(f"- {tipo}: {cantidad}")
 
-    def agregarInfraestructuras(self, infraestructura: Infraestructura):
+    def agregarInfraestructuras(self, infraestructura: Infraestructura.Infraestructura):
         self.infraestructuras.append(infraestructura)
 
     def verInfraestructuras(self):
@@ -89,11 +93,13 @@ class Colonia:
             self._gestor.detener()
 
     def procesar_eventos(self):
-        while True:
-            evento = self._stream.__next__()
+        self._active = True
+        while self._active:
+            evento = next(self._stream)
+            print(self.nombre)
             match evento.tipo:
                 case "tormenta":
-
+                    print(f"{evento.titulo}!")
                     for tipo in self.recursos:
                         if evento.severidad > self.recursos[tipo]:
                             self.consumirRecurso(tipo= tipo, cantidad= self.recursos[tipo])#OJO
@@ -110,20 +116,46 @@ class Colonia:
                         self.agregarColono(Colono(nombre= ' '.join([random.choice(Colono.NOMBRES["NOMBRE"]), random.choice(Colono.NOMBRES["APELLIDO"])]), nombre_colonia= self.nombre, edad= random.randint(18, 80), nivel= random.randint(1, 10), genero= random.choice(["M", "F"])))
                 case "averia":
                     if not self.infraestructuras:
-                        print("Deberia hacer reroll")
+                        pass
                     else:
                         averiado = random.choice(self.infraestructuras)
                         if evento.severidad == 1 or evento.severidad == 2:
                             averiado.eficiencia = int(averiado.eficiencia * 1/2)
+                            print(f"{evento.titulo} afecta a la infraestructura {averiado.tipo}")
                         elif evento.severidad == 3 or evento.severidad == 4:
                             averiado.eficiencia = int(averiado.eficiencia * 1/4)
+                            print(f"{evento.titulo} afecta a la infraestructura {averiado.tipo}")
                         else:
                             self.infraestructuras.remove(averiado)
+                            print(f"{evento.titulo} afecta a la infraestructura {averiado.tipo}")
                 case "desastre":
                     print("Impacto de meteorito. Colonia destruida.")
+                    self.detener_gestion()
                     del self
 
+    def iniciar_gestion(self):
+        if self._thread is None or not self._thread.is_alive():
+            self._thread = threading.Thread(target=self.procesar_eventos, daemon=True)
+            self._thread.start()
+            print(f"Colonia '{self.nombre}' iniciada en paralelo.")
+
+    def detener_gestion(self):
+        self._active = False
+        try:
+            self._gestor.detener()
+        except Exception:
+            pass
 
 if __name__ == '__main__':
-    colo1 = Colonia("Agartha", colonos=[Colono("Pepe", "Agartha", 90, 3, "M"), Colono("Pepa", "Agartha", 90, 3, "F")], recursos={"Madera": 10, "Hierro": 20}, infraestructuras=[Infraestructura("Castillo"), Infraestructura("Granja")])
-    colo1.procesar_eventos()
+    colo1 = Colonia("Agartha", colonos=[Colono("Pepe", "Agartha", 90, 3, "M"), Colono("Pepa", "Agartha", 90, 3, "F")], recursos={"Madera": 10, "Hierro": 20}, infraestructuras=[Infraestructura.Castillo(), Infraestructura.Granja()])
+    colo1.verInfraestructuras()
+    colo2 = Colonia("Hiperborea", colonos=[Colono("Pepe", "Hiperborea", 90, 3, "M"), Colono("Pepa", "Hiperborea", 90, 3, "F")], recursos={"Madera": 10, "Hierro": 20},infraestructuras=[Infraestructura.Muralla, Infraestructura.Puente()])
+    colo1.iniciar_gestion()
+    colo2.iniciar_gestion()
+    #en bucle final se haria lista de todas las colonias inicializadas e iniciamos gestion por bucle.
+    try:
+        while True:
+            threading.Event().wait(1)
+    except KeyboardInterrupt:
+        colo1.detener_gestion()
+        colo2.detener_gestion()
