@@ -3,3 +3,5 @@ from .Granja import Granja
 from .Castillo import Castillo
 from .Muralla import Muralla
 from .Puente import Puente
+from .Mina import Mina
+from .Infraestructura import Infraestructura
