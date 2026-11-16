@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 import random
+from pathlib import Path
 
 from Colono import Colono
 from Colonia import Colonia
@@ -9,6 +10,7 @@ from GestorPersistencia import GestorPersistencia
 
 class Interfaz:
     def __init__(self):
+        self._directorio = Path(__file__).resolve().parent
         self.ventana = tk.Tk()
         self.ventana.title("Colonización de planetas")
         self.ventana.geometry("1000x1000")
@@ -52,25 +54,25 @@ class Interfaz:
 
         # 5. Cargar elementos visuales (Fondo y Planetas)
         # Fondo
-        self.imagenFondo = Image.open("imagenesPlanetas/fondo.jpeg")
+        self.imagenFondo = Image.open(self._directorio/"imagenesPlanetas/fondo.jpeg")
         self.imagenFondo = self.imagenFondo.resize((1000, 1000))
         self.imagenFondo_tk = ImageTk.PhotoImage(self.imagenFondo)
         self.canvas.create_image(0, 0, image=self.imagenFondo_tk, anchor="nw")
 
         # Planeta A 
-        self.imagenPlanetaA = Image.open("imagenesPlanetas/planetaA.png")
+        self.imagenPlanetaA = Image.open(self._directorio/"imagenesPlanetas/planetaA.png")
         self.imagenPlanetaA.thumbnail((200, 200))
         self.imagenPlanetaA_tk = ImageTk.PhotoImage(self.imagenPlanetaA)
         self.id_planetaA = self.canvas.create_image(150, 150, image=self.imagenPlanetaA_tk)
 
         # Planeta B
-        self.imagenPlanetaB = Image.open("imagenesPlanetas/planetaB.png")
+        self.imagenPlanetaB = Image.open(self._directorio/"imagenesPlanetas/planetaB.png")
         self.imagenPlanetaB.thumbnail((200, 200))
         self.imagenPlanetaB_tk = ImageTk.PhotoImage(self.imagenPlanetaB)
         self.id_planetaB = self.canvas.create_image(400, 350, image=self.imagenPlanetaB_tk)
 
         # Planeta C
-        self.imagenPlanetaC = Image.open("imagenesPlanetas/planetaC.png")
+        self.imagenPlanetaC = Image.open(self._directorio/"imagenesPlanetas/planetaC.png")
         self.imagenPlanetaC.thumbnail((200, 200))
         self.imagenPlanetaC_tk = ImageTk.PhotoImage(self.imagenPlanetaC)
         self.id_planetaC = self.canvas.create_image(740, 600, image=self.imagenPlanetaC_tk)
