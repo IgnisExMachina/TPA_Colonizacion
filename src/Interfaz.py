@@ -46,6 +46,10 @@ class Interfaz:
                     ),
                 }
 
+        for key in self.colonias:
+                    self.colonias[key].iniciar_gestion()
+
+        
         # 3. Configurar el autoguardado al pulsar la 'X' para cerrar la ventana
         self.ventana.protocol("WM_DELETE_WINDOW", self.al_cerrar_ventana)
 
@@ -111,9 +115,11 @@ class Interfaz:
 
     def start(self):
         self.ventana.mainloop()
+        
         try:
             while True:
                 threading.Event().wait(1)
         except KeyboardInterrupt:
             for key in self.colonias:
                 self.colonias[key].detener_gestion()
+

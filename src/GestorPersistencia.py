@@ -69,8 +69,8 @@ class GestorPersistencia:
                 # Creamos la instancia vacía
                 instancia = clase_python.__new__(clase_python)
 
-                if hasattr(instancia, "iniciar_runtime"):
-                                    instancia.iniciar_runtime()
+                if hasattr(instancia, "inicializar_runtime"):
+                    instancia.inicializar_runtime()
                                         
                 # Asignamos los atributos usando setattr para que dispare los setters de las properties
                 for k, v in datos_copia.items():
