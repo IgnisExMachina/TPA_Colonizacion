@@ -1,4 +1,3 @@
-
 class Evento:
     Titulos = {
         #TORMENTAS: consumen recursos

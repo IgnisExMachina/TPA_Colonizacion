@@ -1,4 +1,3 @@
-#! FALTA PONER EL SETTER Y GETTER DE OCUPADO
 class Colono():
     NOMBRES = {
         "NOMBRE" : ["María Carmen", "Antonio", "María", "Manuel", "José", "Francisco", "David", "Carmen", "Daniel", "Javier", "Juan", "José Antonio", "Francisco Javier", "Carlos", "Alejandro", "José Luis", "Ana María", "Jesús", "Laura", "María Pilar"],

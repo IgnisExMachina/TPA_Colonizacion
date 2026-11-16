@@ -22,23 +22,4 @@ class Planeta:
             raise ValueError("No puedes crear una nueva colonia, este planeta ya ha sido colonizado anteriormente!")
         self.colonia = colonia
         print(f"El planeta {self.nombre} ha sido colonizado por la colonia {colonia.nombre}")
-
-
-
-# PRUEBAS -----------------------------
-marte = Planeta("   marte  ")
-print(marte.nombre)
-print(marte.colonia)
-
-colono = Colono( "Dani", "kukusclan", 19, 3, "M")
-
-print(colono.nombre)
-
-colonia1 = Colonia("Kukusclan", None, None, None)
-colonia1.agregarColono(colono)
-colonia1.verColonos()
-
-print(marte.colonia)
-
-marte.fundarColonia(colonia1)
         

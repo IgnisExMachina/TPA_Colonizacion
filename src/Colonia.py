@@ -148,17 +148,3 @@ class Colonia:
             self._gestor.detener()
         except Exception:
             pass
-
-if __name__ == '__main__':
-    colo1 = Colonia("Agartha", colonos=[Colono("Pepe", "Agartha", 90, 3, "M"), Colono("Pepa", "Agartha", 90, 3, "F")], recursos={"Madera": 10, "Hierro": 20}, infraestructuras=[Infraestructura.Castillo(), Infraestructura.Granja()])
-    colo1.verInfraestructuras()
-    colo2 = Colonia("Hiperborea", colonos=[Colono("Pepe", "Hiperborea", 90, 3, "M"), Colono("Pepa", "Hiperborea", 90, 3, "F")], recursos={"Madera": 10, "Hierro": 20},infraestructuras=[Infraestructura.Muralla, Infraestructura.Puente()])
-    colo1.iniciar_gestion()
-    colo2.iniciar_gestion()
-    #en bucle final se haria lista de todas las colonias inicializadas e iniciamos gestion por bucle.
-    try:
-        while True:
-            threading.Event().wait(1)
-    except KeyboardInterrupt:
-        colo1.detener_gestion()
-        colo2.detener_gestion()
