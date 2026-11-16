@@ -11,6 +11,7 @@ from GestorPersistencia import GestorPersistencia
 
 class Interfaz:
     def __init__(self):
+        self.estoyEnLaVentana = None
         self._directorio = Path(__file__).resolve().parent
         self.ventana = tk.Tk()
         self.ventana.title("Colonización de planetas")
@@ -109,10 +110,47 @@ class Interfaz:
         ventanaDetallada.geometry("400x400")
 
         tk.Label(ventanaDetallada, text=f"Nombre de la colonia: {colonia.nombre}", font=("Arial", 11, "bold")).pack(pady=10)
-        tk.Label(ventanaDetallada, text=f"Población actual: {colonia.verColonos()}").pack(pady=10)
+        # ? Creo un botón para ver los colonos al pasar el ratón por encima, al sacar el ratón del botón la ventana se destruye
+        botonVerColonos = tk.Button(ventanaDetallada, text=f"Ver población actual")
+        botonVerColonos.pack(pady=10)
+
+        botonVerColonos.bind("<Enter>", lambda evento: self.mostrarColonosVentanaTemporal(evento, colonia))
+        botonVerColonos.bind("<Leave>", self.desmostrarColonosVentanaTemporal)
+
+
         tk.Label(ventanaDetallada, text= f"Evento actual: {next(colonia._stream)}").pack(pady=10)
         tk.Button(ventanaDetallada, text="Cerrar ventana", command=ventanaDetallada.destroy).pack(pady=20)
 
+
+    def mostrarColonosVentanaTemporal(self, evento, colonia: Colonia) :
+        # ? Si ya hay alguna ventana no se abre la nueva
+        if self.estoyEnLaVentana is not None :
+             return
+        # Crea otra ventana secundaria
+        self.estoyEnLaVentana = tk.Toplevel(self.ventana)
+        # Quitamos la barra del título y los bordes
+        self.estoyEnLaVentana.wm_overrideredirect(True)
+        # para que se ponga al lado de la ventana
+        x = evento.x_root + 15
+        y = evento.y_root + 15
+        self.estoyEnLaVentana.geometry(f"+{x}+{y}")
+
+        textoColonos = ""
+        for colono in colonia.colonos:
+             textoColonos += f"Nombre: {colono.nombre}\n"
+             textoColonos += f"Edad: {colono.edad}\n"
+             textoColonos += f"Está ocupado: {colono.ocupado}\n"
+             textoColonos += "-------------------------\n"
+
+             # Ponemos el texto en la ventanita
+        tk.Label(self.estoyEnLaVentana, text=textoColonos, bg="#ffffe0", relief="solid", borderwidth=1, padx=8, pady=5).pack()
+
+
+    def desmostrarColonosVentanaTemporal(self, evento) :
+         if self.estoyEnLaVentana:
+              self.estoyEnLaVentana.destroy()
+              self.estoyEnLaVentana = None
+         
     def start(self):
         self.ventana.mainloop()
         
@@ -123,3 +161,13 @@ class Interfaz:
             for key in self.colonias:
                 self.colonias[key].detener_gestion()
 
+
+
+
+
+# PARA EJECUTAR LA APP
+if __name__ == "__main__":
+    # Instanciamos la clase (esto ejecuta el __init__)
+    app = Interfaz()
+    # Llamamos al método que arranca la ventana
+    app.start()
