@@ -117,9 +117,3 @@ class Interfaz:
         except KeyboardInterrupt:
             for key in self.colonias:
                 self.colonias[key].detener_gestion()
-
-
-if __name__ == "__main__":
-    gui = Interfaz()
-    gui.start()
-    

@@ -57,18 +57,3 @@ class GestorEventos: #Un gestor de eventos por cada colonia -> añadir a constru
         self._activo = False
         if self._timer:
             self._timer.cancel()
-
-
-#PRUEBAS
-if __name__ == '__main__':
-    import time
-
-    gestor = GestorEventos(queue.Queue(), min_interval=3, max_interval=8)
-    gestor.iniciar()
-
-    try:
-        while True:
-            evento = gestor.eventos_env.get()
-            print(f"[{time.strftime('%H:%M:%S')}] {evento!r}")
-    except KeyboardInterrupt:
-        gestor.detener()
