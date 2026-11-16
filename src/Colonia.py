@@ -28,9 +28,12 @@ class Colonia:
             for tipo, cantidad in recursos.items():
                 self.recursos[tipo] = cantidad
 
+        self.inicializar_runtime()
+
+    def inicializar_runtime(self):
         self._gestor = Gestor(queue.Queue(), min_interval=3, max_interval=8)
         self._stream = self.iniciar_gestor()
-
+        
         self._thread = None
         self._active = False
 

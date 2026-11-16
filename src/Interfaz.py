@@ -3,6 +3,7 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 import random
 from pathlib import Path
+import threading
 
 from Colono import Colono
 from Colonia import Colonia
@@ -26,24 +27,24 @@ class Interfaz:
             print("No se encontró partida previa. Inicializando colonias por defecto...")
             self.colonias = {
                 "A": Colonia(
-                    nombre="Kukusclan", 
-                    colonos=[Colono("Alfredo", "Kukusclan", 25, 1, "M")], 
-                    recursos={"Madera": 20}, 
-                    infraestructuras=None
-                ),
+                        nombre="Kukusclan", 
+                        colonos=[Colono("Alfredo", "Kukusclan", 25, 1, "M")], 
+                        recursos={"Madera": 20}, 
+                        infraestructuras=None
+                    ),
                 "B": Colonia(
-                    nombre="La sociedad de la nieve", 
-                    colonos=[Colono("Rubén", "La sociedad de la nieve", 30, 1, "M")], 
-                    recursos={"Hierro": 30, "Madera": 2}, 
-                    infraestructuras=None
-                ),
+                        nombre="La sociedad de la nieve", 
+                        colonos=[Colono("Rubén", "La sociedad de la nieve", 30, 1, "M")], 
+                        recursos={"Hierro": 30, "Madera": 2}, 
+                        infraestructuras=None
+                    ),
                 "C": Colonia(
-                    nombre="Sociópatas", 
-                    colonos=[Colono("Elena", "Sociópatas" ,22, 1, "F")], 
-                    recursos={"Agua": 10}, 
-                    infraestructuras=None
-                ),
-            }
+                        nombre="Sociópatas", 
+                        colonos=[Colono("Elena", "Sociópatas" ,22, 1, "F")], 
+                        recursos={"Agua": 10}, 
+                        infraestructuras=None
+                    ),
+                }
 
         # 3. Configurar el autoguardado al pulsar la 'X' para cerrar la ventana
         self.ventana.protocol("WM_DELETE_WINDOW", self.al_cerrar_ventana)
@@ -105,13 +106,20 @@ class Interfaz:
 
         tk.Label(ventanaDetallada, text=f"Nombre de la colonia: {colonia.nombre}", font=("Arial", 11, "bold")).pack(pady=10)
         tk.Label(ventanaDetallada, text=f"Población actual: {colonia.verColonos()}").pack(pady=10)
-
+        tk.Label(ventanaDetallada, text= f"Evento actual: {next(colonia._stream)}").pack(pady=10)
         tk.Button(ventanaDetallada, text="Cerrar ventana", command=ventanaDetallada.destroy).pack(pady=20)
 
     def start(self):
         self.ventana.mainloop()
+        try:
+            while True:
+                threading.Event().wait(1)
+        except KeyboardInterrupt:
+            for key in self.colonias:
+                self.colonias[key].detener_gestion()
 
 
 if __name__ == "__main__":
     gui = Interfaz()
     gui.start()
+    
