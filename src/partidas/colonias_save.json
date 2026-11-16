@@ -19,11 +19,50 @@
             "Agua": 10,
             "Hierro": 10
         },
-        "gestor": {
-            "min_interval": 3,
-            "max_interval": 8,
-            "size": 5,
-            "activo": false,
-            "__clase__": "GestorEventos"
+        "__clase__": "Colonia"
+    },
+    "B": {
+        "nombre": "La sociedad de la nieve",
+        "colonos": [
+            {
+                "nombre": "Rubén",
+                "nombre_colonia": "La sociedad de la nieve",
+                "edad": 30,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "__clase__": "Colono"
+            }
+        ],
+        "infraestructuras": [],
+        "recursos": {
+            "Madera": 2,
+            "Piedra": 10,
+            "Agua": 10,
+            "Hierro": 30
         },
-        "stream": 
+        "__clase__": "Colonia"
+    },
+    "C": {
+        "nombre": "Sociópatas",
+        "colonos": [
+            {
+                "nombre": "Elena",
+                "nombre_colonia": "Sociópatas",
+                "edad": 22,
+                "nivel": 1,
+                "genero": "F",
+                "ocupado": false,
+                "__clase__": "Colono"
+            }
+        ],
+        "infraestructuras": [],
+        "recursos": {
+            "Madera": 10,
+            "Piedra": 10,
+            "Agua": 10,
+            "Hierro": 10
+        },
+        "__clase__": "Colonia"
+    }
+}
