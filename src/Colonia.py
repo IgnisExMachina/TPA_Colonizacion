@@ -2,7 +2,7 @@ from Colono import Colono
 
 import Infraestructura
 
-from GestorEventos import GestorEventos as Gestor
+from eventos.GestorEventos import GestorEventos as Gestor
 import threading
 import queue
 import random
