@@ -6,11 +6,13 @@ Proyecto de simulación y gestión de recursos para la colonización de planetas
 
 La aplicación ha sido desarrollada en Python está orientada a la gestión de recursos, el aumento de población, la construcción de infraestructuras y toma de decisiones ante eventos aleatorios que irán ocurriendo en un tiempo aleatorio determinado.
 
-El proyecto cuenta con una interfaz gráfica interactiva de una galaxia que permite al usuario supervisar el estado actual de cada planeta, su colonia y todo lo que hay dentro de ella; colonos, recursos, infraestructuras y los eventos que están pasando dentro de ella.
+El proyecto cuenta con una interfaz gráfica interactiva de una galaxia que permite al usuario supervisar el estado actual de cada planeta, su colonia y todo lo que hay dentro de ella; colonos, recursos, infraestructuras.
+
+Además de la interfaz gráfica, recibiremos las alertas de eventos por terminal.
 
 # Características Principales del programa
 
-- Exploración Planetaria: Distintos planetas generados de manera aleatoria con distintos recursos y recursos en cada uno de ellos.
+- Exploración Planetaria: Distintos planetas generados de manera aleatoria con una cantidad fija de recursos en cada planeta.
 
 - Gestión de Colonos: Asignación de roles dentro de la colonia y supervivencia en entornos hostiles.
 
@@ -18,7 +20,7 @@ El proyecto cuenta con una interfaz gráfica interactiva de una galaxia que perm
 
 - Economía de Recursos: Extracción, almacenamiento y consumo de recursos para la creación de infraestructuras.
 
-- Sistema de Eventos: Generador aleatorio de eventos (enemigos y tormentas).
+- Sistema de Eventos: Generador aleatorio de eventos (enemigos, tormentas, visitas y averías).
 
 - Interfaz Gráfica: App visual con planetas y seguimiento a tiempo real de lo que está pasando en la galaxia completa.
 
@@ -26,16 +28,22 @@ El proyecto cuenta con una interfaz gráfica interactiva de una galaxia que perm
 
 TPA_Colonizacion/
 │
-├── Interfaz.py                # Interfaz gráfica de usuario (GUI)
+├── Interfaz                
+│   ├── Interfaz.py             # Interfaz gráfica de usuario (GUI)
+│   ├── VentanaColonia.py       # Seguimos con la interfaz pero más concretamente en la parte hover y menú desplegable
 ├── Colonia.py                  # Lógica y estado de la colonia activa
 ├── Colono.py                   # Entidad y atributos individuales de los colonos
-├── Infraestructura.py          # Definición y costes de las infraestructuras
+├── infraestructura             # Definición y costes de las infraestructuras
+│   ├── Infraestructura.py      # Infraestructura general padre
+│   ├── Castillo.py             # Infraestructura castillo
+│   ├── Granja.py               # Infraestructura granja
+│   ├── Mina.py                 # Infraestructura mina
+│   ├── Muralla.py              # Infraestructura muralla
+│   └── Puente.py               # Infraestructura puente
 ├── Planeta.py                  # Parámetros y condiciones ambientales de cada planeta
-├── Recursos.py                 # Modelo general de inventario y consumos
-├── RecursosDelPlaneta.py       # Reservas naturales y tasas de extracción por planeta
 ├── Evento.py                   # Definición de eventos aleatorios e incidentes
 ├── GestorEventos.py            # Gestor de eventos
-│
+│__ GestorPersistencia          # Gestor de persistencia en archivos JSON
 ├── imagenesPlanetas/           # Recursos gráficos de la interfaz
 │   ├── fondo.jpeg              # Fondo general de la interfaz
 │   ├── planetaA.png
