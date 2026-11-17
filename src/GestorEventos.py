@@ -3,10 +3,12 @@ import random
 from threading import Timer
 import queue
 
-class GestorEventos: #Un gestor de eventos por cada colonia -> añadir a constructor de colonia?
+class GestorEventos:
+    MIN = 10.0
+    MAX = 30.0
     posibles_tipos = ["enemigos", "tormenta", "visitas", "averia", "desastre"]
 
-    def __init__(self, eventos_env: queue.Queue, min_interval: float = 5.0, max_interval: float = 15.0, size: int =5):
+    def __init__(self, eventos_env: queue.Queue, min_interval: float = MIN, max_interval: float = MAX, size: int =5):
         self.eventos_env = eventos_env #eventos a enviar
         self._eventos = queue.Queue() #cola interna, privada
         self.min_interval = min_interval

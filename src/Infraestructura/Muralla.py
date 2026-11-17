@@ -8,4 +8,5 @@ class Muralla(Infraestructura.Infraestructura):
         if not super().aplicar_efecto(colonia):
             return
         defensa = 20 * (self.eficiencia / 100)
+        colonia.recursos["Defensa"] += defensa
         print(f"Una Muralla aumenta la defensa de {colonia.nombre} (+{defensa}). Eficiencia: {self.eficiencia}")

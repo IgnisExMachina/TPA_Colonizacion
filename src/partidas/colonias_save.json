@@ -1,571 +1,69 @@
 {
     "A": {
         "nombre": "Kukusclan",
-        "colonos": [
+        "colonos": [],
+        "infraestructuras": [
             {
-                "nombre": "Daniel Rodríguez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 18,
-                "nivel": 8,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
+                "tipo": "Mina",
+                "eficiencia": 0,
+                "coste": {
+                    "Madera": 10,
+                    "Hierro": 10,
+                    "Agua": 10
+                },
+                "__clase__": "Mina"
             },
             {
-                "nombre": "Alejandro Pérez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 26,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
+                "tipo": "Granja",
+                "eficiencia": 40,
+                "coste": {
+                    "Madera": 15,
+                    "Agua": 35
+                },
+                "__clase__": "Granja"
             },
             {
-                "nombre": "Manuel Gómez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 55,
-                "nivel": 10,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Antonio Sánchez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 20,
-                "nivel": 3,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Francisco Martín",
-                "nombre_colonia": "Kukusclan",
-                "edad": 70,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carlos Martín",
-                "nombre_colonia": "Kukusclan",
-                "edad": 30,
-                "nivel": 7,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Daniel Gómez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 25,
-                "nivel": 10,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Álvarez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 36,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Juan Martín",
-                "nombre_colonia": "Kukusclan",
-                "edad": 29,
-                "nivel": 3,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Javier Moreno",
-                "nombre_colonia": "Kukusclan",
-                "edad": 24,
-                "nivel": 5,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Pilar Álvarez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 42,
-                "nivel": 10,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Antonio Gutiérrez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 56,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Jesús Ruiz",
-                "nombre_colonia": "Kukusclan",
-                "edad": 53,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Francisco Javier Sánchez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 57,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Daniel Sánchez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 56,
-                "nivel": 3,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Daniel Ruiz",
-                "nombre_colonia": "Kukusclan",
-                "edad": 48,
-                "nivel": 4,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
+                "tipo": "Puente",
+                "eficiencia": 40,
+                "coste": {
+                    "Madera": 10,
+                    "Piedra": 10
+                },
+                "__clase__": "Puente"
             }
         ],
-        "infraestructuras": [],
         "recursos": {
-            "Madera": 0,
-            "Piedra": 0,
-            "Agua": 0,
-            "Hierro": 0
+            "Madera": 91,
+            "Piedra": 29,
+            "Agua": 81,
+            "Hierro": 29,
+            "Comida": 42.0
         },
         "__clase__": "Colonia"
     },
     "B": {
         "nombre": "La sociedad de la nieve",
-        "colonos": [
-            {
-                "nombre": "Francisco Sánchez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 28,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Antonio López",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 31,
-                "nivel": 3,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carlos Pérez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 40,
-                "nivel": 4,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Carmen Jiménez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 51,
-                "nivel": 1,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Martín",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 68,
-                "nivel": 1,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Ana María López",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 57,
-                "nivel": 10,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Moreno",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 70,
-                "nivel": 9,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Antonio Hernández",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 79,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Antonio Ruiz",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 71,
-                "nivel": 9,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Alejandro González",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 28,
-                "nivel": 2,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Alejandro Alonso",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 23,
-                "nivel": 5,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Daniel Fernández",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 67,
-                "nivel": 5,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Laura Martín",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 71,
-                "nivel": 7,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Ana María Muñoz",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 28,
-                "nivel": 3,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Pilar Pérez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 44,
-                "nivel": 6,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "David Alonso",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 21,
-                "nivel": 9,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Antonio Alonso",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 44,
-                "nivel": 4,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Antonio Sánchez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 66,
-                "nivel": 4,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Antonio Ruiz",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 38,
-                "nivel": 2,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Carmen Jiménez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 20,
-                "nivel": 8,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Pilar Gómez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 67,
-                "nivel": 5,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Carmen Muñoz",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 41,
-                "nivel": 10,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Antonio Alonso",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 21,
-                "nivel": 4,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Juan García",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 25,
-                "nivel": 2,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Luis López",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 28,
-                "nivel": 10,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Carmen García",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 28,
-                "nivel": 6,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            }
-        ],
+        "colonos": [],
         "infraestructuras": [],
         "recursos": {
             "Madera": 0,
             "Piedra": 0,
             "Agua": 0,
-            "Hierro": 0
+            "Hierro": 20,
+            "Comida": 0
         },
         "__clase__": "Colonia"
     },
     "C": {
         "nombre": "Sociópatas",
-        "colonos": [
-            {
-                "nombre": "Carmen Pérez",
-                "nombre_colonia": "Sociópatas",
-                "edad": 41,
-                "nivel": 3,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Alonso",
-                "nombre_colonia": "Sociópatas",
-                "edad": 70,
-                "nivel": 1,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Antonio Martín",
-                "nombre_colonia": "Sociópatas",
-                "edad": 42,
-                "nivel": 1,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Juan Hernández",
-                "nombre_colonia": "Sociópatas",
-                "edad": 80,
-                "nivel": 3,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Manuel Díaz",
-                "nombre_colonia": "Sociópatas",
-                "edad": 54,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Daniel Alonso",
-                "nombre_colonia": "Sociópatas",
-                "edad": 19,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Pilar Álvarez",
-                "nombre_colonia": "Sociópatas",
-                "edad": 58,
-                "nivel": 9,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Sánchez",
-                "nombre_colonia": "Sociópatas",
-                "edad": 68,
-                "nivel": 7,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Alejandro Pérez",
-                "nombre_colonia": "Sociópatas",
-                "edad": 45,
-                "nivel": 8,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Francisco Rodríguez",
-                "nombre_colonia": "Sociópatas",
-                "edad": 26,
-                "nivel": 7,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Francisco Hernández",
-                "nombre_colonia": "Sociópatas",
-                "edad": 80,
-                "nivel": 7,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Juan Sánchez",
-                "nombre_colonia": "Sociópatas",
-                "edad": 65,
-                "nivel": 4,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carmen Ruiz",
-                "nombre_colonia": "Sociópatas",
-                "edad": 73,
-                "nivel": 5,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Pilar García",
-                "nombre_colonia": "Sociópatas",
-                "edad": 18,
-                "nivel": 9,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Francisco Jiménez",
-                "nombre_colonia": "Sociópatas",
-                "edad": 77,
-                "nivel": 6,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Luis Muñoz",
-                "nombre_colonia": "Sociópatas",
-                "edad": 80,
-                "nivel": 4,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Carmen Ruiz",
-                "nombre_colonia": "Sociópatas",
-                "edad": 33,
-                "nivel": 10,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
-            }
-        ],
+        "colonos": [],
         "infraestructuras": [],
         "recursos": {
-            "Madera": 0,
-            "Piedra": 0,
-            "Agua": 0,
-            "Hierro": 0
+            "Madera": 10,
+            "Piedra": 10,
+            "Agua": 10,
+            "Hierro": 10,
+            "Comida": 10
         },
         "__clase__": "Colonia"
     }
