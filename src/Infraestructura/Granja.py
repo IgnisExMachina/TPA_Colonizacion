@@ -8,4 +8,5 @@ class Granja(Infraestructura.Infraestructura):
         if not super().aplicar_efecto(colonia):
             return
         comida = 10 * (self.eficiencia / 100)
+        colonia.recursos["Comida"] += comida
         print(f"Una Granja de {colonia.nombre} produce {comida} de alimento. Eficiencia: {self.eficiencia}")

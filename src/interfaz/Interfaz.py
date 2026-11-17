@@ -12,8 +12,9 @@ sys.path.append(str(ruta_src))
 
 from Colono import Colono
 from Colonia import Colonia
+import Infraestructura
 from GestorPersistencia import GestorPersistencia
-from VentanaColonia import VentanaColonia # Importamos la nueva clase
+from VentanaColonia import VentanaColonia
 
 
 
@@ -40,7 +41,7 @@ class Interfaz:
                         nombre="Kukusclan", 
                         colonos=[Colono("Alfredo", "Kukusclan", 25, 1, "M")], 
                         recursos={"Madera": 20}, 
-                        infraestructuras=None
+                        infraestructuras= [Infraestructura.Mina(), Infraestructura.Granja(), Infraestructura.Puente()]
                     ),
                 "B": Colonia(
                         nombre="La sociedad de la nieve", 
@@ -118,13 +119,8 @@ class Interfaz:
          
     def start(self):
         self.ventana.mainloop()
-        
-        try:
-            while True:
-                threading.Event().wait(1)
-        except KeyboardInterrupt:
-            for key in self.colonias:
-                self.colonias[key].detener_gestion()
+        for key in self.colonias:
+            self.colonias[key].detener_gestion()
 
 
 # PARA EJECUTAR LA APP

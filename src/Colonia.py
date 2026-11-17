@@ -8,7 +8,7 @@ import queue
 import random
 
 class Colonia:
-    RECURSOS_BASE = {"Madera": 10, "Piedra": 10, "Agua": 10, "Hierro": 10}
+    RECURSOS_BASE = {"Madera": 10, "Piedra": 10, "Agua": 10, "Hierro": 10, "Comida": 10}
     def __init__(self, nombre: str, colonos: list = None, recursos: dict = None, infraestructuras: list = None):
         self.nombre = nombre
         
@@ -31,7 +31,7 @@ class Colonia:
         self.inicializar_runtime()
 
     def inicializar_runtime(self):
-        self._gestor = Gestor(queue.Queue(), min_interval=3, max_interval=8)
+        self._gestor = Gestor(queue.Queue())
         self._stream = self.iniciar_gestor()
         
         self._thread = None
@@ -47,7 +47,6 @@ class Colonia:
         for colono in self.colonos:
             texto += f"{colono}\n"
         return texto
-
 
     def agregarRecurso(self, tipo: str, cantidad: int):
         if tipo in self.recursos :
@@ -77,7 +76,6 @@ class Colonia:
         for infraestructura in self.infraestructuras:
             print(infraestructura.tipo)
             print(infraestructura.eficiencia)
-
 
     @property #getter
     def nombre(self):
@@ -135,6 +133,8 @@ class Colonia:
                     print("Impacto de meteorito. Colonia destruida.")
                     self.detener_gestion()
                     del self
+            for infraestructura in self.infraestructuras:
+                infraestructura.aplicar_efecto(self)
 
     def iniciar_gestion(self):
         if self._thread is None or not self._thread.is_alive():
