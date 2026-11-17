@@ -4,15 +4,24 @@ from PIL import Image, ImageTk
 import random
 from pathlib import Path
 import threading
+import sys
+
+# ! Le decimos a Python que añada la carpeta 'src' (padre) a sus rutas de búsqueda ---
+ruta_src = Path(__file__).resolve().parent.parent
+sys.path.append(str(ruta_src))
 
 from Colono import Colono
 from Colonia import Colonia
 from GestorPersistencia import GestorPersistencia
+from VentanaColonia import VentanaColonia # Importamos la nueva clase
+
+
+
+
 
 class Interfaz:
     def __init__(self):
-        self.estoyEnLaVentana = None
-        self._directorio = Path(__file__).resolve().parent
+        self._directorio = Path(__file__).resolve().parent.parent
         self.ventana = tk.Tk()
         self.ventana.title("Colonización de planetas")
         self.ventana.geometry("1000x1000")
@@ -48,8 +57,7 @@ class Interfaz:
                 }
 
         for key in self.colonias:
-                    self.colonias[key].iniciar_gestion()
-
+            self.colonias[key].iniciar_gestion()
         
         # 3. Configurar el autoguardado al pulsar la 'X' para cerrar la ventana
         self.ventana.protocol("WM_DELETE_WINDOW", self.al_cerrar_ventana)
@@ -104,52 +112,9 @@ class Interfaz:
         self.ventana.destroy()
 
     def entrarEnPlaneta(self, evento, colonia: Colonia):
-        """Abre la ventana detallada al hacer clic en un planeta."""
-        ventanaDetallada = tk.Toplevel(self.ventana)
-        ventanaDetallada.title("Estado del planeta")
-        ventanaDetallada.geometry("400x400")
-
-        tk.Label(ventanaDetallada, text=f"Nombre de la colonia: {colonia.nombre}", font=("Arial", 11, "bold")).pack(pady=10)
-        # ? Creo un botón para ver los colonos al pasar el ratón por encima, al sacar el ratón del botón la ventana se destruye
-        botonVerColonos = tk.Button(ventanaDetallada, text=f"Ver población actual")
-        botonVerColonos.pack(pady=10)
-
-        botonVerColonos.bind("<Enter>", lambda evento: self.mostrarColonosVentanaTemporal(evento, colonia))
-        botonVerColonos.bind("<Leave>", self.desmostrarColonosVentanaTemporal)
-
-
-        tk.Label(ventanaDetallada, text= f"Evento actual: {next(colonia._stream)}").pack(pady=10)
-        tk.Button(ventanaDetallada, text="Cerrar ventana", command=ventanaDetallada.destroy).pack(pady=20)
-
-
-    def mostrarColonosVentanaTemporal(self, evento, colonia: Colonia) :
-        # ? Si ya hay alguna ventana no se abre la nueva
-        if self.estoyEnLaVentana is not None :
-             return
-        # Crea otra ventana secundaria
-        self.estoyEnLaVentana = tk.Toplevel(self.ventana)
-        # Quitamos la barra del título y los bordes
-        self.estoyEnLaVentana.wm_overrideredirect(True)
-        # para que se ponga al lado de la ventana
-        x = evento.x_root + 15
-        y = evento.y_root + 15
-        self.estoyEnLaVentana.geometry(f"+{x}+{y}")
-
-        textoColonos = ""
-        for colono in colonia.colonos:
-             textoColonos += f"Nombre: {colono.nombre}\n"
-             textoColonos += f"Edad: {colono.edad}\n"
-             textoColonos += f"Está ocupado: {colono.ocupado}\n"
-             textoColonos += "-------------------------\n"
-
-             # Ponemos el texto en la ventanita
-        tk.Label(self.estoyEnLaVentana, text=textoColonos, bg="#ffffe0", relief="solid", borderwidth=1, padx=8, pady=5).pack()
-
-
-    def desmostrarColonosVentanaTemporal(self, evento) :
-         if self.estoyEnLaVentana:
-              self.estoyEnLaVentana.destroy()
-              self.estoyEnLaVentana = None
+        """Abre la ventana detallada al hacer clic en un planeta invocando la nueva clase."""
+        # Se instancia la ventana pasándole la ventana principal de tkinter como padre y la colonia a mostrar
+        VentanaColonia(self.ventana, colonia)
          
     def start(self):
         self.ventana.mainloop()
@@ -160,9 +125,6 @@ class Interfaz:
         except KeyboardInterrupt:
             for key in self.colonias:
                 self.colonias[key].detener_gestion()
-
-
-
 
 
 # PARA EJECUTAR LA APP
