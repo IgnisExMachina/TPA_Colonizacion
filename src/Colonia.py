@@ -8,8 +8,8 @@ import queue
 import random
 
 class Colonia:
-    RECURSOS_BASE = {"Madera": 10, "Piedra": 10, "Agua": 10, "Hierro": 10, "Comida": 10}
-    def __init__(self, nombre: str, colonos: list = None, recursos: dict = None, infraestructuras: list = None):
+    RECURSOS_BASE = {"Madera": 15, "Piedra": 10, "Agua": 35, "Hierro": 10, "Comida": 10}
+    def __init__(self, nombre: str = "NOMBRE", colonos: list = None, recursos: dict = None, infraestructuras: list = None):
         self.nombre = nombre
         
         if colonos is None:
@@ -70,7 +70,21 @@ class Colonia:
             print(f"- {tipo}: {cantidad}")
 
     def agregarInfraestructuras(self, infraestructura: Infraestructura.Infraestructura):
-        self.infraestructuras.append(infraestructura)
+        if infraestructura.construir(recursos_colonia=self.recursos):
+            self.infraestructuras.append(infraestructura)
+
+    def crear_infraestructuras(self, tipo):
+        match tipo:
+            case "Castillo":
+                return self.agregarInfraestructuras(Infraestructura.Castillo())
+            case "Granja":
+                return self.agregarInfraestructuras(Infraestructura.Granja())
+            case "Mina":
+                return self.agregarInfraestructuras(Infraestructura.Mina())
+            case "Muralla":
+                return self.agregarInfraestructuras(Infraestructura.Muralla())
+            case "Puente":
+                return self.agregarInfraestructuras(Infraestructura.Puente())
 
     def verInfraestructuras(self):
         for infraestructura in self.infraestructuras:
