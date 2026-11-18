@@ -111,5 +111,9 @@ class VentanaColonia:
                          command=lambda item=linea: self.nueva_infraestructura(item)
                     )
                     btn.pack(fill=tk.X, expand=True)
-               
           tk.Button(self.ventana, text="Cerrar ventana", command=self.ventana.destroy).pack(pady=5)
+
+     def nueva_infraestructura(self, linea):
+          tipo = linea.split()[0]
+          self.colonia.crear_infraestructuras(tipo)
+

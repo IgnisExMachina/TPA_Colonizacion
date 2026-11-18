@@ -40,11 +40,20 @@
                     "Piedra": 10
                 },
                 "__clase__": "Puente"
+            },
+            {
+                "tipo": "Puente",
+                "eficiencia": 100,
+                "coste": {
+                    "Madera": 10,
+                    "Piedra": 10
+                },
+                "__clase__": "Puente"
             }
         ],
         "recursos": {
-            "Madera": 48,
-            "Piedra": 29,
+            "Madera": 38,
+            "Piedra": 19,
             "Agua": 63,
             "Hierro": 29,
             "Comida": 21.0
