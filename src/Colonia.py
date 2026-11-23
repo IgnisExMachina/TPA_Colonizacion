@@ -8,7 +8,7 @@ import queue
 import random
 
 class Colonia:
-    RECURSOS_BASE = {"Madera": 15, "Piedra": 10, "Agua": 35, "Hierro": 10, "Comida": 10}
+    RECURSOS_BASE = {"Madera": 15, "Piedra": 10, "Agua": 35, "Hierro": 10, "Comida": 10, "Moral": 30, "Defensa": 0}
     def __init__(self, nombre: str = "NOMBRE", colonos: list = None, recursos: dict = None, infraestructuras: list = None):
         self.nombre = nombre
         
@@ -28,6 +28,7 @@ class Colonia:
             for tipo, cantidad in recursos.items():
                 self.recursos[tipo] = cantidad
 
+        self.destruida = False
         self.inicializar_runtime()
 
     def inicializar_runtime(self):
@@ -36,6 +37,7 @@ class Colonia:
         
         self._thread = None
         self._active = False
+        self.destruida = False
 
     def agregarColono(self, colono: Colono):
         self.colonos.append(colono)
@@ -145,8 +147,9 @@ class Colonia:
                             print(f"{evento.titulo} afecta a la infraestructura {averiado.tipo}")
                 case "desastre":
                     print("Impacto de meteorito. Colonia destruida.")
+                    self.destruida = True
                     self.detener_gestion()
-                    del self
+                    break
             for infraestructura in self.infraestructuras:
                 infraestructura.aplicar_efecto(self)
 
