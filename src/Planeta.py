@@ -14,7 +14,7 @@ class Planeta:
     @nombre.setter
     def nombre(self, nombre:str):
         if not nombre:
-            raise("El nombre del planeta no puede estar vacío")
+            raise ValueError("El nombre del planeta no puede estar vacío")
         self._nombre = nombre.strip()
 
     def fundarColonia(self, colonia):
