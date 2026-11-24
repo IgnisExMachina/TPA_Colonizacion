@@ -8,8 +8,8 @@ class Mina(Infraestructura.Infraestructura):
         if not super().aplicar_efecto(colonia):
             return
     
-        extraccion = int(15 * (self.eficiencia / 100))
-        colonia.recursos["Piedra"] += extraccion
-        colonia.recursos["Hierro"] += extraccion
+        extraccion = int(15 * self.multiplicador() * (self.eficiencia / 100))
+        colonia.recursos["Piedra"] = colonia.recursos.get("Piedra", 0) + extraccion
+        colonia.recursos["Hierro"] = colonia.recursos.get("Hierro", 0) + extraccion
         
         print(f"Una Mina en {colonia.nombre} ha extraído {extraccion} de Piedra y Hierro. Eficiencia: {self.eficiencia}")

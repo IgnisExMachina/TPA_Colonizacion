@@ -1,11 +1,12 @@
 import pytest
-from src.Infraestructura.Granja import Granja
-from src.Infraestructura.Infraestructura import Infraestructura
+from Infraestructura.Granja import Granja
+from Infraestructura.Infraestructura import Infraestructura
 
 
 class ColoniaTest:
     def __init__(self, nombre: str):
         self.nombre = nombre
+        self.recursos = {}
 
 @pytest.fixture
 def recursos_suficientes():

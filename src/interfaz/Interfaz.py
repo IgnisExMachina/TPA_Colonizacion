@@ -4,18 +4,16 @@ from PIL import Image, ImageTk
 import random
 from pathlib import Path
 import threading
-import sys
-
-# ! Le decimos a Python que añada la carpeta 'src' (padre) a sus rutas de búsqueda ---
-ruta_src = Path(__file__).resolve().parent.parent
-sys.path.append(str(ruta_src))
 
 from Colono import Colono
 from Colonia import Colonia
 import Infraestructura
 from GestorPersistencia import GestorPersistencia
-from VentanaColonia import VentanaColonia
-from VentanaFundar import VentanaFundar
+from interfaz.VentanaColonia import VentanaColonia
+from interfaz.VentanaFundar import VentanaFundar
+from interfaz.Registro import PanelRegistro
+from interfaz import Tema
+from eventos.Evento import Evento
 
 
 
@@ -25,6 +23,7 @@ class Interfaz:
     def __init__(self):
         self._directorio = Path(__file__).resolve().parent.parent
         self.ventana = tk.Tk()
+        Tema.aplicar_tema(self.ventana)  # todas las ventanas en azul oscuro
         self.ventana.title("Colonización de planetas")
         self.ventana.geometry("1000x1000")
 
@@ -42,7 +41,7 @@ class Interfaz:
                         nombre="Kukusclan", 
                         colonos=[Colono("Alfredo", "Kukusclan", 25, 1, "M")], 
                         recursos={"Madera": 20}, 
-                        infraestructuras= [Infraestructura.Mina(), Infraestructura.Granja(), Infraestructura.Puente()]
+                        infraestructuras= [Infraestructura.Mina(), Infraestructura.Granja(), Infraestructura.Aserradero(), Infraestructura.Huerto()]
                     ),
                 "B": Colonia(
                         nombre="La sociedad de la nieve", 
@@ -59,7 +58,8 @@ class Interfaz:
                 }
 
         for key in self.colonias:
-            if isinstance(self.colonias[key], (Colonia)):
+            # Las colonias destruidas por un meteorito no reciben eventos: su planeta esta libre
+            if isinstance(self.colonias[key], (Colonia)) and not self.colonias[key].destruida:
                 self.colonias[key].iniciar_gestion()
             else:
                 pass
@@ -107,6 +107,30 @@ class Interfaz:
         self.canvas.imagePlanetaB = self.imagenPlanetaB_tk
         self.canvas.imagePlanetaC = self.imagenPlanetaC_tk
 
+        # 8. Registro: lo que se imprime en la terminal tambien se ve aqui, con colores
+        self.panelRegistro = PanelRegistro(
+            self.ventana,
+            nombres_colonias=lambda: [c.nombre for c in self.colonias.values() if isinstance(c, Colonia)],
+            titulos_eventos=Evento.Titulos.values(),
+        )
+        self.registroVisible = False
+        self.botonRegistro = tk.Button(self.ventana, text="Registro", command=self.alternar_registro,
+                                       bg=Tema.BOTON, fg=Tema.TEXTO, activebackground=Tema.BOTON_ACTIVO,
+                                       activeforeground=Tema.TEXTO, relief="flat")
+        self.botonRegistro.place(relx=1.0, x=-10, y=10, anchor="ne")
+        self.alternar_registro()  # empieza visible
+
+    def alternar_registro(self):
+        """Muestra u oculta el panel de registro en la parte de abajo de la ventana."""
+        if self.registroVisible:
+            self.panelRegistro.place_forget()
+            self.botonRegistro.config(text="Mostrar registro")
+        else:
+            self.panelRegistro.place(relx=0, rely=1.0, x=10, y=-10, relwidth=1.0, width=-20, height=260, anchor="sw")
+            self.panelRegistro.lift()
+            self.botonRegistro.config(text="Ocultar registro")
+        self.registroVisible = not self.registroVisible
+
     def al_cerrar_ventana(self):
         """Método que se ejecuta automáticamente al cerrar la ventana (guarda antes de salir)."""
         print("Guardando partida...")
@@ -119,7 +143,8 @@ class Interfaz:
     def entrarEnPlaneta(self, evento, colonia: Colonia, key: str):
         """Abre la ventana detallada al hacer clic en un planeta invocando la nueva clase."""
         # Se instancia la ventana pasándole la ventana principal de tkinter como padre y la colonia a mostrar
-        if not colonia:
+        if not colonia or colonia.destruida:
+            # Planeta libre (nunca colonizado o colonia destruida por un meteorito)
             VentanaFundar(self.ventana, self.colonias, key)
         else:
             VentanaColonia(self.ventana, colonia)
@@ -131,11 +156,3 @@ class Interfaz:
                 self.colonias[key].detener_gestion()
             else:
                 pass
-
-
-# PARA EJECUTAR LA APP
-if __name__ == "__main__":
-    # Instanciamos la clase (esto ejecuta el __init__)
-    app = Interfaz()
-    # Llamamos al método que arranca la ventana
-    app.start()
