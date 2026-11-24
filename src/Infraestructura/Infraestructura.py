@@ -158,4 +158,3 @@ class Infraestructura():
     def _hay_recursos(recursos_colonia: dict, coste: dict) -> bool:
         return all(recursos_colonia.get(recurso, 0) >= cantidad for recurso, cantidad in coste.items())
 
-Infraestructura.mostrar_todos_costes()
