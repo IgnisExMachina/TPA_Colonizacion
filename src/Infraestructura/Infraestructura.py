@@ -1,16 +1,24 @@
 class Infraestructura():
+    # Costes de construccion. Las infraestructuras basicas son baratas para poder arrancar la colonia;
+    # despues se mejoran "invirtiendo" en ellas (ver invertir()).
     COSTES = {
-        "Puente": {"Madera": 10, "Piedra": 10},
-        "Castillo": {"Piedra": 50, "Hierro": 30, "Agua": 20},
-        "Muralla": {"Piedra": 30},
+        "Aserradero": {"Madera": 10, "Piedra": 5},
+        "Pozo": {"Piedra": 10, "Madera": 5},
+        "Mina": {"Madera": 15, "Agua": 10},
+        "Huerto": {"Madera": 10, "Agua": 5},
         "Granja": {"Madera": 15, "Agua": 35},
-        "Mina": {"Madera": 10, "Hierro": 10, "Agua": 10},
+        "Muralla": {"Piedra": 25, "Madera": 10},
+        "ExtractorDePlutonio": {"Hierro": 25, "Piedra": 20, "Madera": 15},
+        "Castillo": {"Piedra": 50, "Hierro": 30, "Agua": 20},
     }
+    MAX_NIVEL = 5
+    FACTOR_INVERSION = 0.6   # invertir cuesta 60% del coste de construccion por cada nivel que ya tiene
+    nivel = 1                # valor por defecto (tambien para infraestructuras de partidas antiguas)
 
     def __init__(self, tipo: str, eficiencia: int = 100):
         self.tipo = tipo
         self.eficiencia = eficiencia
-        self._coste = self.COSTES.get(tipo, {})
+        self.nivel = 1
 
 
     @property
@@ -23,7 +31,14 @@ class Infraestructura():
 
     @property
     def coste(self) -> dict:
-        return self._coste
+        # El coste sale siempre de COSTES segun el tipo. Asi no hace falta guardarlo en la partida
+        # y las infraestructuras cargadas de un JSON lo tienen igual que las recien construidas.
+        return self.COSTES.get(self.tipo, {})
+
+    @coste.setter
+    def coste(self, _valor):
+        # Las partidas antiguas guardaban "coste"; al cargarlas se ignora (se recalcula desde COSTES)
+        pass
 
 
     @tipo.setter
@@ -81,34 +96,65 @@ class Infraestructura():
         if self.eficiencia == 0:
             print(f"{self.tipo} en {colonia.nombre} está destruida/inoperativa (0% de eficiencia). Requiere reparación.")
             return False
-        self.eficiencia -= 10
+        self.eficiencia = max(0, self.eficiencia - 10)  # las averias pueden dejarla en 5, 45... y no puede bajar de 0
         return True
 
-    def reparar(self, recursos_colonia: dict) -> bool:
-        #Calculamos el coste de reparación (50% de los recursos necesarios para su creacion)
-        coste_reparacion = {}
-        for nombre_recurso, cant_original in self.coste.items():
-            mitad_cantidad = int(cant_original / 2)
-            if mitad_cantidad < 1:
-                mitad_cantidad = 1
-            coste_reparacion[nombre_recurso] = mitad_cantidad
+    # ---------- Inversion (subir de nivel) ----------
+    def multiplicador(self) -> float:
+        """Cuanto produce respecto al nivel 1: Nv1 x1, Nv2 x1.5, Nv3 x2, Nv4 x2.5, Nv5 x3."""
+        return 1 + 0.5 * (self.nivel - 1)
 
-        coste_original = self._coste
-        self._coste = coste_reparacion
+    def descripcion_mejora(self) -> str:
+        """Texto que explica que gana la infraestructura con su nivel actual."""
+        return f"produce x{self.multiplicador():g}"
+
+    def puede_invertir(self) -> bool:
+        return self.nivel < self.MAX_NIVEL
+
+    def coste_inversion(self) -> dict:
+        """Cada nivel cuesta mas que el anterior."""
+        return {recurso: max(1, round(cantidad * self.FACTOR_INVERSION * self.nivel))
+                for recurso, cantidad in self.coste.items()}
+
+    def invertir(self, recursos_colonia: dict) -> bool:
+        """Gasta recursos para subir un nivel: produce mas y vuelve al 100% de eficiencia."""
+        if not self.puede_invertir():
+            print(f"'{self.tipo}' ya está al nivel máximo ({self.MAX_NIVEL}).")
+            return False
+        coste = self.coste_inversion()
+        if not self._hay_recursos(recursos_colonia, coste):
+            print(f"No hay suficientes recursos para invertir en '{self.tipo}'.")
+            return False
+        for recurso, cantidad in coste.items():
+            recursos_colonia[recurso] -= cantidad
+        self.nivel += 1
+        self.eficiencia = 100
+        print(f"Inversión con éxito: '{self.tipo}' sube a nivel {self.nivel} ({self.descripcion_mejora()}).")
+        return True
+
+    # ---------- Reparacion ----------
+    def coste_reparacion(self) -> dict:
+        """Reparar cuesta el 50% de los recursos necesarios para construirla (minimo 1 de cada)."""
+        return {recurso: max(1, int(cantidad / 2)) for recurso, cantidad in self.coste.items()}
+
+    def reparar(self, recursos_colonia: dict) -> bool:
+        coste_reparacion = self.coste_reparacion()
 
         #Comprobamos si la colonia tiene lo necesario
-        if not self.comprobar_recursos(recursos_colonia):
+        if not self._hay_recursos(recursos_colonia, coste_reparacion):
             print(f"No hay suficientes recursos en la colonia para reparar '{self.tipo}'.")
-            self._coste = coste_original
             return False
 
         #Descontamos los recursos
         for recurso_req, cantidad_req in coste_reparacion.items():
             recursos_colonia[recurso_req] -= cantidad_req
 
-        self._coste = coste_original
         self.eficiencia = 100
         print(f"'{self.tipo}' ha sido reparada al 100% de eficiencia.")
         return True
+
+    @staticmethod
+    def _hay_recursos(recursos_colonia: dict, coste: dict) -> bool:
+        return all(recursos_colonia.get(recurso, 0) >= cantidad for recurso, cantidad in coste.items())
 
 Infraestructura.mostrar_todos_costes()

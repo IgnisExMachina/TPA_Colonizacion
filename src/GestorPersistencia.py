@@ -2,13 +2,19 @@ import json
 import logging
 from pathlib import Path
 
+# Ruta del guardado relativa a este archivo, para que funcione desde cualquier carpeta
+RUTA_GUARDADO = Path(__file__).resolve().parent / "partidas" / "colonias_save.json"
+
 from Colonia import Colonia
 from Colono import Colono
 from Infraestructura.Castillo import Castillo
 from Infraestructura.Granja import Granja
 from Infraestructura.Muralla import Muralla
-from Infraestructura.Puente import Puente
+from Infraestructura.Aserradero import Aserradero
 from Infraestructura.Mina import Mina
+from Infraestructura.Pozo import Pozo
+from Infraestructura.ExtractorDePlutonio import ExtractorDePlutonio
+from Infraestructura.Huerto import Huerto
 
 logging.basicConfig(
     level=logging.INFO,
@@ -22,12 +28,15 @@ CLASES_REGISTRADAS = {
     "Castillo": Castillo,
     "Granja": Granja,
     "Muralla": Muralla,
-    "Puente": Puente,
+    "Aserradero": Aserradero,
     "Mina": Mina,
+    "Pozo": Pozo,
+    "ExtractorDePlutonio": ExtractorDePlutonio,
+    "Huerto": Huerto,
 }
 
 class GestorPersistencia:
-    def __init__(self, ruta_archivo: str = "src/partidas/colonias_save.json"):
+    def __init__(self, ruta_archivo: str | Path = RUTA_GUARDADO):
         self.ruta = Path(ruta_archivo)
         self.ruta.parent.mkdir(parents=True, exist_ok=True)
 
