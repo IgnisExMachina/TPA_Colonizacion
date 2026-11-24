@@ -3,12 +3,14 @@ from Colono import Colono
 import Infraestructura
 
 from eventos.GestorEventos import GestorEventos as Gestor
+import sys
 import threading
 import queue
 import random
 
 class Colonia:
-    RECURSOS_BASE = {"Madera": 15, "Piedra": 10, "Agua": 35, "Hierro": 10, "Comida": 10}
+    destruida = False  # True tras un meteorito: el planeta queda libre (valor de clase para partidas antiguas)
+    RECURSOS_BASE = {"Madera": 50, "Piedra": 50, "Agua": 50, "Hierro": 20, "Comida": 20, "Plutonio": 0, "Semillas": 2, "Plantas": 0}
     def __init__(self, nombre: str = "NOMBRE", colonos: list = None, recursos: dict = None, infraestructuras: list = None):
         self.nombre = nombre
         
@@ -83,8 +85,21 @@ class Colonia:
                 return self.agregarInfraestructuras(Infraestructura.Mina())
             case "Muralla":
                 return self.agregarInfraestructuras(Infraestructura.Muralla())
-            case "Puente":
-                return self.agregarInfraestructuras(Infraestructura.Puente())
+            case "Aserradero":
+                return self.agregarInfraestructuras(Infraestructura.Aserradero())
+            case "Pozo":
+                return self.agregarInfraestructuras(Infraestructura.Pozo())
+            case "ExtractorDePlutonio":
+                return self.agregarInfraestructuras(Infraestructura.ExtractorDePlutonio())
+            case "Huerto":
+                return self.agregarInfraestructuras(Infraestructura.Huerto())
+
+    def obtener_huerto(self):
+        """Devuelve el primer Huerto de la colonia o None si no tiene."""
+        for infraestructura in self.infraestructuras:
+            if isinstance(infraestructura, Infraestructura.Huerto):
+                return infraestructura
+        return None
 
     def verInfraestructuras(self):
         for infraestructura in self.infraestructuras:
@@ -111,47 +126,57 @@ class Colonia:
         self._active = True
         while self._active:
             evento = next(self._stream)
-            print(self.nombre)
-            match evento.tipo:
-                case "tormenta":
-                    print(f"{evento.titulo}!")
-                    for tipo in self.recursos:
-                        if evento.severidad > self.recursos[tipo]:
-                            self.consumirRecurso(tipo= tipo, cantidad= self.recursos[tipo])#OJO
-                        else:
-                            self.consumirRecurso(tipo= tipo, cantidad= evento.severidad)  
-                case "enemigos":
-                    for i in range(evento.severidad):
-                        if not self.colonos:
-                            break
-                        print(f"{evento.titulo}! {self.colonos.pop().nombre} muere en combate")#a interfaz
-                case "visitas":
-                    print(f"{evento.severidad} colono(s) se unen a la colonia!") #a interfaz
-                    for i in range(evento.severidad):
-                        self.agregarColono(Colono(nombre= ' '.join([random.choice(Colono.NOMBRES["NOMBRE"]), random.choice(Colono.NOMBRES["APELLIDO"])]), nombre_colonia= self.nombre, edad= random.randint(18, 80), nivel= random.randint(1, 10), genero= random.choice(["M", "F"])))
-                case "averia":
-                    if not self.infraestructuras:
-                        pass
+            try:
+                self._aplicar_evento(evento)
+            except Exception as e:
+                # Un fallo en un evento no puede dejar a la colonia sin eventos para siempre
+                # A stderr: se ve en la terminal pero no en el registro de la app
+                print(f"Error procesando el evento {evento} en {self.nombre}: {e!r}", file=sys.stderr)
+
+    def _aplicar_evento(self, evento):
+        print(self.nombre)
+        match evento.tipo:
+            case "tormenta":
+                print(f"{evento.titulo}!")
+                for tipo in list(self.recursos):  # copia: otro hilo puede añadir recursos
+                    cantidad = min(evento.severidad, self.recursos[tipo])
+                    if cantidad > 0:
+                        self.consumirRecurso(tipo=tipo, cantidad=cantidad)
+            case "enemigos":
+                for i in range(evento.severidad):
+                    # Los que estan explorando estan fuera de la colonia y se libran
+                    en_colonia = [c for c in self.colonos if not c.esta_explorando()]
+                    if not en_colonia:
+                        break
+                    victima = en_colonia[-1]
+                    self.colonos.remove(victima)
+                    print(f"{evento.titulo}! {victima.nombre} muere en combate")
+            case "visitas":
+                print(f"{evento.severidad} colono(s) se unen a la colonia!")
+                for i in range(evento.severidad):
+                    self.agregarColono(Colono.aleatorio(self.nombre))
+            case "averia":
+                if self.infraestructuras:
+                    averiado = random.choice(self.infraestructuras)
+                    if evento.severidad == 1 or evento.severidad == 2:
+                        averiado.eficiencia = int(averiado.eficiencia * 1/2)
+                    elif evento.severidad == 3 or evento.severidad == 4:
+                        averiado.eficiencia = int(averiado.eficiencia * 1/4)
                     else:
-                        averiado = random.choice(self.infraestructuras)
-                        if evento.severidad == 1 or evento.severidad == 2:
-                            averiado.eficiencia = int(averiado.eficiencia * 1/2)
-                            print(f"{evento.titulo} afecta a la infraestructura {averiado.tipo}")
-                        elif evento.severidad == 3 or evento.severidad == 4:
-                            averiado.eficiencia = int(averiado.eficiencia * 1/4)
-                            print(f"{evento.titulo} afecta a la infraestructura {averiado.tipo}")
-                        else:
-                            self.infraestructuras.remove(averiado)
-                            print(f"{evento.titulo} afecta a la infraestructura {averiado.tipo}")
-                case "desastre":
-                    print("Impacto de meteorito. Colonia destruida.")
-                    self.colonos.clear()
-                    self.infraestructuras.clear()
-                    self.recursos.clear()
-                    self.detener_gestion()
-                    break
-            for infraestructura in self.infraestructuras:
-                infraestructura.aplicar_efecto(self)
+                        self.infraestructuras.remove(averiado)
+                    print(f"{evento.titulo} afecta a la infraestructura {averiado.tipo}")
+            case "desastre":
+                print("Impacto de meteorito. Colonia destruida.")
+                self.colonos.clear()
+                self.infraestructuras.clear()
+                self.recursos.clear()
+                self.destruida = True
+                self.detener_gestion()
+                return
+        for infraestructura in list(self.infraestructuras):
+            infraestructura.aplicar_efecto(self)
+        for colono in list(self.colonos):
+            colono.avanzar_exploracion(self)
 
     def iniciar_gestion(self):
         if self._thread is None or not self._thread.is_alive():

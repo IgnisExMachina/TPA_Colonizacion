@@ -7,6 +7,6 @@ class Castillo(Infraestructura.Infraestructura):
     def aplicar_efecto(self, colonia):
         if not super().aplicar_efecto(colonia):
             return
-        moral = 15 * (self.eficiencia / 100)
-        colonia.recursos["Moral"] += moral
+        moral = int(15 * self.multiplicador() * (self.eficiencia / 100))
+        colonia.recursos["Moral"] = colonia.recursos.get("Moral", 0) + moral
         print(f"Un Castillo aumenta el bienestar de los colonos {colonia.nombre} (+{moral}). Eficiencia: {self.eficiencia}")

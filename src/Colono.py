@@ -1,8 +1,19 @@
+import random
+
 class Colono():
     NOMBRES = {
         "NOMBRE" : ["María Carmen", "Antonio", "María", "Manuel", "José", "Francisco", "David", "Carmen", "Daniel", "Javier", "Juan", "José Antonio", "Francisco Javier", "Carlos", "Alejandro", "José Luis", "Ana María", "Jesús", "Laura", "María Pilar"],
         "APELLIDO" : ["García", "Rodríguez", "González", "Fernández", "López", "Martínez", "Sánchez", "Pérez", "Gómez", "Martín", "Jiménez", "Hernández", "Ruiz", "Díaz", "Moreno", "Muñoz", "Álvarez", "Romero", "Gutiérrez", "Alonso"]
     }
+    EVENTOS_EXPLORACION = 5  # eventos que tarda un colono en volver de explorar
+
+    @classmethod
+    def aleatorio(cls, nombre_colonia: str) -> "Colono":
+        """Crea un colono con nombre, edad, nivel y genero al azar."""
+        nombre = f"{random.choice(cls.NOMBRES['NOMBRE'])} {random.choice(cls.NOMBRES['APELLIDO'])}"
+        return cls(nombre=nombre, nombre_colonia=nombre_colonia, edad=random.randint(18, 80),
+                   nivel=random.randint(1, 10), genero=random.choice(["M", "F"]))
+
     def __init__(self, nombre: str, nombre_colonia: str, edad: int, nivel: int, genero: str,):
         self.nombre = nombre
         self.nombre_colonia = nombre_colonia
@@ -10,6 +21,7 @@ class Colono():
         self.nivel = nivel
         self.genero = genero
         self.ocupado = False
+        self.exploracion_restante = 0  # eventos que faltan para volver de explorar (0 = en la colonia)
 
     @property
     def nombre(self):
@@ -77,3 +89,37 @@ class Colono():
 
     def envejecer(self):
         self.edad += 1
+
+    def irDeExploracion(self, colonia) -> bool:
+        """El colono sale a explorar. Tarda EVENTOS_EXPLORACION eventos en volver y,
+        al volver, trae lo que haya encontrado (de momento solo semillas)."""
+        if self.ocupado:
+            print(f"{self.nombre} está ocupado y no puede ir de exploración.")
+            return False
+        self.ocupado = True
+        self.exploracion_restante = self.EVENTOS_EXPLORACION
+        print(f"{self.nombre} sale de exploración desde {colonia.nombre}. Volverá en {self.EVENTOS_EXPLORACION} eventos.")
+        return True
+
+    def esta_explorando(self) -> bool:
+        # getattr por si el colono viene de una partida guardada antes de existir este atributo
+        return getattr(self, "exploracion_restante", 0) > 0
+
+    def avanzar_exploracion(self, colonia) -> dict | None:
+        """Se llama en cada evento. Devuelve los hallazgos cuando el colono vuelve, si no None."""
+        if not self.esta_explorando():
+            return None
+        self.exploracion_restante -= 1
+        if self.exploracion_restante > 0:
+            return None
+
+        # Vuelve de la exploracion. Cuanto mas nivel, mas probable es que encuentre algo.
+        hallazgos = {"Semillas": 0}
+        intentos = 1 + self.nivel // 4   # nivel 1-3: 1 intento, 4-7: 2, 8+: 3...
+        for _ in range(intentos):
+            hallazgos["Semillas"] += random.randint(0, 2)
+
+        colonia.recursos["Semillas"] = colonia.recursos.get("Semillas", 0) + hallazgos["Semillas"]
+        self.ocupado = False
+        print(f"{self.nombre} vuelve de explorar con {hallazgos['Semillas']} semilla(s).")
+        return hallazgos

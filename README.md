@@ -8,7 +8,7 @@ La aplicación ha sido desarrollada en Python está orientada a la gestión de r
 
 El proyecto cuenta con una interfaz gráfica interactiva de una galaxia que permite al usuario supervisar el estado actual de cada planeta, su colonia y todo lo que hay dentro de ella; colonos, recursos, infraestructuras.
 
-Además de la interfaz gráfica, recibiremos las alertas de eventos por terminal.
+Las alertas de eventos se muestran en el panel "Registro de la galaxia" dentro de la propia interfaz (con colores según el tipo de mensaje) y también en la terminal.
 
 # Características Principales del programa
 
@@ -28,9 +28,13 @@ Además de la interfaz gráfica, recibiremos las alertas de eventos por terminal
 
 TPA_Colonizacion/
 │
+├── main.py                     # Punto de entrada: el programa se arranca desde aquí
 ├── Interfaz                
 │   ├── Interfaz.py             # Interfaz gráfica de usuario (GUI)
 │   ├── VentanaColonia.py       # Seguimos con la interfaz pero más concretamente en la parte hover y menú desplegable
+│   ├── VentanaFundar.py        # Ventana para fundar una colonia en un planeta libre
+│   ├── VentanaHuerto.py        # Ventana del huerto: plantar semillas y recoger la cosecha
+│   ├── Registro.py             # Panel de registro: muestra con colores lo que se imprime en la terminal
 ├── Colonia.py                  # Lógica y estado de la colonia activa
 ├── Colono.py                   # Entidad y atributos individuales de los colonos
 ├── infraestructura             # Definición y costes de las infraestructuras
@@ -39,7 +43,10 @@ TPA_Colonizacion/
 │   ├── Granja.py               # Infraestructura granja
 │   ├── Mina.py                 # Infraestructura mina
 │   ├── Muralla.py              # Infraestructura muralla
-│   └── Puente.py               # Infraestructura puente
+│   ├── Aserradero.py           # Infraestructura aserradero (produce madera)
+│   ├── Pozo.py                 # Infraestructura pozo (produce agua)
+│   ├── ExtractorDePlutonio.py  # Infraestructura extractor de plutonio (produce plutonio)
+│   └── Huerto.py               # Infraestructura huerto (plantas y semillas, cada 5 eventos)
 ├── Planeta.py                  # Parámetros y condiciones ambientales de cada planeta
 ├── Evento.py                   # Definición de eventos aleatorios e incidentes
 ├── GestorEventos.py            # Gestor de eventos
@@ -96,13 +103,29 @@ env\Scripts\activate
 
 3. Ejecutar el proyecto
 
+Desde la carpeta raíz del repositorio:
+
 ```bash
-python interface.py
+python src/main.py
 ```
 
-4. Instalación de Pillow
+4. Instalación de dependencias
 
-Como ya expliqué anteriormente, ya que instalar Pillow en la terminal para que el proyecto reconozca la librería correspondiente.
+Con el entorno virtual activado, instala todo lo necesario (Pillow y pytest) de una vez:
+
+```bash
+pip install -r requirements.txt
+```
+
+5. Ejecutar los tests
+
+Desde la carpeta raíz del repositorio:
+
+```bash
+pytest
+```
+
+La configuración está en `pytest.ini`, que añade `src` a las rutas de búsqueda para que los tests importen igual que el programa.
 
 
 # Guía Rápida de Uso
