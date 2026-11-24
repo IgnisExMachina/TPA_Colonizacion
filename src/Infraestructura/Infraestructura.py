@@ -65,6 +65,7 @@ class Infraestructura():
         for tipo in Infraestructura.COSTES:
             newstr += f"\n\t{tipo} | {' '.join(f'{recurso} - {Infraestructura.COSTES[tipo][recurso]}' for recurso in Infraestructura.COSTES[tipo])}"
         return newstr
+    
     def mostrar_coste(self):
         print(f"Para construir la infraestructura '{self.tipo}' necesitas:")
         for recurso, cantidad in self.coste.items():

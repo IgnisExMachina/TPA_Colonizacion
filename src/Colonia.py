@@ -30,6 +30,7 @@ class Colonia:
             for tipo, cantidad in recursos.items():
                 self.recursos[tipo] = cantidad
 
+        self.destruida = False
         self.inicializar_runtime()
 
     def inicializar_runtime(self):
@@ -38,6 +39,7 @@ class Colonia:
         
         self._thread = None
         self._active = False
+        self.destruida = False
 
     def agregarColono(self, colono: Colono):
         self.colonos.append(colono)
