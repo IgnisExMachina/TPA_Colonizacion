@@ -133,6 +133,8 @@ class Interfaz:
 
     def al_cerrar_ventana(self):
         """Método que se ejecuta automáticamente al cerrar la ventana (guarda antes de salir)."""
+        for colonia in self.colonias.values():
+            colonia.detener_gestion()
         print("Guardando partida...")
         try:
             self.persistencia.guardar_colonias(self.colonias)
@@ -142,6 +144,10 @@ class Interfaz:
 
     def entrarEnPlaneta(self, evento, colonia: Colonia, key: str):
         """Abre la ventana detallada al hacer clic en un planeta invocando la nueva clase."""
+        #Verifica si la colonia fue destruida antes de acceder a ella
+        if getattr(colonia, "destruida", False):
+            messagebox.showwarning("Colonia destruida", f"La colonia {colonia.nombre} fue arrasada por un meteorito.")
+            return
         # Se instancia la ventana pasándole la ventana principal de tkinter como padre y la colonia a mostrar
         if not colonia or colonia.destruida:
             # Planeta libre (nunca colonizado o colonia destruida por un meteorito)
