@@ -145,8 +145,11 @@ class Colonia:
                             print(f"{evento.titulo} afecta a la infraestructura {averiado.tipo}")
                 case "desastre":
                     print("Impacto de meteorito. Colonia destruida.")
+                    self.colonos.clear()
+                    self.infraestructuras.clear()
+                    self.recursos.clear()
                     self.detener_gestion()
-                    del self
+                    break
             for infraestructura in self.infraestructuras:
                 infraestructura.aplicar_efecto(self)
 

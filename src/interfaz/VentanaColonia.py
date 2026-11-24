@@ -11,36 +11,39 @@ class VentanaColonia:
           self.ventana = tk.Toplevel(ventana_padre)
           self.ventana.title("Estado del planeta")
           self.ventana.geometry("400x400")
+          if not colonia:
+               #NUNCA deberia darse. lo dejo por si acaso
+               tk.Label(self.ventana, text="Planeta no ocupado.", font=("Arial", 11, "bold")).pack(pady=10)
+          else:
+               tk.Label(self.ventana, text=f"Nombre de la colonia: {self.colonia.nombre}", font=("Arial", 11, "bold")).pack(pady=10)
+          
+               botonVerColonos = tk.Button(self.ventana, text="Ver población actual")
+               botonVerColonos.pack(pady=10)
 
-          tk.Label(self.ventana, text=f"Nombre de la colonia: {self.colonia.nombre}", font=("Arial", 11, "bold")).pack(pady=10)
-        
-          botonVerColonos = tk.Button(self.ventana, text="Ver población actual")
-          botonVerColonos.pack(pady=10)
+               # Como ya tenemos self.colonia guardado arriba, no hace falta usar lambda
+               botonVerColonos.bind("<Enter>", self.mostrarColonos)
+               botonVerColonos.bind("<Leave>", self.ocultar_subventana)
 
-          # Como ya tenemos self.colonia guardado arriba, no hace falta usar lambda
-          botonVerColonos.bind("<Enter>", self.mostrarColonos)
-          botonVerColonos.bind("<Leave>", self.ocultar_subventana)
+               botonVerRecursos = tk.Button(self.ventana, text= "Ver recursos")
+               botonVerRecursos.pack(pady=10)
 
-          botonVerRecursos = tk.Button(self.ventana, text= "Ver recursos")
-          botonVerRecursos.pack(pady=10)
+               botonVerRecursos.bind("<Enter>", self.mostrarRecursos)
+               botonVerRecursos.bind("<Leave>", self.ocultar_subventana)
 
-          botonVerRecursos.bind("<Enter>", self.mostrarRecursos)
-          botonVerRecursos.bind("<Leave>", self.ocultar_subventana)
+               botonVerInfraestructuras = tk.Button (self.ventana, text = "Ver infraestructuras")
+               botonVerInfraestructuras.pack(pady=10)
 
-          botonVerInfraestructuras = tk.Button (self.ventana, text = "Ver infraestructuras")
-          botonVerInfraestructuras.pack(pady=10)
+               botonVerInfraestructuras.bind("<Enter>", self.mostrar_infraestructuras)
+               botonVerInfraestructuras.bind("<Leave>", self.ocultar_subventana)
 
-          botonVerInfraestructuras.bind("<Enter>", self.mostrar_infraestructuras)
-          botonVerInfraestructuras.bind("<Leave>", self.ocultar_subventana)
+               botonMenuInfraestructuras = tk.Button(self.ventana, text = "Menú de construcción")
+               botonMenuInfraestructuras.pack(pady=10)
 
-          botonMenuInfraestructuras = tk.Button(self.ventana, text = "Menú de construcción")
-          botonMenuInfraestructuras.pack(pady=10)
+               botonMenuInfraestructuras.bind("<Button-1>", self.abrir_menu_construccion)
+               #Mostrar las infraestructuras y sus costes. si se pueden construir, poder hacerlo.
 
-          botonMenuInfraestructuras.bind("<Button-1>", self.abrir_menu_construccion)
-          #Mostrar las infraestructuras y sus costes. si se pueden construir, poder hacerlo.
-
-          #tk.Label(self.ventana, text=f"Evento actual: {next(self.colonia._stream)}").pack(pady=10)
-          tk.Button(self.ventana, text="Cerrar ventana", command=self.ventana.destroy).pack(pady=20)
+               #tk.Label(self.ventana, text=f"Evento actual: {next(self.colonia._stream)}").pack(pady=10)
+               tk.Button(self.ventana, text="Cerrar ventana", command=self.ventana.destroy).pack(pady=20)
 
      def mostrar_subventana(self, evento):
           if self.estoyEnLaVentana:

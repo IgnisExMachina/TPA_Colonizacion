@@ -10,48 +10,12 @@
                 "genero": "M",
                 "ocupado": false,
                 "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Pilar Fernández",
-                "nombre_colonia": "Kukusclan",
-                "edad": 35,
-                "nivel": 9,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carmen Álvarez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 36,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Luis González",
-                "nombre_colonia": "Kukusclan",
-                "edad": 22,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": false,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carmen Álvarez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 44,
-                "nivel": 5,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
             }
         ],
         "infraestructuras": [
             {
                 "tipo": "Mina",
-                "eficiencia": 70,
+                "eficiencia": 100,
                 "coste": {
                     "Madera": 10,
                     "Hierro": 10,
@@ -61,7 +25,7 @@
             },
             {
                 "tipo": "Granja",
-                "eficiencia": 70,
+                "eficiencia": 100,
                 "coste": {
                     "Madera": 15,
                     "Agua": 35
@@ -70,69 +34,32 @@
             },
             {
                 "tipo": "Puente",
-                "eficiencia": 70,
+                "eficiencia": 100,
                 "coste": {
                     "Madera": 10,
                     "Piedra": 10
                 },
                 "__clase__": "Puente"
-            },
-            {
-                "tipo": "Puente",
-                "eficiencia": 90,
-                "coste": {
-                    "Madera": 10,
-                    "Piedra": 10
-                },
-                "__clase__": "Puente"
-            },
-            {
-                "tipo": "Granja",
-                "eficiencia": 90,
-                "coste": {
-                    "Madera": 15,
-                    "Agua": 35
-                },
-                "__clase__": "Granja"
-            },
-            {
-                "tipo": "Puente",
-                "eficiencia": 90,
-                "coste": {
-                    "Madera": 10,
-                    "Piedra": 10
-                },
-                "__clase__": "Puente"
-            },
-            {
-                "tipo": "Mina",
-                "eficiencia": 90,
-                "coste": {
-                    "Madera": 10,
-                    "Hierro": 10,
-                    "Agua": 10
-                },
-                "__clase__": "Mina"
             }
         ],
         "recursos": {
-            "Madera": 53,
-            "Piedra": 32,
-            "Agua": 68,
-            "Hierro": 42,
-            "Comida": 37.0
+            "Madera": 20,
+            "Piedra": 10,
+            "Agua": 35,
+            "Hierro": 10,
+            "Comida": 10
         },
         "__clase__": "Colonia"
     },
     "B": {
-        "nombre": "La sociedad de la nieve",
+        "nombre": "",
         "colonos": [],
         "infraestructuras": [],
         "recursos": {
-            "Madera": 2,
+            "Madera": 15,
             "Piedra": 10,
             "Agua": 35,
-            "Hierro": 30,
+            "Hierro": 10,
             "Comida": 10
         },
         "__clase__": "Colonia"
@@ -148,24 +75,15 @@
                 "genero": "F",
                 "ocupado": false,
                 "__clase__": "Colono"
-            },
-            {
-                "nombre": "Jesús Pérez",
-                "nombre_colonia": "Sociópatas",
-                "edad": 78,
-                "nivel": 3,
-                "genero": "M",
-                "ocupado": false,
-                "__clase__": "Colono"
             }
         ],
         "infraestructuras": [],
         "recursos": {
-            "Madera": 11,
-            "Piedra": 6,
-            "Agua": 6,
-            "Hierro": 6,
-            "Comida": 6
+            "Madera": 15,
+            "Piedra": 10,
+            "Agua": 10,
+            "Hierro": 10,
+            "Comida": 10
         },
         "__clase__": "Colonia"
     }
