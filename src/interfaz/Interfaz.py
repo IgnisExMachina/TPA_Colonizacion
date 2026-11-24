@@ -15,6 +15,7 @@ from Colonia import Colonia
 import Infraestructura
 from GestorPersistencia import GestorPersistencia
 from VentanaColonia import VentanaColonia
+from VentanaFundar import VentanaFundar
 
 
 
@@ -58,7 +59,10 @@ class Interfaz:
                 }
 
         for key in self.colonias:
-            self.colonias[key].iniciar_gestion()
+            if isinstance(self.colonias[key], (Colonia)):
+                self.colonias[key].iniciar_gestion()
+            else:
+                pass
         
         # 3. Configurar el autoguardado al pulsar la 'X' para cerrar la ventana
         self.ventana.protocol("WM_DELETE_WINDOW", self.al_cerrar_ventana)
@@ -93,9 +97,9 @@ class Interfaz:
         self.id_planetaC = self.canvas.create_image(740, 600, image=self.imagenPlanetaC_tk)
 
         # 6. Vincular los clics de cada planeta con su respectiva colonia del diccionario
-        self.canvas.tag_bind(self.id_planetaA, "<Button-1>", lambda evento: self.entrarEnPlaneta(evento, self.colonias["A"]))
-        self.canvas.tag_bind(self.id_planetaB, "<Button-1>", lambda evento: self.entrarEnPlaneta(evento, self.colonias["B"]))
-        self.canvas.tag_bind(self.id_planetaC, "<Button-1>", lambda evento: self.entrarEnPlaneta(evento, self.colonias["C"]))
+        self.canvas.tag_bind(self.id_planetaA, "<Button-1>", lambda evento: self.entrarEnPlaneta(evento, self.colonias["A"], "A"))
+        self.canvas.tag_bind(self.id_planetaB, "<Button-1>", lambda evento: self.entrarEnPlaneta(evento, self.colonias["B"], "B"))
+        self.canvas.tag_bind(self.id_planetaC, "<Button-1>", lambda evento: self.entrarEnPlaneta(evento, self.colonias["C"], "C"))
 
         # 7. Guardar referencias de las imágenes para evitar que el recolector de basura de Python las borre
         self.canvas.image_fondo = self.imagenFondo_tk
@@ -112,15 +116,21 @@ class Interfaz:
             print(f"Error al guardar la partida: {e}")
         self.ventana.destroy()
 
-    def entrarEnPlaneta(self, evento, colonia: Colonia):
+    def entrarEnPlaneta(self, evento, colonia: Colonia, key: str):
         """Abre la ventana detallada al hacer clic en un planeta invocando la nueva clase."""
         # Se instancia la ventana pasándole la ventana principal de tkinter como padre y la colonia a mostrar
-        VentanaColonia(self.ventana, colonia)
+        if not colonia:
+            VentanaFundar(self.ventana, self.colonias, key)
+        else:
+            VentanaColonia(self.ventana, colonia)
          
     def start(self):
         self.ventana.mainloop()
         for key in self.colonias:
-            self.colonias[key].detener_gestion()
+            if isinstance(self.colonias[key], (Colonia)):
+                self.colonias[key].detener_gestion()
+            else:
+                pass
 
 
 # PARA EJECUTAR LA APP
