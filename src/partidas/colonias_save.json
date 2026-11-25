@@ -1,5 +1,6 @@
 {
     "A": {
+        "destruida": false,
         "nombre": "Kukusclan",
         "colonos": [
             {
@@ -89,6 +90,7 @@
         "__clase__": "Colonia"
     },
     "B": {
+        "destruida": false,
         "nombre": "La sociedad de la nieve",
         "colonos": [
             {
@@ -256,6 +258,7 @@
         "__clase__": "Colonia"
     },
     "C": {
+        "destruida": false,
         "nombre": "kepler4521",
         "colonos": [
             {
