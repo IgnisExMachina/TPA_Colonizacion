@@ -1,5 +1,6 @@
 {
     "A": {
+        "destruida": false,
         "nombre": "qoqoqoqo",
         "colonos": [
             {
@@ -121,56 +122,6 @@
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carmen Jiménez",
-                "nombre_colonia": "qoqoqoqo",
-                "edad": 72,
-                "nivel": 3,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Francisco Javier Romero",
-                "nombre_colonia": "qoqoqoqo",
-                "edad": 73,
-                "nivel": 10,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Antonio Hernández",
-                "nombre_colonia": "qoqoqoqo",
-                "edad": 72,
-                "nivel": 8,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Ruiz",
-                "nombre_colonia": "qoqoqoqo",
-                "edad": 64,
-                "nivel": 4,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Ana María Rodríguez",
-                "nombre_colonia": "qoqoqoqo",
-                "edad": 72,
-                "nivel": 9,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
             }
         ],
         "infraestructuras": [
@@ -196,7 +147,6 @@
             "Semillas": 0,
             "Plantas": 0
         },
-        "destruida": false,
         "__clase__": "Colonia"
     },
     "B": {
@@ -517,38 +467,8 @@
                 "edad": 67,
                 "nivel": 6,
                 "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María García",
-                "nombre_colonia": "hola",
-                "edad": 44,
-                "nivel": 4,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Antonio Rodríguez",
-                "nombre_colonia": "hola",
-                "edad": 28,
-                "nivel": 8,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carlos Gutiérrez",
-                "nombre_colonia": "hola",
-                "edad": 68,
-                "nivel": 9,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
+                "ocupado": true,
+                "exploracion_restante": 5,
                 "__clase__": "Colono"
             }
         ],
