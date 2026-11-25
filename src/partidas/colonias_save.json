@@ -1,6 +1,7 @@
 {
     "A": {
-        "nombre": "Kukusclan",
+        "destruida": false,
+        "nombre": "qoqoqoqo",
         "colonos": [
             {
                 "nombre": "Alfredo",
@@ -24,14 +25,13 @@
                 "tipo": "Granja",
                 "eficiencia": 100,
                 "nivel": 1,
-                "__clase__": "Granja"
-            },
-            {
-                "tipo": "Aserradero",
-                "eficiencia": 100,
-                "nivel": 1,
-                "__clase__": "Aserradero"
-            },
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            }
+        ],
+        "infraestructuras": [
             {
                 "tipo": "Huerto",
                 "eficiencia": 100,
@@ -50,7 +50,6 @@
             "Semillas": 2,
             "Plantas": 0
         },
-        "destruida": false,
         "__clase__": "Colonia"
     },
     "B": {
@@ -85,13 +84,13 @@
         "nombre": "Sociópatas",
         "colonos": [
             {
-                "nombre": "Elena",
-                "nombre_colonia": "Sociópatas",
-                "edad": 22,
-                "nivel": 1,
+                "nombre": "María Pilar Gutiérrez",
+                "nombre_colonia": "hola",
+                "edad": 67,
+                "nivel": 6,
                 "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
+                "ocupado": true,
+                "exploracion_restante": 5,
                 "__clase__": "Colono"
             }
         ],
