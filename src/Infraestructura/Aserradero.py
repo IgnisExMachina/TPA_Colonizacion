@@ -4,6 +4,7 @@ class Aserradero(Infraestructura.Infraestructura):
     def __init__(self, eficiencia: int = 100):
         super().__init__(tipo="Aserradero", eficiencia=eficiencia)
 
+        # ? Es el "trabajo" que hace la infraestructura
     def aplicar_efecto(self, colonia):
         if not super().aplicar_efecto(colonia):
             return
