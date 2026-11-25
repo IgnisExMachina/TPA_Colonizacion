@@ -28,9 +28,6 @@ class VentanaNave:
         self.seleccion_planeta()
         # ? El frame crea un "div" donde irán los botones
 
-
-    #TODO: Acciones (cerrrar [X], elegir planeta, colonizar)
-
     def seleccion_planeta(self):
         if self._planetasVacios:
             for key in self._planetasVacios:
@@ -41,17 +38,26 @@ class VentanaNave:
 
     def colonizar(self, key):
         self.popular_tripulacion()
+        self.cargar()
         if not self.nave.listo_para_despegue(self.colonia):
             print("NO HAY SUFICIENTES RECURSOS")
             return None
-        VentanaFundar(self.ventanaPadre, self.colonias, key)
+        VentanaFundar(self.ventanaPadre, self.colonias, key, self.nave.tripulacion)
+        self.colonia.infraestructuras.remove(self.nave)
+        self.cerrar()
 
     def popular_tripulacion(self):
         aPopular = NaveEspacial.nTripulacion - len(self.nave.tripulacion)
         for i in range(aPopular):
             tripulante = random.choice(self.colonia.colonos)
             self.nave.agregar_a_tripulacion(tripulante)
-            print(f"{tripulante} se una a la tripulación!")
+            print(f"{tripulante.nombre} se una a la tripulación! No podrá ser enviado a explorar.")
+        for colono in self.nave.tripulacion:
+            if colono in self.colonia.colonos:
+                self.colonia.colonos.remove(colono)
+
+    def cargar(self):
+        self.nave.agregar_requisitos(self.colonia.recursos)
 
     def cerrar(self):
         if self._id_refresco is not None:
