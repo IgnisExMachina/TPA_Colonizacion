@@ -64,56 +64,6 @@
                 "__clase__": "Colono"
             },
             {
-                "nombre": "Alfredo",
-                "nombre_colonia": "Kukusclan",
-                "edad": 25,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Alfredo",
-                "nombre_colonia": "Kukusclan",
-                "edad": 25,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Alfredo",
-                "nombre_colonia": "Kukusclan",
-                "edad": 25,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Alfredo",
-                "nombre_colonia": "Kukusclan",
-                "edad": 25,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Alfredo",
-                "nombre_colonia": "Kukusclan",
-                "edad": 25,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
                 "nombre": "Manuel Rodríguez",
                 "nombre_colonia": "qoqoqoqo",
                 "edad": 42,
@@ -134,154 +84,29 @@
             },
             {
                 "tipo": "ExtractorDePlutonio",
-                "eficiencia": 20,
+                "eficiencia": 10,
                 "nivel": 5,
                 "__clase__": "ExtractorDePlutonio"
-            },
-            {
-                "tipo": "NaveEspacial",
-                "eficiencia": 90,
-                "nivel": 5,
-                "modificador": 0.3333333333333333,
-                "tripulacion": [
-                    {
-                        "nombre": "Alfredo",
-                        "nombre_colonia": "Kukusclan",
-                        "edad": 25,
-                        "nivel": 1,
-                        "genero": "M",
-                        "ocupado": false,
-                        "exploracion_restante": 0,
-                        "__clase__": "Colono"
-                    },
-                    {
-                        "nombre": "Alfredo",
-                        "nombre_colonia": "Kukusclan",
-                        "edad": 25,
-                        "nivel": 1,
-                        "genero": "M",
-                        "ocupado": false,
-                        "exploracion_restante": 0,
-                        "__clase__": "Colono"
-                    },
-                    {
-                        "nombre": "Manuel Rodríguez",
-                        "nombre_colonia": "qoqoqoqo",
-                        "edad": 42,
-                        "nivel": 10,
-                        "genero": "M",
-                        "ocupado": false,
-                        "exploracion_restante": 0,
-                        "__clase__": "Colono"
-                    },
-                    {
-                        "nombre": "Alfredo",
-                        "nombre_colonia": "Kukusclan",
-                        "edad": 25,
-                        "nivel": 1,
-                        "genero": "M",
-                        "ocupado": false,
-                        "exploracion_restante": 0,
-                        "__clase__": "Colono"
-                    },
-                    {
-                        "nombre": "Alfredo",
-                        "nombre_colonia": "Kukusclan",
-                        "edad": 25,
-                        "nivel": 1,
-                        "genero": "M",
-                        "ocupado": false,
-                        "exploracion_restante": 0,
-                        "__clase__": "Colono"
-                    }
-                ],
-                "requisitos": {
-                    "Plantas": 93.33333333333334,
-                    "Plutonio": 110.0
-                },
-                "__clase__": "NaveEspacial"
             }
         ],
         "recursos": {
             "Madera": 1825,
-            "Piedra": 4075,
-            "Agua": 3410,
-            "Hierro": 1350,
+            "Piedra": 4000,
+            "Agua": 3260,
+            "Hierro": 1305,
             "Comida": 1495,
-            "Plutonio": 2484.0,
+            "Plutonio": 2445.0,
             "Semillas": 0,
-            "Plantas": 19961.666666666664
+            "Plantas": 19934.999999999996
         },
         "__clase__": "Colonia"
     },
     "B": {
-        "nombre": "Epstein",
-        "colonos": [
-            [
-                {
-                    "nombre": "Alfredo",
-                    "nombre_colonia": "Kukusclan",
-                    "edad": 25,
-                    "nivel": 1,
-                    "genero": "M",
-                    "ocupado": false,
-                    "exploracion_restante": 0,
-                    "__clase__": "Colono"
-                },
-                {
-                    "nombre": "Alfredo",
-                    "nombre_colonia": "Kukusclan",
-                    "edad": 25,
-                    "nivel": 1,
-                    "genero": "M",
-                    "ocupado": false,
-                    "exploracion_restante": 0,
-                    "__clase__": "Colono"
-                },
-                {
-                    "nombre": "Manuel Rodríguez",
-                    "nombre_colonia": "qoqoqoqo",
-                    "edad": 42,
-                    "nivel": 10,
-                    "genero": "M",
-                    "ocupado": false,
-                    "exploracion_restante": 0,
-                    "__clase__": "Colono"
-                },
-                {
-                    "nombre": "Alfredo",
-                    "nombre_colonia": "Kukusclan",
-                    "edad": 25,
-                    "nivel": 1,
-                    "genero": "M",
-                    "ocupado": false,
-                    "exploracion_restante": 0,
-                    "__clase__": "Colono"
-                },
-                {
-                    "nombre": "Alfredo",
-                    "nombre_colonia": "Kukusclan",
-                    "edad": 25,
-                    "nivel": 1,
-                    "genero": "M",
-                    "ocupado": false,
-                    "exploracion_restante": 0,
-                    "__clase__": "Colono"
-                }
-            ]
-        ],
+        "destruida": true,
+        "nombre": "A",
+        "colonos": [],
         "infraestructuras": [],
-        "recursos": {
-            "Madera": 50,
-            "Piedra": 50,
-            "Agua": 50,
-            "Hierro": 20,
-            "Comida": 20,
-            "Plutonio": 0,
-            "Semillas": 2,
-            "Plantas": 0
-        },
-        "destruida": false,
+        "recursos": {},
         "__clase__": "Colonia"
     },
     "C": {
