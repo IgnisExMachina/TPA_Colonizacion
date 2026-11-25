@@ -2,9 +2,8 @@
 
 Juego de simulación y gestión de recursos para colonizar planetas, escrito en Python con programación orientada a objetos, interfaz gráfica en Tkinter y eventos concurrentes.
 
-Proyecto de la asignatura **Técnicas de Programación Avanzada** (Grado en Ingeniería Informática, Universidad Nebrija, grupo A).
+Proyecto de la asignatura **Técnicas de Programación Avanzada** (Grado en Ingeniería Informática, Universidad Nebrija, grupo 6, Planetas).
 
-![Vista de la galaxia con el registro de eventos](entrega/capturas/08_galaxia_registro.png)
 
 ## Descripción
 
@@ -69,8 +68,6 @@ TPA_Colonizacion/
 
 ## Arquitectura
 
-![Diagrama de clases](entrega/capturas/clases.png)
-
 - `Interfaz` guarda un diccionario `colonias` con una `Colonia` por planeta.
 - Cada `Colonia` agrega colonos e infraestructuras y tiene su propio `GestorEventos`.
 - Todas las infraestructuras heredan de `Infraestructura` y redefinen `aplicar_efecto()`. La colonia las recorre sin preocuparse del tipo (polimorfismo).
@@ -80,7 +77,6 @@ TPA_Colonizacion/
 - El hilo de la colonia los saca y los aplica.
 - Los `print` van a una cola que el hilo de Tkinter lee con `after()`. Así ningún hilo secundario toca la interfaz, que en Tkinter no es segura entre hilos.
 
-![Hilos y colas](entrega/capturas/hilos.png)
 
 ## Instalación y ejecución
 
@@ -131,15 +127,12 @@ TPA_Colonizacion/
 
 1. **Haz clic en un planeta.** Si tiene colonia se abre su ventana; si está libre, puedes fundar una nueva.
 2. **Ver población actual**: lista de colonos. Pulsa uno para enviarlo de exploración.
-3. **Ver recursos** (pasa el ratón por encima): almacén con barras.
+3. **Ver recursos** (hover con ratón): almacén con barras.
 4. **Ver infraestructuras**: nivel y eficiencia de cada una, con los botones *Invertir*, *Reparar*, *Abrir huerto* y *Abrir menú de la nave*.
 5. **Menú de construcción**: solo se activan las infraestructuras que puedes pagar.
 6. **Registro de la galaxia**: sigue los eventos de todas las colonias. Se puede ocultar o limpiar.
 7. **Cierra la ventana principal** para guardar la partida.
 
-| Colonia | Infraestructuras | Huerto |
-|---|---|---|
-| ![](entrega/capturas/02_colonia.png) | ![](entrega/capturas/04_infraestructuras.png) | ![](entrega/capturas/07_huerto.png) |
 
 ## Tecnologías
 
@@ -158,7 +151,7 @@ En la carpeta [`entrega/`](entrega/) están la memoria (Word y PDF), la presenta
 
 Este proyecto se distribuye bajo los términos de la licencia detallada en el archivo [LICENSE](LICENSE).
 
-## Autoría
+## Contribuidores
 
 Proyecto desarrollado por: Mateo Guinsburg, Aitor Casares, Ignacio Compaired y Daniel Ortiz.
 
