@@ -78,7 +78,7 @@ def test_cargar_archivo_corrupto(ruta_json_temporal):
 
 
 def test_cargar_clase_desconocida(ruta_json_temporal):
-    datos_invalidos = {"__clase__": "NaveEspacial", "nombre": "Enterprise"}
+    datos_invalidos = {"__clase__": "Ovni", "nombre": "Enterprise"}
     ruta_json_temporal.write_text(json.dumps(datos_invalidos), encoding="utf-8")
     gestor = GestorPersistencia(str(ruta_json_temporal))
 
