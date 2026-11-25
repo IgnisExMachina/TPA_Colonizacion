@@ -5,14 +5,16 @@ from Colono import Colono
 #todo: necesita dar a elegir entre SOLO las colonias que tengan naves espaciales para fundar la nueva, SOLO si existen colonias
 
 class VentanaFundar():
-    def __init__(self, ventanaPadre, coloniasExistentes: dict, key):
+    def __init__(self, ventanaPadre, coloniasExistentes: dict, key, colonosIniciales = None):
         self.coloniasExistentes = coloniasExistentes
         self.key = key
+        self.colonosIniciales = colonosIniciales
 
         self.ventana = tk.Toplevel(ventanaPadre)
         self.ventana.title("Planeta no ocupado.")
         self.ventana.geometry("400x260")
         self.ventana.columnconfigure(1, weight=1)
+
 
         anterior = coloniasExistentes.get(key)
         if isinstance(anterior, Colonia) and anterior.destruida:
@@ -66,8 +68,21 @@ class VentanaFundar():
         # Se suma la cantidad adicional a cada recurso base (salvo los que empiezan a 0, como el Plutonio)
         recursos = {tipo: cantidad + adicionales if cantidad > 0 else cantidad
                     for tipo, cantidad in Colonia.RECURSOS_BASE.items()}
-        colonia = Colonia(nombre=nombre, colonos=[Colono.aleatorio(nombre)], recursos=recursos)
-        self.coloniasExistentes[self.key] = colonia
-        colonia.iniciar_gestion()
-        print(f"¡Se ha fundado la colonia {nombre}! Primer colono: {colonia.colonos[0].nombre}")
-        self.ventana.destroy()
+        if self.colonosIniciales == None:
+            colonia = Colonia(nombre=nombre, colonos=[Colono.aleatorio(nombre)], recursos=recursos)
+            self.coloniasExistentes[self.key] = colonia
+            colonia.iniciar_gestion()
+            print(f"¡Se ha fundado la colonia {nombre}! Primer colono: {colonia.colonos[0].nombre}")
+            self.ventana.destroy()
+        else:
+            colonia = Colonia(nombre=nombre, colonos=[self.colonosIniciales], recursos=recursos)
+            self.coloniasExistentes[self.key] = colonia
+            colonia.iniciar_gestion()
+            print(f"¡La tripulación ha fundado la colonia {nombre}!")
+            self.ventana.destroy()
+
+    def existen_colonias(self):
+        for key in self.coloniasExistentes:
+            if isinstance(self.coloniasExistentes[key], Colonia):
+                return True
+        return False
