@@ -29,25 +29,29 @@ class VentanaFundar():
             "Recursos adicionales": "0",
         }
         self.entradas = {}
+        if not self.existen_colonias() or self.colonosIniciales is not None:
+            self.campos = {
+                "Nombre Colonia": "",
+                "Recursos adicionales": "0",
+            }
 
-        for fila, (campo, valor_inicial) in enumerate(self.campos.items(), start=1):
-            label = tk.Label(self.ventana, text=f"{campo}:")
-            label.grid(row=fila, column=0, padx=10, pady=8, sticky="w")
+            for fila, (campo, valor_inicial) in enumerate(self.campos.items(), start=1):
+                label = tk.Label(self.ventana, text=f"{campo}:")
+                label.grid(row=fila, column=0, padx=10, pady=8, sticky="w")
 
-            entrada = tk.Entry(self.ventana)
-            entrada.insert(0, valor_inicial)
-            entrada.grid(row=fila, column=1, padx=10, pady=8, sticky="ew")
-            self.entradas[campo] = entrada
+                entrada = tk.Entry(self.ventana)
+                entrada.insert(0, valor_inicial)
+                entrada.grid(row=fila, column=1, padx=10, pady=8, sticky="ew")
+                self.entradas[campo] = entrada
 
-        botonFundar = tk.Button(self.ventana, text="Fundar Colonia", command=self.fundar_colonia)
-        botonFundar.grid(row=len(self.campos) + 1, column=0, columnspan=2, pady=(15, 4))
+            botonFundar = tk.Button(self.ventana, text="Fundar Colonia", command=self.fundar_colonia)
+            botonFundar.grid(row=len(self.campos) + 1, column=0, columnspan=2, pady=(15, 4))
 
-        # Mensajes de error (nombre vacio, numero mal escrito...)
-        self.etiquetaAviso = tk.Label(self.ventana, text="", fg="#ff6b6b")
-        self.etiquetaAviso.grid(row=len(self.campos) + 2, column=0, columnspan=2)
+            # Mensajes de error (nombre vacio, numero mal escrito...)
+            self.etiquetaAviso = tk.Label(self.ventana, text="", fg="#ff6b6b")
+            self.etiquetaAviso.grid(row=len(self.campos) + 2, column=0, columnspan=2)
 
-        self.entradas["Nombre Colonia"].focus_set()
-
+            self.entradas["Nombre Colonia"].focus_set()
     def fundar_colonia(self):
         datos = {campo: entrada.get().strip() for campo, entrada in self.entradas.items()}
 
@@ -75,7 +79,7 @@ class VentanaFundar():
             print(f"¡Se ha fundado la colonia {nombre}! Primer colono: {colonia.colonos[0].nombre}")
             self.ventana.destroy()
         else:
-            colonia = Colonia(nombre=nombre, colonos=[self.colonosIniciales], recursos=recursos)
+            colonia = Colonia(nombre=nombre, colonos=self.colonosIniciales, recursos=recursos)
             self.coloniasExistentes[self.key] = colonia
             colonia.iniciar_gestion()
             print(f"¡La tripulación ha fundado la colonia {nombre}!")

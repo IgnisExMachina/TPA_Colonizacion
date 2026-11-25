@@ -175,7 +175,7 @@ class Interfaz:
         # Se instancia la ventana pasándole la ventana principal de tkinter como padre y la colonia a mostrar
         if not colonia or colonia.destruida:
             # Planeta libre (nunca colonizado o colonia destruida por un meteorito)
-             undar(self.ventana, self.colonias, key)
+             VentanaFundar(self.ventana, self.colonias, key)
         else:
             VentanaColonia(self.ventana, colonia, self.colonias)
          
