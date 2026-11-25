@@ -2,6 +2,7 @@ import tkinter as tk
 from Colonia import Colonia
 from Colono import Colono
 
+#todo: necesita dar a elegir entre SOLO las colonias que tengan naves espaciales para fundar la nueva, SOLO si existen colonias
 
 class VentanaFundar():
     def __init__(self, ventanaPadre, coloniasExistentes: dict, key):
@@ -12,6 +13,8 @@ class VentanaFundar():
         self.ventana.title("Planeta no ocupado.")
         self.ventana.geometry("400x260")
         self.ventana.columnconfigure(1, weight=1)
+
+        self._existenColonias = self.existen_colonias()
 
         anterior = coloniasExistentes.get(key)
         if isinstance(anterior, Colonia) and anterior.destruida:
@@ -70,3 +73,9 @@ class VentanaFundar():
         colonia.iniciar_gestion()
         print(f"¡Se ha fundado la colonia {nombre}! Primer colono: {colonia.colonos[0].nombre}")
         self.ventana.destroy()
+
+    def existen_colonias(self):
+        for key in self.coloniasExistentes:
+            if isinstance(self.coloniasExistentes[key], Colonia):
+                return True
+        return False

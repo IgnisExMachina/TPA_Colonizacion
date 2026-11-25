@@ -2,14 +2,20 @@ import tkinter as tk
 from Colonia import Colonia
 import Infraestructura
 from interfaz.VentanaHuerto import VentanaHuerto
+from interfaz.VentanaNave import VentanaNave
 from interfaz import Tema
+
+
+#TODO: al seleccionar nave espacial existente, se busca un planeta vacio (una colonia que no esté presente)
+#! AÑADIR OPCIONES DE FUNDAR COLONIA
 
 class VentanaColonia:
      REFRESCO_MS = 1000  # los menus se actualizan solos (exploraciones, eficiencias...)
      ALTO_MAX_MENU = 350 # a partir de esta altura (en pixeles) el menu tiene barra de scroll
 
-     def __init__(self, ventana_padre, colonia: Colonia):
+     def __init__(self, ventana_padre, colonia: Colonia, colonias: dict):
           self.colonia = colonia
+          self.colonias = colonias #? VentanaNave necesita todas las colonias
           self.estoyEnLaVentana = None
           self._es_menu = False      # True si la subventana es un menu de clic (no se cierra al quitar el raton)
           self._menu = None          # (firma, construir) del menu abierto
@@ -337,6 +343,10 @@ class VentanaColonia:
                     tk.Button(botones, text="Abrir huerto", command=lambda h=infraestructura: self.abrir_huerto(h)
                               ).pack(side=tk.LEFT)
 
+               if isinstance(infraestructura, Infraestructura.NaveEspacial):
+                    tk.Button(botones, text="Abrir menu de la nave", command=lambda n=infraestructura: self.abrir_menu_nave(n)
+                              ).pack(side=tk.LEFT)
+
      def invertir(self, infraestructura):
           infraestructura.invertir(self.colonia.recursos)
           self._refrescar_ya()
@@ -348,6 +358,10 @@ class VentanaColonia:
      def abrir_huerto(self, huerto):
           self.cerrar_subventana()
           VentanaHuerto(self.ventana, self.colonia, huerto)
+
+     def abrir_menu_nave(self, nave):
+          self.cerrar_subventana()
+          VentanaNave(self.ventana, self.colonia, nave, self.colonias)
 
      # ---------- Construccion ----------
      def abrir_menu_construccion(self, evento):

@@ -15,6 +15,7 @@ from Infraestructura.Mina import Mina
 from Infraestructura.Pozo import Pozo
 from Infraestructura.ExtractorDePlutonio import ExtractorDePlutonio
 from Infraestructura.Huerto import Huerto
+from Infraestructura.NaveEspacial import NaveEspacial
 
 logging.basicConfig(
     level=logging.INFO,
@@ -33,6 +34,7 @@ CLASES_REGISTRADAS = {
     "Pozo": Pozo,
     "ExtractorDePlutonio": ExtractorDePlutonio,
     "Huerto": Huerto,
+    "NaveEspacial": NaveEspacial,
 }
 
 class GestorPersistencia:

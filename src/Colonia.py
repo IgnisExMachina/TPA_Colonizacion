@@ -30,6 +30,7 @@ class Colonia:
             for tipo, cantidad in recursos.items():
                 self.recursos[tipo] = cantidad
 
+        self.destruida = False
         self.inicializar_runtime()
 
     def inicializar_runtime(self):
@@ -38,6 +39,7 @@ class Colonia:
         
         self._thread = None
         self._active = False
+        self.destruida = False
 
     def agregarColono(self, colono: Colono):
         self.colonos.append(colono)
@@ -93,6 +95,8 @@ class Colonia:
                 return self.agregarInfraestructuras(Infraestructura.ExtractorDePlutonio())
             case "Huerto":
                 return self.agregarInfraestructuras(Infraestructura.Huerto())
+            case "NaveEspacial":
+                return self.agregarInfraestructuras(Infraestructura.NaveEspacial())
 
     def obtener_huerto(self):
         """Devuelve el primer Huerto de la colonia o None si no tiene."""

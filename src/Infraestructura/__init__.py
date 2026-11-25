@@ -9,4 +9,5 @@ from .Mina import Mina
 from .Pozo import Pozo
 from .ExtractorDePlutonio import ExtractorDePlutonio
 from .Huerto import Huerto
+from .NaveEspacial import NaveEspacial
 from .Infraestructura import Infraestructura

@@ -4,10 +4,12 @@ from Colonia import Colonia
 from Infraestructura import Huerto
 from interfaz import Tema
 
+# * GUÍA para dibujar en Python con canvas en la biblioteca de TKinter
+# TODO: https://www.tutorialesprogramacionya.com/pythonya/detalleconcepto.php?punto=73&codigo=73&inicio=60
 
 class VentanaHuerto:
     ANCHO = 480
-    ALTO_CIELO = 60
+    ALTO_CIELO = 80
     ALTO_FILA = 130
     REFRESCO_MS = 1000  # las plantas crecen desde el hilo de eventos, asi que redibujamos cada segundo
 
@@ -15,9 +17,8 @@ class VentanaHuerto:
     COLOR_TIERRA = "#7a4b25"
     COLOR_SURCO = "#5c3517"
     COLOR_SEMILLA = "#d9b26f"
-    COLOR_TALLO = "#2e7d32"
-    COLOR_HOJA = "#43a047"
-    COLOR_FRUTO = "#e53935"
+    COLOR_PETALO = "#e53935"
+    COLOR_CENTRO = "#fdd835"
 
     def __init__(self, ventana_padre, colonia: Colonia, huerto: Huerto):
         self.colonia = colonia
@@ -26,10 +27,11 @@ class VentanaHuerto:
 
         self.ventana = tk.Toplevel(ventana_padre)
         self.ventana.title(f"Huerto de {colonia.nombre}")
-        self.ventana.resizable(False, False)
-        self.ventana.configure(bg=Tema.FONDO)
-        self.ventana.protocol("WM_DELETE_WINDOW", self.cerrar)
+        self.ventana.resizable(False, False) # ? Evitamos que el usuario pueda ajustar la ventana
+        self.ventana.configure(bg=Tema.FONDO) # ? Pone tema de la ventana con lo que tenemos en el archivo Tema.py
+        self.ventana.protocol("WM_DELETE_WINDOW", self.cerrar) # ? Destruimos la ventana
 
+        #  ? El canvas es el lienzo donde vamos a dibujar el huerto. Si inviertes en el HUERTO el alto crecerá
         self.canvas = tk.Canvas(self.ventana, width=self.ANCHO, height=self._alto(), highlightthickness=0)
         self.canvas.pack(padx=10, pady=10)
 
@@ -38,7 +40,7 @@ class VentanaHuerto:
 
         self.etiqueta_mensaje = tk.Label(self.ventana, font=("Arial", 10, "italic"), fg=Tema.TEXTO_SUAVE)
         self.etiqueta_mensaje.pack(pady=(2, 6))
-
+        # ? El frame crea un "div" donde irán los botones
         botones = tk.Frame(self.ventana)
         botones.pack(pady=(0, 10))
         tk.Button(botones, text="Plantar semilla", command=self.plantar_semilla).pack(side=tk.LEFT, padx=5)
@@ -46,9 +48,10 @@ class VentanaHuerto:
         self.boton_recoger.pack(side=tk.LEFT, padx=5)
         tk.Button(botones, text="Cerrar", command=self.cerrar).pack(side=tk.LEFT, padx=5)
 
+        # ! Se pone refrescar() con paréntesis para que se haga la acción insitu
         self.refrescar()
 
-    # ---------- Acciones de los botones ----------
+    # TODO: Acciones
     def plantar_semilla(self):
         if self.huerto.parcelas_libres() <= 0:
             self.etiqueta_mensaje.config(text="El huerto está lleno.")
@@ -74,7 +77,7 @@ class VentanaHuerto:
             self._id_refresco = None
         self.ventana.destroy()
 
-    # ---------- Dibujo ----------
+    # TODO: Dibujo
     def _columnas(self) -> int:
         # Invertir en el huerto da mas parcelas: se reparten en mas columnas y filas
         n = self.huerto.num_parcelas()
@@ -86,37 +89,38 @@ class VentanaHuerto:
     def _alto(self) -> int:
         return self.ALTO_CIELO + self._filas() * self.ALTO_FILA
     def refrescar(self):
-        # Si la ventana se ha cerrado (por ejemplo al cerrar la del planeta) dejamos de refrescar
+        # ? Si la ventana se ha cerrado (por ejemplo al cerrar la del planeta) dejamos de refrescar
         if not self.ventana.winfo_exists():
             self._id_refresco = None
             return
         self.dibujar()
-        # Se programa en la ventana principal para que no falle si esta ventana se destruye
+        # ? Se programa en la ventana principal para que no falle si esta ventana se destruye
         self._id_refresco = self.ventana.nametowidget(".").after(self.REFRESCO_MS, self.refrescar)
 
     def dibujar(self):
         c = self.canvas
         c.delete("all")
 
-        # Si se ha invertido en el huerto mientras estaba abierto, el lienzo crece
+        # ? Si se ha invertido en el huerto mientras estaba abierto, el lienzo crece
         alto = self._alto()
         if int(c.cget("height")) != alto:
             c.config(height=alto)
         columnas = self._columnas()
 
-        # Cielo y tierra
+        # ? Cielo y tierra
         horizonte = self.ALTO_CIELO
         c.create_rectangle(0, 0, self.ANCHO, horizonte, fill=self.COLOR_CIELO, outline="")
         c.create_rectangle(0, horizonte, self.ANCHO, alto, fill=self.COLOR_TIERRA, outline="")
 
-        # Parcelas (surcos)
+        # ? Parcelas (surcos)
         ancho_celda = self.ANCHO / columnas
         alto_celda = self.ALTO_FILA
         ancho_surco = min(55, ancho_celda / 2 - 8)
         plantas = list(self.huerto.plantas)  # copia: el hilo de eventos puede modificarla
 
+        # ? Calcula dónde va cada parcela en el canvas. Se saca el punto central donde se dibuja su surco (y encima la semilla/flor).
         for i in range(self.huerto.num_parcelas()):
-            fila, col = divmod(i, columnas)
+            fila, col = divmod(i, columnas) # ! divmod hace la división entera y el resto a la vez
             cx = col * ancho_celda + ancho_celda / 2
             cy = horizonte + fila * alto_celda + alto_celda * 0.7
 
@@ -125,7 +129,7 @@ class VentanaHuerto:
             if i < len(plantas):
                 self._dibujar_planta(cx, cy, plantas[i])
 
-        # Texto de estado
+        # ? Nos da info dentro de la ventana sobre semilas, plantas, parcelas
         maduras = self.huerto.plantas_maduras()
         self.etiqueta_info.config(
             text=(f"Semillas: {self.colonia.recursos.get('Semillas', 0)}   |   "
@@ -135,27 +139,20 @@ class VentanaHuerto:
         )
         self.boton_recoger.config(state=tk.NORMAL if maduras else tk.DISABLED)
 
+    
     def _dibujar_planta(self, x, y, eventos_crecidos):
         c = self.canvas
         total = self.huerto.EVENTOS_PARA_CRECER
 
-        if eventos_crecidos == 0:
-            # Semilla recien plantada
+        if eventos_crecidos < total:
+            # Semilla: se queda asi hasta que la planta este lista
             c.create_oval(x - 6, y - 5, x + 6, y + 3, fill=self.COLOR_SEMILLA, outline="#8d6e3f")
-        elif eventos_crecidos < total:
-            # Brote: crece un poco con cada evento
-            altura = 12 + 40 * eventos_crecidos / total
-            c.create_line(x, y, x, y - altura, fill=self.COLOR_TALLO, width=3)
-            c.create_oval(x - 14, y - altura - 2, x, y - altura + 8, fill=self.COLOR_HOJA, outline="")
-            c.create_oval(x, y - altura - 2, x + 14, y - altura + 8, fill=self.COLOR_HOJA, outline="")
         else:
-            # Planta madura, lista para recoger
-            altura = 60
-            c.create_line(x, y, x, y - altura, fill=self.COLOR_TALLO, width=4)
-            for dy in (20, 40):
-                c.create_oval(x - 22, y - dy - 6, x, y - dy + 6, fill=self.COLOR_HOJA, outline="")
-                c.create_oval(x, y - dy - 6, x + 22, y - dy + 6, fill=self.COLOR_HOJA, outline="")
-            c.create_oval(x - 9, y - altura - 9, x + 9, y - altura + 9, fill=self.COLOR_FRUTO, outline="")
+            # Flor lista para recoger: cuatro petalos y un centro
+            cy = y - 15
+            for dx, dy in ((0, -10), (10, 0), (0, 10), (-10, 0)):
+                c.create_oval(x + dx - 8, cy + dy - 8, x + dx + 8, cy + dy + 8, fill=self.COLOR_PETALO, outline="")
+            c.create_oval(x - 6, cy - 6, x + 6, cy + 6, fill=self.COLOR_CENTRO, outline="")
 
-        # Progreso debajo de cada planta
+        # ? Nos dice el número de eventos que han sucedido y los que quedan (2/5)
         c.create_text(x, y + 22, text=f"{min(eventos_crecidos, total)}/{total}", fill="white", font=("Arial", 9))
