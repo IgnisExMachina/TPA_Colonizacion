@@ -79,7 +79,7 @@ class Interfaz:
         self.canvas.create_image(0, 0, image=self.imagenFondo_tk, anchor="nw")
 
         # Planeta A 
-        self.imagenPlanetaA = Image.open(self._directorio/"imagenesPlanetas/planetaA.png")
+        self.imagenPlanetaA = Image.open(self._directorio/"imagenesPlanetas/planetaD.png")
         self.imagenPlanetaA.thumbnail((200, 200))
         self.imagenPlanetaA_tk = ImageTk.PhotoImage(self.imagenPlanetaA)
         self.id_planetaA = self.canvas.create_image(150, 150, image=self.imagenPlanetaA_tk)

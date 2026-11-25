@@ -3,7 +3,7 @@ import random
 from Infraestructura import Infraestructura
 
 class Huerto(Infraestructura.Infraestructura):
-    PARCELAS = 6              # parcelas a nivel 1 (cada nivel invertido suma PARCELAS_POR_NIVEL)
+    PARCELAS = 6              # ? parcelas a nivel 1 (cada nivel invertido suma PARCELAS_POR_NIVEL)
     PARCELAS_POR_NIVEL = 2
     EVENTOS_PARA_CRECER = 5   # eventos que tiene que pasar una semilla para poder recogerse
     MAX_SEMILLAS_POR_PLANTA = 2
