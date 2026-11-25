@@ -95,6 +95,8 @@ class Colonia:
                 return self.agregarInfraestructuras(Infraestructura.ExtractorDePlutonio())
             case "Huerto":
                 return self.agregarInfraestructuras(Infraestructura.Huerto())
+            case "NaveEspacial":
+                return self.agregarInfraestructuras(Infraestructura.NaveEspacial())
 
     def obtener_huerto(self):
         """Devuelve el primer Huerto de la colonia o None si no tiene."""
