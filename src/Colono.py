@@ -105,6 +105,8 @@ class Colono():
         # getattr por si el colono viene de una partida guardada antes de existir este atributo
         return getattr(self, "exploracion_restante", 0) > 0
 
+    RECURSOS_EXPLORACION = ["Madera", "Agua", "Piedra", "Semilla"]
+
     def avanzar_exploracion(self, colonia) -> dict | None:
         """Se llama en cada evento. Devuelve los hallazgos cuando el colono vuelve, si no None."""
         if not self.esta_explorando():
@@ -114,12 +116,27 @@ class Colono():
             return None
 
         # Vuelve de la exploracion. Cuanto mas nivel, mas probable es que encuentre algo.
-        hallazgos = {"Semillas": 0}
+        hallazgos = {"Semillas" : 0}
         intentos = 1 + self.nivel // 4   # nivel 1-3: 1 intento, 4-7: 2, 8+: 3...
         for _ in range(intentos):
             hallazgos["Semillas"] += random.randint(0, 2)
+            recurso = random.choice(self.RECURSOS_EXPLORACION)
+            cantidad = random.randint(0,5)
+            if cantidad > 0:
+                hallazgos[recurso] = hallazgos.get(recurso, 0) + cantidad
 
-        colonia.recursos["Semillas"] = colonia.recursos.get("Semillas", 0) + hallazgos["Semillas"]
+        for recurso, cantidad in hallazgos.items():
+            colonia.recursos[recurso] = colonia.recursos.get(recurso, 0) + cantidad
+
         self.ocupado = False
-        print(f"{self.nombre} vuelve de explorar con {hallazgos['Semillas']} semilla(s).")
+
+        partes = []
+        for recurso, cantidad in hallazgos.items():
+            if cantidad > 0:
+                partes.append(f"{cantidad} de {recurso.lower()}")
+
+        if partes:
+            print(f"{self.nombre} vuelve de explorar con {', '.join(partes)}.")
+        else:
+            print(f"{self.nombre} vuelve de explorar sin encontrar nada.")
         return hallazgos
