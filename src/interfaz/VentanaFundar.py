@@ -14,6 +14,8 @@ class VentanaFundar():
         self.ventana.geometry("400x260")
         self.ventana.columnconfigure(1, weight=1)
 
+        self._existenColonias = self.existen_colonias()
+
         anterior = coloniasExistentes.get(key)
         if isinstance(anterior, Colonia) and anterior.destruida:
             texto = f"Aquí estaba la colonia {anterior.nombre}, destruida por un meteorito."
@@ -71,3 +73,9 @@ class VentanaFundar():
         colonia.iniciar_gestion()
         print(f"¡Se ha fundado la colonia {nombre}! Primer colono: {colonia.colonos[0].nombre}")
         self.ventana.destroy()
+
+    def existen_colonias(self):
+        for key in self.coloniasExistentes:
+            if isinstance(self.coloniasExistentes[key], Colonia):
+                return True
+        return False
