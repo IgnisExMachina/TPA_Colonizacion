@@ -7,7 +7,7 @@ from interfaz import Tema
 
 class VentanaHuerto:
     ANCHO = 480
-    ALTO_CIELO = 60
+    ALTO_CIELO = 80
     ALTO_FILA = 130
     REFRESCO_MS = 1000  # las plantas crecen desde el hilo de eventos, asi que redibujamos cada segundo
 
@@ -15,9 +15,8 @@ class VentanaHuerto:
     COLOR_TIERRA = "#7a4b25"
     COLOR_SURCO = "#5c3517"
     COLOR_SEMILLA = "#d9b26f"
-    COLOR_TALLO = "#2e7d32"
-    COLOR_HOJA = "#43a047"
-    COLOR_FRUTO = "#e53935"
+    COLOR_PETALO = "#e53935"
+    COLOR_CENTRO = "#fdd835"
 
     def __init__(self, ventana_padre, colonia: Colonia, huerto: Huerto):
         self.colonia = colonia
@@ -139,23 +138,15 @@ class VentanaHuerto:
         c = self.canvas
         total = self.huerto.EVENTOS_PARA_CRECER
 
-        if eventos_crecidos == 0:
-            # Semilla recien plantada
+        if eventos_crecidos < total:
+            # Semilla: se queda asi hasta que la planta este lista
             c.create_oval(x - 6, y - 5, x + 6, y + 3, fill=self.COLOR_SEMILLA, outline="#8d6e3f")
-        elif eventos_crecidos < total:
-            # Brote: crece un poco con cada evento
-            altura = 12 + 40 * eventos_crecidos / total
-            c.create_line(x, y, x, y - altura, fill=self.COLOR_TALLO, width=3)
-            c.create_oval(x - 14, y - altura - 2, x, y - altura + 8, fill=self.COLOR_HOJA, outline="")
-            c.create_oval(x, y - altura - 2, x + 14, y - altura + 8, fill=self.COLOR_HOJA, outline="")
         else:
-            # Planta madura, lista para recoger
-            altura = 60
-            c.create_line(x, y, x, y - altura, fill=self.COLOR_TALLO, width=4)
-            for dy in (20, 40):
-                c.create_oval(x - 22, y - dy - 6, x, y - dy + 6, fill=self.COLOR_HOJA, outline="")
-                c.create_oval(x, y - dy - 6, x + 22, y - dy + 6, fill=self.COLOR_HOJA, outline="")
-            c.create_oval(x - 9, y - altura - 9, x + 9, y - altura + 9, fill=self.COLOR_FRUTO, outline="")
+            # Flor lista para recoger: cuatro petalos y un centro
+            cy = y - 15
+            for dx, dy in ((0, -10), (10, 0), (0, 10), (-10, 0)):
+                c.create_oval(x + dx - 8, cy + dy - 8, x + dx + 8, cy + dy + 8, fill=self.COLOR_PETALO, outline="")
+            c.create_oval(x - 6, cy - 6, x + 6, cy + 6, fill=self.COLOR_CENTRO, outline="")
 
         # Progreso debajo de cada planta
         c.create_text(x, y + 22, text=f"{min(eventos_crecidos, total)}/{total}", fill="white", font=("Arial", 9))
