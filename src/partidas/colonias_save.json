@@ -1,24 +1,13 @@
 {
     "A": {
-        "destruida": false,
         "nombre": "Kukusclan",
         "colonos": [
             {
-                "nombre": "Francisco Ruiz",
+                "nombre": "Alfredo",
                 "nombre_colonia": "Kukusclan",
-                "edad": 46,
-                "nivel": 6,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Antonio Álvarez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 26,
-                "nivel": 4,
-                "genero": "F",
+                "edad": 25,
+                "nivel": 1,
+                "genero": "M",
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
@@ -26,218 +15,80 @@
         ],
         "infraestructuras": [
             {
+                "tipo": "Mina",
+                "eficiencia": 100,
+                "nivel": 1,
+                "__clase__": "Mina"
+            },
+            {
                 "tipo": "Granja",
-                "eficiencia": 50,
-                "nivel": 2,
+                "eficiencia": 100,
+                "nivel": 1,
                 "__clase__": "Granja"
             },
             {
                 "tipo": "Aserradero",
-                "eficiencia": 50,
-                "nivel": 5,
+                "eficiencia": 100,
+                "nivel": 1,
                 "__clase__": "Aserradero"
             },
             {
                 "tipo": "Huerto",
-                "eficiencia": 60,
-                "plantas": [
-                    2,
-                    2,
-                    2,
-                    2,
-                    2,
-                    2
-                ],
-                "nivel": 5,
-                "__clase__": "Huerto"
-            },
-            {
-                "tipo": "Pozo",
-                "eficiencia": 60,
-                "nivel": 2,
-                "__clase__": "Pozo"
-            },
-            {
-                "tipo": "ExtractorDePlutonio",
-                "eficiencia": 60,
-                "nivel": 2,
-                "__clase__": "ExtractorDePlutonio"
-            },
-            {
-                "tipo": "Mina",
-                "eficiencia": 60,
-                "nivel": 2,
-                "__clase__": "Mina"
-            },
-            {
-                "tipo": "Huerto",
-                "eficiencia": 60,
+                "eficiencia": 100,
                 "nivel": 1,
                 "plantas": [],
                 "__clase__": "Huerto"
             }
         ],
         "recursos": {
-            "Madera": 346,
-            "Piedra": 60,
-            "Agua": 83,
-            "Hierro": 72,
-            "Comida": 204.0,
-            "Plutonio": 41,
-            "Semillas": 0,
+            "Madera": 20,
+            "Piedra": 50,
+            "Agua": 50,
+            "Hierro": 20,
+            "Comida": 20,
+            "Plutonio": 0,
+            "Semillas": 2,
             "Plantas": 0
         },
+        "destruida": false,
         "__clase__": "Colonia"
     },
     "B": {
-        "destruida": false,
         "nombre": "La sociedad de la nieve",
         "colonos": [
             {
-                "nombre": "Carlos Gutiérrez",
+                "nombre": "Rubén",
                 "nombre_colonia": "La sociedad de la nieve",
-                "edad": 80,
-                "nivel": 6,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Javier Moreno",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 35,
-                "nivel": 6,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Ana María Sánchez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 44,
-                "nivel": 5,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Alejandro López",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 75,
-                "nivel": 4,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Daniel Martín",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 67,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Ana María Hernández",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 66,
-                "nivel": 6,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Francisco Javier Pérez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 29,
-                "nivel": 3,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Javier Díaz",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 78,
-                "nivel": 10,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Sánchez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 55,
-                "nivel": 10,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Antonio Díaz",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 77,
-                "nivel": 1,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "David Gómez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 24,
-                "nivel": 9,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carlos Gutiérrez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 45,
+                "edad": 30,
                 "nivel": 1,
                 "genero": "M",
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
-            },
+            }
+        ],
+        "infraestructuras": [],
+        "recursos": {
+            "Madera": 2,
+            "Piedra": 50,
+            "Agua": 50,
+            "Hierro": 30,
+            "Comida": 20,
+            "Plutonio": 0,
+            "Semillas": 2,
+            "Plantas": 0
+        },
+        "destruida": false,
+        "__clase__": "Colonia"
+    },
+    "C": {
+        "nombre": "Sociópatas",
+        "colonos": [
             {
-                "nombre": "Francisco Javier Gutiérrez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 43,
-                "nivel": 10,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Antonio Gutiérrez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 69,
-                "nivel": 2,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Antonio Alonso",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 19,
-                "nivel": 3,
+                "nombre": "Elena",
+                "nombre_colonia": "Sociópatas",
+                "edad": 22,
+                "nivel": 1,
                 "genero": "F",
                 "ocupado": false,
                 "exploracion_restante": 0,
@@ -246,114 +97,16 @@
         ],
         "infraestructuras": [],
         "recursos": {
-            "Madera": 0,
-            "Piedra": 24,
-            "Agua": 9,
-            "Hierro": 4,
-            "Comida": 0,
+            "Madera": 50,
+            "Piedra": 50,
+            "Agua": 10,
+            "Hierro": 20,
+            "Comida": 20,
             "Plutonio": 0,
-            "Semillas": 0,
+            "Semillas": 2,
             "Plantas": 0
         },
-        "__clase__": "Colonia"
-    },
-    "C": {
         "destruida": false,
-        "nombre": "kepler4521",
-        "colonos": [
-            {
-                "nombre": "Antonio López",
-                "nombre_colonia": "kepler4521",
-                "edad": 73,
-                "nivel": 6,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Laura Álvarez",
-                "nombre_colonia": "kepler4521",
-                "edad": 58,
-                "nivel": 10,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Luis Ruiz",
-                "nombre_colonia": "kepler4521",
-                "edad": 71,
-                "nivel": 1,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Juan Hernández",
-                "nombre_colonia": "kepler4521",
-                "edad": 34,
-                "nivel": 9,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Francisco García",
-                "nombre_colonia": "kepler4521",
-                "edad": 55,
-                "nivel": 5,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            }
-        ],
-        "infraestructuras": [
-            {
-                "tipo": "Pozo",
-                "eficiencia": 0,
-                "nivel": 2,
-                "__clase__": "Pozo"
-            },
-            {
-                "tipo": "Mina",
-                "eficiencia": 0,
-                "nivel": 2,
-                "__clase__": "Mina"
-            },
-            {
-                "tipo": "Aserradero",
-                "eficiencia": 0,
-                "nivel": 2,
-                "__clase__": "Aserradero"
-            },
-            {
-                "tipo": "Granja",
-                "eficiencia": 0,
-                "nivel": 1,
-                "__clase__": "Granja"
-            },
-            {
-                "tipo": "Pozo",
-                "eficiencia": 0,
-                "nivel": 1,
-                "__clase__": "Pozo"
-            }
-        ],
-        "recursos": {
-            "Madera": 126,
-            "Piedra": 70,
-            "Agua": 229,
-            "Hierro": 74,
-            "Comida": 46,
-            "Plutonio": 0,
-            "Semillas": 0,
-            "Plantas": 0
-        },
         "__clase__": "Colonia"
     }
 }
