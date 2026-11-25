@@ -1,160 +1,166 @@
 # Simulador de Colonización Espacial
 
-Proyecto de simulación y gestión de recursos para la colonización de planetas en Python.
+Juego de simulación y gestión de recursos para colonizar planetas, escrito en Python con programación orientada a objetos, interfaz gráfica en Tkinter y eventos concurrentes.
 
-# Descripción del proyecto
+Proyecto de la asignatura **Técnicas de Programación Avanzada** (Grado en Ingeniería Informática, Universidad Nebrija, grupo A).
 
-La aplicación ha sido desarrollada en Python está orientada a la gestión de recursos, el aumento de población, la construcción de infraestructuras y toma de decisiones ante eventos aleatorios que irán ocurriendo en un tiempo aleatorio determinado.
+![Vista de la galaxia con el registro de eventos](entrega/capturas/08_galaxia_registro.png)
 
-El proyecto cuenta con una interfaz gráfica interactiva de una galaxia que permite al usuario supervisar el estado actual de cada planeta, su colonia y todo lo que hay dentro de ella; colonos, recursos, infraestructuras.
+## Descripción
 
-Las alertas de eventos se muestran en el panel "Registro de la galaxia" dentro de la propia interfaz (con colores según el tipo de mensaje) y también en la terminal.
+La galaxia tiene tres planetas. En cada uno puede vivir una colonia con sus colonos, sus recursos y sus infraestructuras. Cada colonia funciona **en paralelo**, en su propio hilo, y recibe cada 10-30 segundos un evento aleatorio (tormentas, ataques enemigos, visitas, averías y, muy rara vez, un meteorito) que cambia su estado.
 
-# Características Principales del programa
+El jugador decide cómo responder: construir infraestructuras, invertir en ellas para subirlas de nivel, repararlas, enviar colonos de exploración, cultivar el huerto o construir una nave para fundar una colonia en un planeta libre.
 
-- Exploración Planetaria: Distintos planetas generados de manera aleatoria con una cantidad fija de recursos en cada planeta.
+Todo lo que ocurre se ve en el panel **Registro de la galaxia**, con colores según el tipo de mensaje, y también en la terminal. La partida se guarda automáticamente en JSON al cerrar la ventana y se carga al volver a abrir el juego.
 
-- Gestión de Colonos: Asignación de roles dentro de la colonia y supervivencia en entornos hostiles.
+## Funcionalidades
 
-- Infraestructura y Asentamientos: Construcción y mantenimiento de las infraestructuras.
+- **Tres planetas y colonias concurrentes**: cada colonia procesa sus eventos en su propio hilo.
+- **Eventos aleatorios** con 5 niveles de severidad:
+  - *Tormenta*: consume recursos.
+  - *Enemigos*: mueren colonos (los que están explorando se libran).
+  - *Visitas*: se unen colonos nuevos.
+  - *Avería*: baja la eficiencia de una infraestructura o la destruye.
+  - *Meteorito*: destruye la colonia y deja el planeta libre.
+- **Colonos**: con nombre, edad, nivel y género. Se les puede enviar a explorar: vuelven a los 5 eventos con semillas, madera, agua o piedra (más cuanto mayor sea su nivel).
+- **Recursos**: madera, piedra, agua, hierro, comida, plutonio, semillas y plantas, mostrados con barras en el almacén.
+- **9 infraestructuras**: Granja, Mina, Aserradero, Pozo, Extractor de plutonio, Muralla, Castillo, Huerto y Nave espacial.
+  - Cada una tiene un coste, produce en cada evento y pierde un 10 % de eficiencia.
+  - Se puede **invertir** en ellas (hasta el nivel 5, produce más) o **repararlas** (vuelven al 100 %).
+- **Huerto**: plantar semillas, verlas crecer durante 5 eventos y recoger plantas y semillas nuevas.
+- **Nave espacial**: con tripulación, plantas y plutonio sale a fundar una colonia en un planeta libre.
+- **Persistencia**: guardado y carga automáticos en `src/partidas/colonias_save.json`.
 
-- Economía de Recursos: Extracción, almacenamiento y consumo de recursos para la creación de infraestructuras.
+## Estructura del repositorio
 
-- Sistema de Eventos: Generador aleatorio de eventos (enemigos, tormentas, visitas y averías).
-
-- Interfaz Gráfica: App visual con planetas y seguimiento a tiempo real de lo que está pasando en la galaxia completa.
-
-# Estructura del Repositorio
-
+```
 TPA_Colonizacion/
-│
-├── main.py                     # Punto de entrada: el programa se arranca desde aquí
-├── Interfaz                
-│   ├── Interfaz.py             # Interfaz gráfica de usuario (GUI)
-│   ├── VentanaColonia.py       # Seguimos con la interfaz pero más concretamente en la parte hover y menú desplegable
-│   ├── VentanaFundar.py        # Ventana para fundar una colonia en un planeta libre
-│   ├── VentanaHuerto.py        # Ventana del huerto: plantar semillas y recoger la cosecha
-│   ├── Registro.py             # Panel de registro: muestra con colores lo que se imprime en la terminal
-├── Colonia.py                  # Lógica y estado de la colonia activa
-├── Colono.py                   # Entidad y atributos individuales de los colonos
-├── infraestructura             # Definición y costes de las infraestructuras
-│   ├── Infraestructura.py      # Infraestructura general padre
-│   ├── Castillo.py             # Infraestructura castillo
-│   ├── Granja.py               # Infraestructura granja
-│   ├── Mina.py                 # Infraestructura mina
-│   ├── Muralla.py              # Infraestructura muralla
-│   ├── Aserradero.py           # Infraestructura aserradero (produce madera)
-│   ├── Pozo.py                 # Infraestructura pozo (produce agua)
-│   ├── ExtractorDePlutonio.py  # Infraestructura extractor de plutonio (produce plutonio)
-│   └── Huerto.py               # Infraestructura huerto (plantas y semillas, cada 5 eventos)
-├── Planeta.py                  # Parámetros y condiciones ambientales de cada planeta
-├── Evento.py                   # Definición de eventos aleatorios e incidentes
-├── GestorEventos.py            # Gestor de eventos
-│__ GestorPersistencia          # Gestor de persistencia en archivos JSON
-├── imagenesPlanetas/           # Recursos gráficos de la interfaz
-│   ├── fondo.jpeg              # Fondo general de la interfaz
-│   ├── planetaA.png
-│   ├── planetaB.png
-│   ├── planetaC.png
-│   └── planetaD.png
-│
-├── .gitignore
-├── LICENSE
-└── README.md
-
-
-# Instalación y Puesta en Marcha
-
-### Prerrequisitos
-
-Python 3.8 o superior instalado en el sistema.
-
-Dependencias gráficas (tkinter y Pillow).
-Para instalar Pillow:
-
-```bash
-pip install Pillow
+├── src/
+│   ├── main.py                    # Punto de entrada
+│   ├── Colonia.py                 # Estado de la colonia y procesado concurrente de eventos
+│   ├── Colono.py                  # Colonos (propiedades validadas, exploración)
+│   ├── Planeta.py                 # Planeta y fundación de colonias
+│   ├── GestorPersistencia.py      # Guardado/carga de la partida en JSON
+│   ├── eventos/
+│   │   ├── Evento.py              # Evento (tipo + severidad → título)
+│   │   └── GestorEventos.py       # Genera eventos con un temporizador (threading.Timer)
+│   ├── Infraestructura/
+│   │   ├── Infraestructura.py     # Clase base: costes, construir, invertir, reparar
+│   │   ├── Granja.py, Mina.py, Aserradero.py, Pozo.py,
+│   │   ├── ExtractorDePlutonio.py, Muralla.py, Castillo.py
+│   │   ├── Huerto.py              # Plantar, crecer y recoger
+│   │   └── NaveEspacial.py        # Tripulación y requisitos de despegue
+│   ├── interfaz/
+│   │   ├── Interfaz.py            # Ventana principal: galaxia y planetas
+│   │   ├── VentanaColonia.py      # Población, recursos, infraestructuras y construcción
+│   │   ├── VentanaFundar.py       # Fundar una colonia en un planeta libre
+│   │   ├── VentanaHuerto.py       # Huerto dibujado en un Canvas
+│   │   ├── VentanaNave.py         # Elegir planeta y despegar
+│   │   ├── Registro.py            # Panel de registro (stdout → cola → Tkinter)
+│   │   └── Tema.py                # Colores comunes de la interfaz
+│   ├── imagenesPlanetas/          # Fondo y planetas
+│   └── partidas/colonias_save.json
+├── tests/                         # Pruebas con pytest (70 casos)
+├── entrega/                       # Memoria, presentación y capturas de la entrega final
+├── requirements.txt
+└── pytest.ini
 ```
 
-1. Clonar el repositorio
+## Arquitectura
 
-```bash
-git clone https://github.com/tu-usuario/TPA_Colonizacion.git
-cd TPA_Colonizacion
-```
+![Diagrama de clases](entrega/capturas/clases.png)
 
-2. Entorno virtual (opcional pero recomendado)
+- `Interfaz` guarda un diccionario `colonias` con una `Colonia` por planeta.
+- Cada `Colonia` agrega colonos e infraestructuras y tiene su propio `GestorEventos`.
+- Todas las infraestructuras heredan de `Infraestructura` y redefinen `aplicar_efecto()`. La colonia las recorre sin preocuparse del tipo (polimorfismo).
 
-# En Linux/macOS
+**Concurrencia**:
+- Un `threading.Timer` mete eventos en una `queue.Queue`.
+- El hilo de la colonia los saca y los aplica.
+- Los `print` van a una cola que el hilo de Tkinter lee con `after()`. Así ningún hilo secundario toca la interfaz, que en Tkinter no es segura entre hilos.
 
-```bash
-git clone https://github.com/tu-usuario/TPA_Colonizacion.git
-python3 -m venv env
-source env/bin/activate
-```
-y pulsamos el botón de correr
+![Hilos y colas](entrega/capturas/hilos.png)
 
-# En Windows
+## Instalación y ejecución
 
-```bash
-python -m venv env
-env\Scripts\activate
-```
+**Requisitos:** Python **3.10 o superior** (se usa `match` y tipos `X | None`), con `tkinter` incluido. En Debian/Ubuntu: `sudo apt install python3-tk`.
 
-3. Ejecutar el proyecto
+1. Clonar el repositorio:
 
-Desde la carpeta raíz del repositorio:
+   ```bash
+   git clone https://github.com/IgnisExMachina/TPA_Colonizacion.git
+   cd TPA_Colonizacion
+   ```
 
-```bash
-python src/main.py
-```
+2. Crear y activar un entorno virtual:
 
-4. Instalación de dependencias
+   ```bash
+   # Linux / macOS
+   python3 -m venv .venv
+   source .venv/bin/activate
 
-Con el entorno virtual activado, instala todo lo necesario (Pillow y pytest) de una vez:
+   # Windows
+   python -m venv .venv
+   .venv\Scripts\activate
+   ```
 
-```bash
-pip install -r requirements.txt
-```
+3. Instalar las dependencias (Pillow y pytest):
 
-5. Ejecutar los tests
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Desde la carpeta raíz del repositorio:
+4. Ejecutar el juego desde la raíz del repositorio:
 
-```bash
-pytest
-```
+   ```bash
+   python src/main.py
+   ```
 
-La configuración está en `pytest.ini`, que añade `src` a las rutas de búsqueda para que los tests importen igual que el programa.
+5. Ejecutar los tests:
 
+   ```bash
+   pytest
+   ```
 
-# Guía Rápida de Uso
+   `pytest.ini` añade `src` a las rutas de búsqueda para que los tests importen igual que el programa.
 
-Selecciona un planeta: Evalúa la disponibilidad de recursos y riesgos en la pantalla inicial.
+> **Velocidad de los eventos:** se cambia con `MIN` y `MAX` en `src/eventos/GestorEventos.py`. Si borras `src/partidas/colonias_save.json`, el juego empieza con las tres colonias por defecto.
 
-Despliega la base inicial: Administra los colonos iniciales y asigna tareas prioritarias (energía, soporte vital, extracción).
+## Guía rápida de uso
 
-Monitorea los balances: Evita el agotamiento de suministros críticos antes de expandir la colonia.
+1. **Haz clic en un planeta.** Si tiene colonia se abre su ventana; si está libre, puedes fundar una nueva.
+2. **Ver población actual**: lista de colonos. Pulsa uno para enviarlo de exploración.
+3. **Ver recursos** (pasa el ratón por encima): almacén con barras.
+4. **Ver infraestructuras**: nivel y eficiencia de cada una, con los botones *Invertir*, *Reparar*, *Abrir huerto* y *Abrir menú de la nave*.
+5. **Menú de construcción**: solo se activan las infraestructuras que puedes pagar.
+6. **Registro de la galaxia**: sigue los eventos de todas las colonias. Se puede ocultar o limpiar.
+7. **Cierra la ventana principal** para guardar la partida.
 
-Responde a los eventos: Toma decisiones estratégicas cuando el GestorEventos alerte de emergencias climáticas o averías.
+| Colonia | Infraestructuras | Huerto |
+|---|---|---|
+| ![](entrega/capturas/02_colonia.png) | ![](entrega/capturas/04_infraestructuras.png) | ![](entrega/capturas/07_huerto.png) |
 
-# Tecnologías Utilizadas
+## Tecnologías
 
-Lenguaje: Python 3
+- **Lenguaje:** Python 3.10+
+- **Paradigma:** programación orientada a objetos
+- **Interfaz:** Tkinter y Pillow
+- **Concurrencia:** `threading` y `queue`
+- **Persistencia:** JSON
+- **Pruebas:** pytest
 
-Paradigma: Programación Orientada a Objetos (POO)
+## Entrega final
 
-Gráficos: Tkinter / Canva
+En la carpeta [`entrega/`](entrega/) están la memoria (Word y PDF), la presentación (PowerPoint y PDF) y las capturas.
 
-# Licencia
+## Licencia
 
-Este proyecto se distribuye bajo los términos de la licencia detallada en el archivo LICENSE.
+Este proyecto se distribuye bajo los términos de la licencia detallada en el archivo [LICENSE](LICENSE).
 
-# Autoría y Agradecimientos
+## Autoría
 
-Proyecto desarrollado por: Mateo Guinsburg, Aitor Casares, Ignacio Compaired, Daniel Ortiz
-
-## Contribuidores
+Proyecto desarrollado por: Mateo Guinsburg, Aitor Casares, Ignacio Compaired y Daniel Ortiz.
 
 <a href="https://github.com/IgnisExMachina/TPA_Colonizacion/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=IgnisExMachina/TPA_Colonizacion" alt="Contribuidores del proyecto" />

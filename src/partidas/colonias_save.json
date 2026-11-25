@@ -1,7 +1,6 @@
 {
     "A": {
-        "destruida": false,
-        "nombre": "qoqoqoqo",
+        "nombre": "Kukusclan",
         "colonos": [
             {
                 "nombre": "Alfredo",
@@ -38,11 +37,26 @@
                 "nombre_colonia": "Kukusclan",
                 "edad": 25,
                 "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
+                "plantas": [],
+                "__clase__": "Huerto"
+            }
+        ],
+        "recursos": {
+            "Madera": 20,
+            "Piedra": 50,
+            "Agua": 50,
+            "Hierro": 20,
+            "Comida": 20,
+            "Plutonio": 0,
+            "Semillas": 2,
+            "Plantas": 0
+        },
+        "destruida": false,
+        "__clase__": "Colonia"
+    },
+    "B": {
+        "nombre": "La sociedad de la nieve",
+        "colonos": [
             {
                 "nombre": "Alfredo",
                 "nombre_colonia": "Kukusclan",
@@ -114,70 +128,10 @@
         "nombre": "Sociópatas",
         "colonos": [
             {
-                "nombre": "Jesús Ruiz",
+                "nombre": "Elena",
                 "nombre_colonia": "Sociópatas",
                 "edad": 20,
                 "nivel": 6,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Luis Moreno",
-                "nombre_colonia": "Sociópatas",
-                "edad": 79,
-                "nivel": 8,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Antonio Jiménez",
-                "nombre_colonia": "Sociópatas",
-                "edad": 31,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Manuel Fernández",
-                "nombre_colonia": "Sociópatas",
-                "edad": 27,
-                "nivel": 10,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Javier Martín",
-                "nombre_colonia": "Sociópatas",
-                "edad": 67,
-                "nivel": 9,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Luis Muñoz",
-                "nombre_colonia": "Sociópatas",
-                "edad": 58,
-                "nivel": 5,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "David Martín",
-                "nombre_colonia": "Sociópatas",
-                "edad": 46,
-                "nivel": 3,
                 "genero": "F",
                 "ocupado": false,
                 "exploracion_restante": 0,
