@@ -2,6 +2,7 @@ import tkinter as tk
 from Colonia import Colonia
 from Colono import Colono
 
+#todo: necesita dar a elegir entre SOLO las colonias que tengan naves espaciales para fundar la nueva, SOLO si existen colonias
 
 class VentanaFundar():
     def __init__(self, ventanaPadre, coloniasExistentes: dict, key):
