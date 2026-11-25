@@ -1,6 +1,6 @@
 class Infraestructura():
-    # Costes de construccion. Las infraestructuras basicas son baratas para poder arrancar la colonia;
-    # despues se mejoran "invirtiendo" en ellas (ver invertir()).
+    # ? Costes de construccion
+    # ? luego se pueden mejoran "invirtiendo" en ellas (ver invertir()).
     COSTES = {
         "Aserradero": {"Madera": 10, "Piedra": 5},
         "Pozo": {"Piedra": 10, "Madera": 5},
@@ -12,8 +12,8 @@ class Infraestructura():
         "Castillo": {"Piedra": 50, "Hierro": 30, "Agua": 20},
     }
     MAX_NIVEL = 5
-    FACTOR_INVERSION = 0.6   # invertir cuesta 60% del coste de construccion por cada nivel que ya tiene
-    nivel = 1                # valor por defecto (tambien para infraestructuras de partidas antiguas)
+    FACTOR_INVERSION = 0.6   # ? invertir cuesta 60% del coste de construccion por cada nivel que ya tiene
+    nivel = 1                # ? valor por defecto
 
     def __init__(self, tipo: str, eficiencia: int = 100):
         self.tipo = tipo
@@ -31,13 +31,14 @@ class Infraestructura():
 
     @property
     def coste(self) -> dict:
-        # El coste sale siempre de COSTES segun el tipo. Asi no hace falta guardarlo en la partida
-        # y las infraestructuras cargadas de un JSON lo tienen igual que las recien construidas.
+        # ? El coste sale siempre de COSTES segun el tipo. Asi no hace falta guardarlo en la partida
+        # ? y las infraestructuras cargadas del JSON igual
         return self.COSTES.get(self.tipo, {})
 
+    # TODO: PODRÍAMOS PROBAR A QUITAR ESTO
     @coste.setter
     def coste(self, _valor):
-        # Las partidas antiguas guardaban "coste"; al cargarlas se ignora (se recalcula desde COSTES)
+        # ? Las partidas antiguas guardaban "coste"; al cargarlas se ignora (se recalcula desde COSTES)
         pass
 
 
