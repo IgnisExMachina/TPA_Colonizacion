@@ -8,6 +8,7 @@ from Infraestructura.Pozo import Pozo
 from Infraestructura.ExtractorDePlutonio import ExtractorDePlutonio
 from Infraestructura.Huerto import Huerto
 from Infraestructura.Infraestructura import Infraestructura
+from Infraestructura.NaveEspacial import NaveEspacial
 
 
 class ColoniaTest:
@@ -44,6 +45,7 @@ def recursos_insuficientes():
     (Muralla, "Muralla", {"Piedra": 25, "Madera": 10}),
     (ExtractorDePlutonio, "ExtractorDePlutonio", {"Hierro": 25, "Piedra": 20, "Madera": 15}),
     (Castillo, "Castillo", {"Piedra": 50, "Hierro": 30, "Agua": 20}),
+    (NaveEspacial, "NaveEspacial", {"Hierro": 30, "Piedra": 50, "Agua": 100}),
 ])
 
 def test_creacion_y_costes_infraestructuras(clase_infra, tipo_esperado, coste_esperado):
