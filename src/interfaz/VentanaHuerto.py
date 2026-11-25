@@ -4,6 +4,8 @@ from Colonia import Colonia
 from Infraestructura import Huerto
 from interfaz import Tema
 
+# * GUÍA para dibujar en Python con canvas en la biblioteca de TKinter
+# TODO: https://www.tutorialesprogramacionya.com/pythonya/detalleconcepto.php?punto=73&codigo=73&inicio=60
 
 class VentanaHuerto:
     ANCHO = 480
