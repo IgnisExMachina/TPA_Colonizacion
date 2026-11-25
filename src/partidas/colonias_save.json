@@ -11,30 +11,31 @@
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
-            }
-        ],
-        "infraestructuras": [
-            {
-                "tipo": "Mina",
-                "eficiencia": 100,
-                "nivel": 1,
-                "__clase__": "Mina"
             },
             {
-                "tipo": "Granja",
-                "eficiencia": 100,
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
                 "nivel": 1,
-                "__clase__": "Granja"
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
             },
             {
-                "tipo": "Aserradero",
-                "eficiencia": 100,
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
                 "nivel": 1,
-                "__clase__": "Aserradero"
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
             },
             {
-                "tipo": "Huerto",
-                "eficiencia": 100,
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
                 "nivel": 1,
                 "plantas": [],
                 "__clase__": "Huerto"
@@ -57,22 +58,238 @@
         "nombre": "La sociedad de la nieve",
         "colonos": [
             {
-                "nombre": "Rubén",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 30,
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
                 "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Alfredo",
+                "nombre_colonia": "Kukusclan",
+                "edad": 25,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Manuel Rodríguez",
+                "nombre_colonia": "qoqoqoqo",
+                "edad": 42,
+                "nivel": 10,
                 "genero": "M",
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
             }
         ],
+        "infraestructuras": [
+            {
+                "tipo": "Huerto",
+                "eficiencia": 0,
+                "nivel": 5,
+                "plantas": [],
+                "__clase__": "Huerto"
+            },
+            {
+                "tipo": "ExtractorDePlutonio",
+                "eficiencia": 20,
+                "nivel": 5,
+                "__clase__": "ExtractorDePlutonio"
+            },
+            {
+                "tipo": "NaveEspacial",
+                "eficiencia": 90,
+                "nivel": 5,
+                "modificador": 0.3333333333333333,
+                "tripulacion": [
+                    {
+                        "nombre": "Alfredo",
+                        "nombre_colonia": "Kukusclan",
+                        "edad": 25,
+                        "nivel": 1,
+                        "genero": "M",
+                        "ocupado": false,
+                        "exploracion_restante": 0,
+                        "__clase__": "Colono"
+                    },
+                    {
+                        "nombre": "Alfredo",
+                        "nombre_colonia": "Kukusclan",
+                        "edad": 25,
+                        "nivel": 1,
+                        "genero": "M",
+                        "ocupado": false,
+                        "exploracion_restante": 0,
+                        "__clase__": "Colono"
+                    },
+                    {
+                        "nombre": "Manuel Rodríguez",
+                        "nombre_colonia": "qoqoqoqo",
+                        "edad": 42,
+                        "nivel": 10,
+                        "genero": "M",
+                        "ocupado": false,
+                        "exploracion_restante": 0,
+                        "__clase__": "Colono"
+                    },
+                    {
+                        "nombre": "Alfredo",
+                        "nombre_colonia": "Kukusclan",
+                        "edad": 25,
+                        "nivel": 1,
+                        "genero": "M",
+                        "ocupado": false,
+                        "exploracion_restante": 0,
+                        "__clase__": "Colono"
+                    },
+                    {
+                        "nombre": "Alfredo",
+                        "nombre_colonia": "Kukusclan",
+                        "edad": 25,
+                        "nivel": 1,
+                        "genero": "M",
+                        "ocupado": false,
+                        "exploracion_restante": 0,
+                        "__clase__": "Colono"
+                    }
+                ],
+                "requisitos": {
+                    "Plantas": 93.33333333333334,
+                    "Plutonio": 110.0
+                },
+                "__clase__": "NaveEspacial"
+            }
+        ],
+        "recursos": {
+            "Madera": 1825,
+            "Piedra": 4075,
+            "Agua": 3410,
+            "Hierro": 1350,
+            "Comida": 1495,
+            "Plutonio": 2484.0,
+            "Semillas": 0,
+            "Plantas": 19961.666666666664
+        },
+        "__clase__": "Colonia"
+    },
+    "B": {
+        "nombre": "Epstein",
+        "colonos": [
+            [
+                {
+                    "nombre": "Alfredo",
+                    "nombre_colonia": "Kukusclan",
+                    "edad": 25,
+                    "nivel": 1,
+                    "genero": "M",
+                    "ocupado": false,
+                    "exploracion_restante": 0,
+                    "__clase__": "Colono"
+                },
+                {
+                    "nombre": "Alfredo",
+                    "nombre_colonia": "Kukusclan",
+                    "edad": 25,
+                    "nivel": 1,
+                    "genero": "M",
+                    "ocupado": false,
+                    "exploracion_restante": 0,
+                    "__clase__": "Colono"
+                },
+                {
+                    "nombre": "Manuel Rodríguez",
+                    "nombre_colonia": "qoqoqoqo",
+                    "edad": 42,
+                    "nivel": 10,
+                    "genero": "M",
+                    "ocupado": false,
+                    "exploracion_restante": 0,
+                    "__clase__": "Colono"
+                },
+                {
+                    "nombre": "Alfredo",
+                    "nombre_colonia": "Kukusclan",
+                    "edad": 25,
+                    "nivel": 1,
+                    "genero": "M",
+                    "ocupado": false,
+                    "exploracion_restante": 0,
+                    "__clase__": "Colono"
+                },
+                {
+                    "nombre": "Alfredo",
+                    "nombre_colonia": "Kukusclan",
+                    "edad": 25,
+                    "nivel": 1,
+                    "genero": "M",
+                    "ocupado": false,
+                    "exploracion_restante": 0,
+                    "__clase__": "Colono"
+                }
+            ]
+        ],
         "infraestructuras": [],
         "recursos": {
-            "Madera": 2,
+            "Madera": 50,
             "Piedra": 50,
             "Agua": 50,
-            "Hierro": 30,
+            "Hierro": 20,
             "Comida": 20,
             "Plutonio": 0,
             "Semillas": 2,
@@ -82,13 +299,74 @@
         "__clase__": "Colonia"
     },
     "C": {
+        "destruida": false,
         "nombre": "Sociópatas",
         "colonos": [
             {
                 "nombre": "Elena",
                 "nombre_colonia": "Sociópatas",
-                "edad": 22,
+                "edad": 20,
+                "nivel": 6,
+                "genero": "F",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "José Luis Moreno",
+                "nombre_colonia": "Sociópatas",
+                "edad": 79,
+                "nivel": 8,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Antonio Jiménez",
+                "nombre_colonia": "Sociópatas",
+                "edad": 31,
                 "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Manuel Fernández",
+                "nombre_colonia": "Sociópatas",
+                "edad": 27,
+                "nivel": 10,
+                "genero": "F",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Javier Martín",
+                "nombre_colonia": "Sociópatas",
+                "edad": 67,
+                "nivel": 9,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "José Luis Muñoz",
+                "nombre_colonia": "Sociópatas",
+                "edad": 58,
+                "nivel": 5,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "David Martín",
+                "nombre_colonia": "Sociópatas",
+                "edad": 46,
+                "nivel": 3,
                 "genero": "F",
                 "ocupado": false,
                 "exploracion_restante": 0,
@@ -96,17 +374,7 @@
             }
         ],
         "infraestructuras": [],
-        "recursos": {
-            "Madera": 50,
-            "Piedra": 50,
-            "Agua": 10,
-            "Hierro": 20,
-            "Comida": 20,
-            "Plutonio": 0,
-            "Semillas": 2,
-            "Plantas": 0
-        },
-        "destruida": false,
+        "recursos": {},
         "__clase__": "Colonia"
     }
 }
