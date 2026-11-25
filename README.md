@@ -60,7 +60,7 @@ TPA_Colonizacion/
 │   │   └── Tema.py                # Colores comunes de la interfaz
 │   ├── imagenesPlanetas/          # Fondo y planetas
 │   └── partidas/colonias_save.json
-├── tests/                         # Pruebas con pytest (70 casos)
+├── tests/                         # Pruebas con pytest (78 casos)
 ├── entrega/                       # Memoria, presentación y capturas de la entrega final
 ├── requirements.txt
 └── pytest.ini
