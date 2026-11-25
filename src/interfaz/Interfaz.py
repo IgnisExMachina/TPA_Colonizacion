@@ -25,7 +25,12 @@ class Interfaz:
         self.ventana = tk.Tk()
         Tema.aplicar_tema(self.ventana)  # todas las ventanas en azul oscuro
         self.ventana.title("Colonización de planetas")
-        self.ventana.geometry("1000x1000")
+        # Tamaño inicial segun la pantalla: como mucho 1000x1000, pero que quepa en portatiles pequeños
+        lado = int(min(1000, self.ventana.winfo_screenwidth() * 0.9, self.ventana.winfo_screenheight() * 0.85))
+        x = (self.ventana.winfo_screenwidth() - lado) // 2
+        y = max(0, (self.ventana.winfo_screenheight() - lado) // 2 - 30)
+        self.ventana.geometry(f"{lado}x{lado}+{x}+{y}")
+        self.ventana.minsize(500, 500)
 
         # 1. Inicializar el gestor de persistencia
         self.persistencia = GestorPersistencia()
@@ -68,44 +73,38 @@ class Interfaz:
         self.ventana.protocol("WM_DELETE_WINDOW", self.al_cerrar_ventana)
 
         # 4. Crear el Canvas (Lienzo) que ocupa toda la ventana
-        self.canvas = tk.Canvas(self.ventana, width=1000, height=1000, highlightthickness=0)
+        self.canvas = tk.Canvas(self.ventana, highlightthickness=0)
         self.canvas.pack(fill="both", expand=True)
 
         # 5. Cargar elementos visuales (Fondo y Planetas)
-        # Fondo
-        self.imagenFondo = Image.open(self._directorio/"imagenesPlanetas/fondo.jpeg")
-        self.imagenFondo = self.imagenFondo.resize((1000, 1000))
-        self.imagenFondo_tk = ImageTk.PhotoImage(self.imagenFondo)
-        self.canvas.create_image(0, 0, image=self.imagenFondo_tk, anchor="nw")
+        # Guardamos las imagenes originales sin redimensionar: cada vez que cambia el tamaño
+        # de la ventana se reescalan a partir de ellas (si no, perderian calidad)
+        carpeta = self._directorio/"imagenesPlanetas"
+        self.imagenFondo = Image.open(carpeta/"fondo.jpeg")
+        self.id_fondo = self.canvas.create_image(0, 0, anchor="nw")
 
-        # Planeta A 
-        self.imagenPlanetaA = Image.open(self._directorio/"imagenesPlanetas/planetaD.png")
-        self.imagenPlanetaA.thumbnail((200, 200))
-        self.imagenPlanetaA_tk = ImageTk.PhotoImage(self.imagenPlanetaA)
-        self.id_planetaA = self.canvas.create_image(150, 150, image=self.imagenPlanetaA_tk)
+        # Cada planeta: (imagen original, id en el canvas, posicion relativa x, posicion relativa y)
+        # Las posiciones van de 0 a 1 respecto al ancho y alto de la ventana
+        self.planetas = {}
+        for key, archivo, rx, ry in (("A", "planetaD.png", 0.15, 0.15),
+                                     ("B", "planetaB.png", 0.40, 0.35),
+                                     ("C", "planetaC.png", 0.74, 0.60)):
+            id_planeta = self.canvas.create_image(0, 0)
+            self.planetas[key] = (Image.open(carpeta/archivo), id_planeta, rx, ry)
+        self.id_planetaA = self.planetas["A"][1]
+        self.id_planetaB = self.planetas["B"][1]
+        self.id_planetaC = self.planetas["C"][1]
 
-        # Planeta B
-        self.imagenPlanetaB = Image.open(self._directorio/"imagenesPlanetas/planetaB.png")
-        self.imagenPlanetaB.thumbnail((200, 200))
-        self.imagenPlanetaB_tk = ImageTk.PhotoImage(self.imagenPlanetaB)
-        self.id_planetaB = self.canvas.create_image(400, 350, image=self.imagenPlanetaB_tk)
-
-        # Planeta C
-        self.imagenPlanetaC = Image.open(self._directorio/"imagenesPlanetas/planetaC.png")
-        self.imagenPlanetaC.thumbnail((200, 200))
-        self.imagenPlanetaC_tk = ImageTk.PhotoImage(self.imagenPlanetaC)
-        self.id_planetaC = self.canvas.create_image(740, 600, image=self.imagenPlanetaC_tk)
+        # Referencias a las imagenes de tkinter para que el recolector de basura de Python no las borre
+        self._imagenes_tk = {}
+        self._id_reescalado = None
+        self._tamano_dibujado = None
+        self.canvas.bind("<Configure>", self._programar_reescalado)
 
         # 6. Vincular los clics de cada planeta con su respectiva colonia del diccionario
         self.canvas.tag_bind(self.id_planetaA, "<Button-1>", lambda evento: self.entrarEnPlaneta(evento, self.colonias["A"], "A"))
         self.canvas.tag_bind(self.id_planetaB, "<Button-1>", lambda evento: self.entrarEnPlaneta(evento, self.colonias["B"], "B"))
         self.canvas.tag_bind(self.id_planetaC, "<Button-1>", lambda evento: self.entrarEnPlaneta(evento, self.colonias["C"], "C"))
-
-        # 7. Guardar referencias de las imágenes para evitar que el recolector de basura de Python las borre
-        self.canvas.image_fondo = self.imagenFondo_tk
-        self.canvas.imagePlanetaA = self.imagenPlanetaA_tk
-        self.canvas.imagePlanetaB = self.imagenPlanetaB_tk
-        self.canvas.imagePlanetaC = self.imagenPlanetaC_tk
 
         # 8. Registro: lo que se imprime en la terminal tambien se ve aqui, con colores
         self.panelRegistro = PanelRegistro(
@@ -126,10 +125,40 @@ class Interfaz:
             self.panelRegistro.place_forget()
             self.botonRegistro.config(text="Mostrar registro")
         else:
-            self.panelRegistro.place(relx=0, rely=1.0, x=10, y=-10, relwidth=1.0, width=-20, height=260, anchor="sw")
+            # La altura es relativa (28% de la ventana) para que en pantallas pequeñas no lo tape todo
+            self.panelRegistro.place(relx=0, rely=1.0, x=10, y=-10, relwidth=1.0, width=-20, relheight=0.28, anchor="sw")
             self.panelRegistro.lift()
             self.botonRegistro.config(text="Ocultar registro")
         self.registroVisible = not self.registroVisible
+
+    def _programar_reescalado(self, evento):
+        """Al arrastrar el borde de la ventana llegan muchos eventos seguidos: esperamos un poco
+        y solo reescalamos con el ultimo, para que no vaya a tirones."""
+        if self._id_reescalado is not None:
+            self.ventana.after_cancel(self._id_reescalado)
+        self._id_reescalado = self.ventana.after(60, self._reescalar)
+
+    def _reescalar(self):
+        """Ajusta el fondo y los planetas al tamaño actual del canvas."""
+        self._id_reescalado = None
+        ancho, alto = self.canvas.winfo_width(), self.canvas.winfo_height()
+        if ancho < 2 or alto < 2 or (ancho, alto) == self._tamano_dibujado:
+            return
+        self._tamano_dibujado = (ancho, alto)
+
+        # El fondo ocupa todo el canvas
+        self._imagenes_tk["fondo"] = ImageTk.PhotoImage(self.imagenFondo.resize((ancho, alto)))
+        self.canvas.itemconfig(self.id_fondo, image=self._imagenes_tk["fondo"])
+
+        # Los planetas miden un 20% del lado mas corto y se colocan en su posicion relativa.
+        # Se reutilizan los mismos ids, asi que los clics (tag_bind) siguen funcionando
+        lado = max(1, int(min(ancho, alto) * 0.2))
+        for key, (original, id_planeta, rx, ry) in self.planetas.items():
+            imagen = original.copy()
+            imagen.thumbnail((lado, lado))
+            self._imagenes_tk[key] = ImageTk.PhotoImage(imagen)
+            self.canvas.itemconfig(id_planeta, image=self._imagenes_tk[key])
+            self.canvas.coords(id_planeta, rx * ancho, ry * alto)
 
     def al_cerrar_ventana(self):
         """Método que se ejecuta automáticamente al cerrar la ventana (guarda antes de salir)."""
