@@ -35,16 +35,10 @@ class Infraestructura():
         # ? y las infraestructuras cargadas del JSON igual
         return self.COSTES.get(self.tipo, {})
 
-    # TODO: PODRÍAMOS PROBAR A QUITAR ESTO
-    @coste.setter
-    def coste(self, _valor):
-        # ? Las partidas antiguas guardaban "coste"; al cargarlas se ignora (se recalcula desde COSTES)
-        pass
-
 
     @tipo.setter
     def tipo(self, nuevo_tipo: str):
-        if not isinstance(nuevo_tipo, str):
+        if not isinstance(nuevo_tipo, str): # ! Si NO es un texto nuevo_tipo nos saca error
             raise TypeError("El tipo de infraestructura debe ser una cadena de texto.")
         if nuevo_tipo in self.COSTES:
             self._tipo = nuevo_tipo
@@ -53,7 +47,7 @@ class Infraestructura():
     
     @eficiencia.setter
     def eficiencia(self, nueva_efic: int):
-        if not isinstance(nueva_efic, int):
+        if not isinstance(nueva_efic, int): # ! Si NO es un int nueva_efic nos saca error
             raise TypeError("La eficiencia debe ser un numero entero.")
         if nueva_efic < 0 or nueva_efic > 100:
             raise ValueError(f"Eficiencia inválida ({nueva_efic}). Debe valer entre 0 y 100.")
@@ -101,27 +95,26 @@ class Infraestructura():
         self.eficiencia = max(0, self.eficiencia - 10)  # las averias pueden dejarla en 5, 45... y no puede bajar de 0
         return True
 
-    # ---------- Inversion (subir de nivel) ----------
+    # ? Invertir en las infraestructuras
     def multiplicador(self) -> float:
-        """Cuanto produce respecto al nivel 1: Nv1 x1, Nv2 x1.5, Nv3 x2, Nv4 x2.5, Nv5 x3."""
+        """Cuanto produce respecto al nivel: Nv1 x1, Nv2 x1.5, Nv3 x2, Nv4 x2.5, Nv5 x3."""
         return 1 + 0.5 * (self.nivel - 1)
 
     def descripcion_mejora(self) -> str:
-        """Texto que explica que gana la infraestructura con su nivel actual."""
         return f"produce x{self.multiplicador():g}"
 
     def puede_invertir(self) -> bool:
         return self.nivel < self.MAX_NIVEL
 
     def coste_inversion(self) -> dict:
-        """Cada nivel cuesta mas que el anterior."""
+        # ? Cada nivel vale más que el anterior
         return {recurso: max(1, round(cantidad * self.FACTOR_INVERSION * self.nivel))
                 for recurso, cantidad in self.coste.items()}
 
     def invertir(self, recursos_colonia: dict) -> bool:
-        """Gasta recursos para subir un nivel: produce mas y vuelve al 100% de eficiencia."""
+        # ? produce más y reseteamos eficiencia al 100%
         if not self.puede_invertir():
-            print(f"'{self.tipo}' ya está al nivel máximo ({self.MAX_NIVEL}).")
+            print(f"'{self.tipo}' ya está al nivel máximo.")
             return False
         coste = self.coste_inversion()
         if not self._hay_recursos(recursos_colonia, coste):
@@ -136,13 +129,13 @@ class Infraestructura():
 
     # ---------- Reparacion ----------
     def coste_reparacion(self) -> dict:
-        """Reparar cuesta el 50% de los recursos necesarios para construirla (minimo 1 de cada)."""
+        """Reparar cuesta el 50% de los recursos"""
         return {recurso: max(1, int(cantidad / 2)) for recurso, cantidad in self.coste.items()}
 
     def reparar(self, recursos_colonia: dict) -> bool:
         coste_reparacion = self.coste_reparacion()
 
-        #Comprobamos si la colonia tiene lo necesario
+        #? Comprobamos si la colonia tiene lo necesario
         if not self._hay_recursos(recursos_colonia, coste_reparacion):
             print(f"No hay suficientes recursos en la colonia para reparar '{self.tipo}'.")
             return False
@@ -155,7 +148,8 @@ class Infraestructura():
         print(f"'{self.tipo}' ha sido reparada al 100% de eficiencia.")
         return True
 
-    @staticmethod
+    @staticmethod # * Escribimos el método con _ al principio para saber que este método no lo vamos a utilizar de manera "pública", simplemente lo utilizaremos en la clase.
+    # * Le ponemos @staticmethod porque no vamos a recibir un objeto instanciado, es básicamente para el menú de construcción 
     def _hay_recursos(recursos_colonia: dict, coste: dict) -> bool:
-        return all(recursos_colonia.get(recurso, 0) >= cantidad for recurso, cantidad in coste.items())
+        return all(recursos_colonia.get(recurso, 0) >= cantidad for recurso, cantidad in coste.items()) # ? devuelve true o false
 
