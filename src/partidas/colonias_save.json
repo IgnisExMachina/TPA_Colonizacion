@@ -122,60 +122,27 @@
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carmen Sánchez",
-                "nombre_colonia": "qoqoqoqo",
-                "edad": 50,
-                "nivel": 5,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Jesús Gómez",
-                "nombre_colonia": "qoqoqoqo",
-                "edad": 47,
-                "nivel": 6,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carlos López",
-                "nombre_colonia": "qoqoqoqo",
-                "edad": 21,
-                "nivel": 2,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Carlos Hernández",
-                "nombre_colonia": "qoqoqoqo",
-                "edad": 74,
-                "nivel": 2,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
             }
         ],
         "infraestructuras": [
             {
                 "tipo": "Huerto",
-                "eficiencia": 10,
+                "eficiencia": 0,
                 "nivel": 5,
                 "plantas": [],
                 "__clase__": "Huerto"
             },
             {
-                "tipo": "NaveEspacial",
-                "eficiencia": 70,
+                "tipo": "ExtractorDePlutonio",
+                "eficiencia": 20,
                 "nivel": 5,
+                "__clase__": "ExtractorDePlutonio"
+            },
+            {
+                "tipo": "NaveEspacial",
+                "eficiencia": 90,
+                "nivel": 5,
+                "modificador": 0.3333333333333333,
                 "tripulacion": [
                     {
                         "nombre": "Alfredo",
@@ -198,10 +165,10 @@
                         "__clase__": "Colono"
                     },
                     {
-                        "nombre": "Alfredo",
-                        "nombre_colonia": "Kukusclan",
-                        "edad": 25,
-                        "nivel": 1,
+                        "nombre": "Manuel Rodríguez",
+                        "nombre_colonia": "qoqoqoqo",
+                        "edad": 42,
+                        "nivel": 10,
                         "genero": "M",
                         "ocupado": false,
                         "exploracion_restante": 0,
@@ -229,38 +196,92 @@
                     }
                 ],
                 "requisitos": {
-                    "Plantas": 0,
-                    "Plutonio": 0
+                    "Plantas": 93.33333333333334,
+                    "Plutonio": 110.0
                 },
                 "__clase__": "NaveEspacial"
-            },
-            {
-                "tipo": "ExtractorDePlutonio",
-                "eficiencia": 70,
-                "nivel": 5,
-                "__clase__": "ExtractorDePlutonio"
             }
         ],
         "recursos": {
-            "Madera": 1830,
-            "Piedra": 4505,
-            "Agua": 4265,
-            "Hierro": 1610,
-            "Comida": 1500,
-            "Plutonio": 2510,
+            "Madera": 1825,
+            "Piedra": 4075,
+            "Agua": 3410,
+            "Hierro": 1350,
+            "Comida": 1495,
+            "Plutonio": 2484.0,
             "Semillas": 0,
-            "Plantas": 20000
+            "Plantas": 19961.666666666664
         },
         "__clase__": "Colonia"
     },
     "B": {
-        "destruida": true,
-        "nombre": "La sociedad de la nieve",
+        "nombre": "Epstein",
         "colonos": [
-            {}
+            [
+                {
+                    "nombre": "Alfredo",
+                    "nombre_colonia": "Kukusclan",
+                    "edad": 25,
+                    "nivel": 1,
+                    "genero": "M",
+                    "ocupado": false,
+                    "exploracion_restante": 0,
+                    "__clase__": "Colono"
+                },
+                {
+                    "nombre": "Alfredo",
+                    "nombre_colonia": "Kukusclan",
+                    "edad": 25,
+                    "nivel": 1,
+                    "genero": "M",
+                    "ocupado": false,
+                    "exploracion_restante": 0,
+                    "__clase__": "Colono"
+                },
+                {
+                    "nombre": "Manuel Rodríguez",
+                    "nombre_colonia": "qoqoqoqo",
+                    "edad": 42,
+                    "nivel": 10,
+                    "genero": "M",
+                    "ocupado": false,
+                    "exploracion_restante": 0,
+                    "__clase__": "Colono"
+                },
+                {
+                    "nombre": "Alfredo",
+                    "nombre_colonia": "Kukusclan",
+                    "edad": 25,
+                    "nivel": 1,
+                    "genero": "M",
+                    "ocupado": false,
+                    "exploracion_restante": 0,
+                    "__clase__": "Colono"
+                },
+                {
+                    "nombre": "Alfredo",
+                    "nombre_colonia": "Kukusclan",
+                    "edad": 25,
+                    "nivel": 1,
+                    "genero": "M",
+                    "ocupado": false,
+                    "exploracion_restante": 0,
+                    "__clase__": "Colono"
+                }
+            ]
         ],
         "infraestructuras": [],
-        "recursos": {},
+        "recursos": {
+            "Madera": 50,
+            "Piedra": 50,
+            "Agua": 50,
+            "Hierro": 20,
+            "Comida": 20,
+            "Plutonio": 0,
+            "Semillas": 2,
+            "Plantas": 0
+        },
+        "destruida": false,
         "__clase__": "Colonia"
     },
     "C": {
@@ -283,6 +304,56 @@
                 "edad": 79,
                 "nivel": 8,
                 "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Antonio Jiménez",
+                "nombre_colonia": "Sociópatas",
+                "edad": 31,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Manuel Fernández",
+                "nombre_colonia": "Sociópatas",
+                "edad": 27,
+                "nivel": 10,
+                "genero": "F",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Javier Martín",
+                "nombre_colonia": "Sociópatas",
+                "edad": 67,
+                "nivel": 9,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "José Luis Muñoz",
+                "nombre_colonia": "Sociópatas",
+                "edad": 58,
+                "nivel": 5,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "David Martín",
+                "nombre_colonia": "Sociópatas",
+                "edad": 46,
+                "nivel": 3,
+                "genero": "F",
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
