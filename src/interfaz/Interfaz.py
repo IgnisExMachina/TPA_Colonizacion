@@ -18,6 +18,7 @@ from eventos.Evento import Evento
 
 
 
+
 class Interfaz:
     def __init__(self):
         self._directorio = Path(__file__).resolve().parent.parent
