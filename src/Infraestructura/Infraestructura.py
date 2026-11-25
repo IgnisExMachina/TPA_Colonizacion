@@ -9,6 +9,7 @@ class Infraestructura():
         "Granja": {"Madera": 15, "Agua": 35},
         "Muralla": {"Piedra": 25, "Madera": 10},
         "ExtractorDePlutonio": {"Hierro": 25, "Piedra": 20, "Madera": 15},
+        "NaveEspacial": {"Hierro": 30, "Piedra": 50, "Agua": 100},
         "Castillo": {"Piedra": 50, "Hierro": 30, "Agua": 20},
     }
     MAX_NIVEL = 5
