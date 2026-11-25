@@ -143,10 +143,6 @@ TPA_Colonizacion/
 - **Persistencia:** JSON
 - **Pruebas:** pytest
 
-## Entrega final
-
-En la carpeta [`entrega/`](entrega/) están la memoria (Word y PDF), la presentación (PowerPoint y PDF) y las capturas.
-
 ## Licencia
 
 Este proyecto se distribuye bajo los términos de la licencia detallada en el archivo [LICENSE](LICENSE).
