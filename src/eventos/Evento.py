@@ -31,10 +31,12 @@ class Evento:
         self.tipo = tipo
         self.severidad = severidad
 
+    # ? Estamos buscando en el diccionario y utilizamos .get para que no pete si no encuentra ese evento.
     @property
     def titulo(self) -> str:
         return Evento.Titulos.get((self.tipo, self.severidad), "Evento Desconocido")
 
+    # ? Este método __repr__ es para imprimir strings pero de manera más para nosotros que para el usuario. Sirve para depurar mejor.
     def __repr__(self):
         return f"Evento: {self.titulo}(tipo={self.tipo}, severidad={self.severidad})"
 
