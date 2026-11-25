@@ -4,6 +4,9 @@ import Infraestructura
 from interfaz.VentanaHuerto import VentanaHuerto
 from interfaz import Tema
 
+#TODO: al seleccionar nave espacial existente, se busca un planeta vacio (una colonia que no esté presente)
+#! AÑADIR OPCIONES DE FUNDAR COLONIA
+
 class VentanaColonia:
      REFRESCO_MS = 1000  # los menus se actualizan solos (exploraciones, eficiencias...)
      ALTO_MAX_MENU = 350 # a partir de esta altura (en pixeles) el menu tiene barra de scroll
