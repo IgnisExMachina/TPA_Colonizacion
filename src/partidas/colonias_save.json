@@ -1,5 +1,6 @@
 {
     "A": {
+        "destruida": false,
         "nombre": "Kukusclan",
         "colonos": [
             {
@@ -26,69 +27,70 @@
         "infraestructuras": [
             {
                 "tipo": "Granja",
-                "eficiencia": 60,
+                "eficiencia": 50,
                 "nivel": 2,
                 "__clase__": "Granja"
             },
             {
                 "tipo": "Aserradero",
-                "eficiencia": 60,
+                "eficiencia": 50,
                 "nivel": 5,
                 "__clase__": "Aserradero"
             },
             {
                 "tipo": "Huerto",
-                "eficiencia": 70,
+                "eficiencia": 60,
                 "plantas": [
-                    1,
-                    1,
-                    1,
-                    1,
-                    1,
-                    1
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
                 ],
                 "nivel": 5,
                 "__clase__": "Huerto"
             },
             {
                 "tipo": "Pozo",
-                "eficiencia": 70,
+                "eficiencia": 60,
                 "nivel": 2,
                 "__clase__": "Pozo"
             },
             {
                 "tipo": "ExtractorDePlutonio",
-                "eficiencia": 70,
+                "eficiencia": 60,
                 "nivel": 2,
                 "__clase__": "ExtractorDePlutonio"
             },
             {
                 "tipo": "Mina",
-                "eficiencia": 70,
+                "eficiencia": 60,
                 "nivel": 2,
                 "__clase__": "Mina"
             },
             {
                 "tipo": "Huerto",
-                "eficiencia": 70,
+                "eficiencia": 60,
                 "nivel": 1,
                 "plantas": [],
                 "__clase__": "Huerto"
             }
         ],
         "recursos": {
-            "Madera": 318,
-            "Piedra": 49,
-            "Agua": 67,
-            "Hierro": 61,
-            "Comida": 199.0,
-            "Plutonio": 39,
-            "Semillas": 2,
+            "Madera": 346,
+            "Piedra": 60,
+            "Agua": 83,
+            "Hierro": 72,
+            "Comida": 204.0,
+            "Plutonio": 41,
+            "Semillas": 0,
             "Plantas": 0
         },
         "__clase__": "Colonia"
     },
     "B": {
+        "destruida": false,
         "nombre": "La sociedad de la nieve",
         "colonos": [
             {
@@ -245,9 +247,9 @@
         "infraestructuras": [],
         "recursos": {
             "Madera": 0,
-            "Piedra": 25,
-            "Agua": 10,
-            "Hierro": 5,
+            "Piedra": 24,
+            "Agua": 9,
+            "Hierro": 4,
             "Comida": 0,
             "Plutonio": 0,
             "Semillas": 0,
@@ -256,6 +258,7 @@
         "__clase__": "Colonia"
     },
     "C": {
+        "destruida": false,
         "nombre": "kepler4521",
         "colonos": [
             {
@@ -342,11 +345,11 @@
             }
         ],
         "recursos": {
-            "Madera": 129,
-            "Piedra": 73,
-            "Agua": 232,
-            "Hierro": 77,
-            "Comida": 49,
+            "Madera": 126,
+            "Piedra": 70,
+            "Agua": 229,
+            "Hierro": 74,
+            "Comida": 46,
             "Plutonio": 0,
             "Semillas": 0,
             "Plantas": 0
