@@ -2,7 +2,7 @@ import json
 import logging
 from pathlib import Path
 
-# Ruta del guardado relativa a este archivo, para que funcione desde cualquier carpeta
+# TODO: Ruta del guardado relativa a este archivo, para que funcione desde cualquier carpeta
 RUTA_GUARDADO = Path(__file__).resolve().parent / "partidas" / "colonias_save.json"
 
 from Colonia import Colonia
@@ -52,7 +52,7 @@ class GestorPersistencia:
         if hasattr(obj, "__dict__"):
             datos = {}
             for clave, valor in obj.__dict__.items():
-                #Limpiamos nombres internos si empiezan por _ para guardarlos limpios en el JSON
+                # ? Limpiamos nombres internos si empiezan por _ para guardarlos limpios en el JSON
                 nombre_limpio = clave[1:] if clave.startswith("_") and not clave.startswith("__") else clave
                 
                 if nombre_limpio.startswith(("eventos", "timer", "stream", "gestor", "thread", "active")):
@@ -77,19 +77,19 @@ class GestorPersistencia:
                 if clase_python is None:
                     raise ValueError(f"Clase desconocida en el guardado: {nombre_clase}")
 
-                # Creamos la instancia vacía
+                # ? Creamos la instancia vacía
                 instancia = clase_python.__new__(clase_python)
 
                 if hasattr(instancia, "inicializar_runtime"):
                     instancia.inicializar_runtime()
                                         
-                # Asignamos los atributos usando setattr para que dispare los setters de las properties
+                # ? Asignamos los atributos usando setattr para que dispare los setters de las properties
                 for k, v in datos_copia.items():
                     valor_reconstruido = self._desde_diccionario(v)
                     try:
                         setattr(instancia, k, valor_reconstruido)
                     except AttributeError:
-                        # Fallback por seguridad si alguna propiedad fuera de solo lectura
+                        # ? Fallback por seguridad si alguna propiedad fuera de solo lectura
                         instancia.__dict__[k] = valor_reconstruido
 
                 return instancia

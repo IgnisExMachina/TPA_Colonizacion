@@ -9,7 +9,8 @@ import queue
 import random
 
 class Colonia:
-    destruida = False  # True tras un meteorito: el planeta queda libre (valor de clase para partidas antiguas)
+    destruida = False  # ? True tras un meteorito: el planeta queda libre (valor de clase para partidas antiguas)
+    abandonada = False  # ? True si se quedo sin colonos ni infraestructuras: la colonia desaparece
     RECURSOS_BASE = {"Madera": 50, "Piedra": 50, "Agua": 50, "Hierro": 20, "Comida": 20, "Plutonio": 0, "Semillas": 2, "Plantas": 0}
     def __init__(self, nombre: str = "NOMBRE", colonos: list = None, recursos: dict = None, infraestructuras: list = None):
         self.nombre = nombre
@@ -39,7 +40,7 @@ class Colonia:
         
         self._thread = None
         self._active = False
-        self.destruida = False
+        # ? Aqui no se toca 'destruida': esto tambien se llama al cargar partida y las colonias muertas resucitarian
 
     def agregarColono(self, colono: Colono):
         self.colonos.append(colono)
@@ -110,7 +111,7 @@ class Colonia:
             print(infraestructura.tipo)
             print(infraestructura.eficiencia)
 
-    @property #getter
+    @property 
     def nombre(self):
         return self._nombre
 
@@ -133,8 +134,8 @@ class Colonia:
             try:
                 self._aplicar_evento(evento)
             except Exception as e:
-                # Un fallo en un evento no puede dejar a la colonia sin eventos para siempre
-                # A stderr: se ve en la terminal pero no en el registro de la app
+                # ? Un fallo en un evento no puede dejar a la colonia sin eventos para siempre
+                # ? A stderr: se ve en la terminal pero no en el registro de la app
                 print(f"Error procesando el evento {evento} en {self.nombre}: {e!r}", file=sys.stderr)
 
     def _aplicar_evento(self, evento):
@@ -181,6 +182,18 @@ class Colonia:
             infraestructura.aplicar_efecto(self)
         for colono in list(self.colonos):
             colono.avanzar_exploracion(self)
+        self.comprobar_abandono()
+
+    def comprobar_abandono(self) -> bool:
+        """Si no quedan colonos ni infraestructuras la colonia desaparece y su planeta queda libre.
+        Los colonos que estan explorando siguen en self.colonos, asi que mientras haya alguno la colonia sigue viva."""
+        if self.destruida or self.colonos or self.infraestructuras:
+            return False
+        print(f"La colonia {self.nombre} ha sido abandonada: no quedan colonos ni infraestructuras. La colonia desaparece.")
+        self.abandonada = True
+        self.destruida = True  # ? el resto del juego (mapa, nave...) ya trata 'destruida' como planeta libre
+        self.detener_gestion()
+        return True
 
     def iniciar_gestion(self):
         if self._thread is None or not self._thread.is_alive():

@@ -90,42 +90,40 @@
         ],
         "infraestructuras": [
             {
-                "tipo": "Huerto",
-                "eficiencia": 0,
+                "tipo": "Aserradero",
+                "eficiencia": 80,
                 "nivel": 5,
-                "plantas": [],
-                "__clase__": "Huerto"
+                "__clase__": "Aserradero"
             },
             {
-                "tipo": "ExtractorDePlutonio",
+                "tipo": "Granja",
                 "eficiencia": 10,
-                "nivel": 5,
-                "__clase__": "ExtractorDePlutonio"
+                "nivel": 1,
+                "__clase__": "Granja"
+            },
+            {
+                "tipo": "Pozo",
+                "eficiencia": 12,
+                "nivel": 1,
+                "__clase__": "Pozo"
             }
         ],
         "recursos": {
-            "Madera": 1825,
-            "Piedra": 4000,
-            "Agua": 3260,
-            "Hierro": 1305,
-            "Comida": 1495,
-            "Plutonio": 2445.0,
-            "Semillas": 0,
-            "Plantas": 19934.999999999996
+            "Madera": 102,
+            "Piedra": 9,
+            "Agua": 41,
+            "Hierro": 19,
+            "Comida": 29,
+            "Plutonio": 0,
+            "Semillas": 5,
+            "Plantas": 0,
+            "Semilla": 3
         },
+        "destruida": false,
         "__clase__": "Colonia"
     },
     "B": {
-        "destruida": true,
-        "nombre": "A",
-        "colonos": [],
-        "infraestructuras": [],
-        "recursos": {},
-        "__clase__": "Colonia"
-    },
-    "C": {
-        "destruida": false,
-        "nombre": "Sociópatas",
+        "nombre": "La sociedad de la nieve",
         "colonos": [
             {
                 "nombre": "Elena",
@@ -133,13 +131,58 @@
                 "edad": 20,
                 "nivel": 6,
                 "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
+                "ocupado": true,
+                "exploracion_restante": 4,
                 "__clase__": "Colono"
             }
         ],
+        "infraestructuras": [
+            {
+                "tipo": "Huerto",
+                "eficiencia": 0,
+                "nivel": 1,
+                "plantas": [
+                    4,
+                    4
+                ],
+                "__clase__": "Huerto"
+            },
+            {
+                "tipo": "Pozo",
+                "eficiencia": 90,
+                "nivel": 2,
+                "__clase__": "Pozo"
+            }
+        ],
+        "recursos": {
+            "Madera": 1,
+            "Piedra": 35,
+            "Agua": 71,
+            "Hierro": 29,
+            "Comida": 19,
+            "Plutonio": 0,
+            "Semillas": 0,
+            "Plantas": 0
+        },
+        "destruida": false,
+        "__clase__": "Colonia"
+    },
+    "C": {
+        "nombre": "Sociópatas",
+        "colonos": [],
         "infraestructuras": [],
-        "recursos": {},
+        "recursos": {
+            "Madera": 50,
+            "Piedra": 50,
+            "Agua": 10,
+            "Hierro": 20,
+            "Comida": 20,
+            "Plutonio": 0,
+            "Semillas": 2,
+            "Plantas": 0
+        },
+        "destruida": true,
+        "abandonada": true,
         "__clase__": "Colonia"
     }
 }
