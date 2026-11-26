@@ -15,7 +15,7 @@ from datetime import datetime
 
 from interfaz import Tema
 
-# Cola compartida entre los redirectores y el panel: (texto, es_error)
+# ?  Cola compartida entre los redirectores y el panel: (texto, es_error)
 _cola_lineas: queue.Queue = queue.Queue()
 
 
@@ -23,14 +23,14 @@ class RedirectorSalida:
     def __init__(self, salida_original, es_error: bool = False):
         self._original = salida_original
         self._es_error = es_error
-        # Cada hilo tiene su propio buffer para que no se mezclen trozos de lineas de distintas colonias
+        # ? Cada hilo tiene su propio buffer para que no se mezclen trozos de lineas de distintas colonias
         self._local = threading.local()
 
     def write(self, texto: str):
         if self._original is not None:
             self._original.write(texto)
         buffer = getattr(self._local, "buffer", "") + texto
-        *lineas, resto = buffer.split("\n")
+        *lineas, resto = buffer.split("\n") # ! Ese * se utiliza para coger el resto de la frase si es que esta va separada por un split o un +
         self._local.buffer = resto
         for linea in lineas:
             _cola_lineas.put((linea, self._es_error))
@@ -59,7 +59,6 @@ class PanelRegistro(tk.Frame):
     FONDO = Tema.PANEL
     COLOR_HORA = Tema.TEXTO_APAGADO
 
-    # (etiqueta, color, palabras clave). Se comprueban en este orden y gana la primera que coincide.
     CATEGORIAS = [
         ("peligro", "#ff6b6b", ["muere", "meteorito", "destruida", "afecta a la infraestructura",
                                 "error", "inoperativa", "traceback", "exception", "[warning]"]),
@@ -71,8 +70,9 @@ class PanelRegistro(tk.Frame):
                                    "añadido", "recursos utilizados", "\t-"]),
         ("info", Tema.TEXTO_SUAVE, ["[info]"]),
     ]
-    COLOR_EVENTO = "#ffb74d"   # lineas tipo "Tormenta!" con el titulo de un evento
-    COLOR_COLONIA = "#90caf9"  # cabecera con el nombre de la colonia antes de cada evento
+
+    COLOR_EVENTO = "#ffb74d"   # ? Nombre del evento antes de explicar que ha pasado
+    COLOR_COLONIA = "#90caf9"  # ? Nombre de la colonia antes imprimir el evento
     COLOR_NORMAL = Tema.TEXTO
 
     def __init__(self, padre, nombres_colonias=None, titulos_eventos=None):
@@ -130,8 +130,8 @@ class PanelRegistro(tk.Frame):
         etiqueta = self._clasificar(linea, es_error)
         if etiqueta == "colonia":
             linea = f"── {linea.strip()} ──"
-
-        # Solo bajamos solos si el usuario ya estaba abajo del todo (si esta leyendo arriba, no le movemos)
+        # ? Control básico para la buena experiencia del usuario
+        # ? Solo bajamos solos si el usuario ya estaba abajo del todo (si esta leyendo arriba, no le movemos)
         estaba_abajo = self.texto.yview()[1] >= 0.999
         self.texto.config(state=tk.NORMAL)
         self.texto.insert(tk.END, datetime.now().strftime("%H:%M:%S "), "hora")
