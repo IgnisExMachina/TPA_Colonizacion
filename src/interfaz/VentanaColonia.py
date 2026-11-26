@@ -6,12 +6,12 @@ from interfaz.VentanaNave import VentanaNave
 from interfaz import Tema
 
 
-#TODO: al seleccionar nave espacial existente, se busca un planeta vacio (una colonia que no esté presente)
-#! AÑADIR OPCIONES DE FUNDAR COLONIA
+# TODO: al seleccionar nave espacial existente, se busca un planeta vacio (una colonia que no esté presente)
+# ! AÑADIR OPCIONES DE FUNDAR COLONIA
 
 class VentanaColonia:
-     REFRESCO_MS = 1000  # los menus se actualizan solos (exploraciones, eficiencias...)
-     ALTO_MAX_MENU = 350 # a partir de esta altura (en pixeles) el menu tiene barra de scroll
+     REFRESCO_MS = 1000  # ? Para que los menús se actualicen constantemente
+     ALTO_MAX_MENU = 350 # ? Par la barra de scroll
 
      def __init__(self, ventana_padre, colonia: Colonia, colonias: dict):
           self.colonia = colonia
@@ -23,56 +23,59 @@ class VentanaColonia:
           self._id_refresco = None
           self._pos_subventana = (0, 0)
         
-          # Creamos la ventana hija
+          # TODO: Creamos la ventana hija
           self.ventana = tk.Toplevel(ventana_padre)
           self.ventana.title("Estado del planeta")
           self.ventana.geometry("400x420")
           self.ventana.configure(bg=Tema.FONDO)
           if not colonia:
-               #NUNCA deberia darse. lo dejo por si acaso
+               # ! NUNCA deberia darse. lo dejo por si acaso
                tk.Label(self.ventana, text="Planeta no ocupado.", font=("Arial", 11, "bold")).pack(pady=10)
           else:
                tk.Label(self.ventana, text=f"Nombre de la colonia: {self.colonia.nombre}", font=("Arial", 11, "bold")).pack(pady=10)
           
                botonVerColonos = tk.Button(self.ventana, text="Ver población actual")
                botonVerColonos.pack(pady=10)
-               # Menu de clic: desde aqui se envia a los colonos de exploracion
+               # ? Enviar a los colonos de exploración para conseguir semillas y recursos
                botonVerColonos.bind("<Button-1>", self.abrir_menu_colonos)
 
                botonVerRecursos = tk.Button(self.ventana, text= "Ver recursos")
                botonVerRecursos.pack(pady=10)
 
+               # ? Hover para ver recursos
                botonVerRecursos.bind("<Enter>", self.mostrarRecursos)
                botonVerRecursos.bind("<Leave>", self.ocultar_subventana)
 
+               # ? Entra en el menú de infraestructuras
                botonVerInfraestructuras = tk.Button (self.ventana, text = "Ver infraestructuras")
                botonVerInfraestructuras.pack(pady=10)
-               # Menu de clic: desde aqui se abre el huerto
+               # ? Menu de infraestructuras
                botonVerInfraestructuras.bind("<Button-1>", self.abrir_menu_infraestructuras)
-
+               # ? Menú para construir infraestructuras
+               # ? Enseña las construcciones que se pueden construir, en las que no tenemos los recursos no nos deja pinchar
                botonMenuInfraestructuras = tk.Button(self.ventana, text = "Menú de construcción")
                botonMenuInfraestructuras.pack(pady=10)
-
                botonMenuInfraestructuras.bind("<Button-1>", self.abrir_menu_construccion)
-               #Mostrar las infraestructuras y sus costes. si se pueden construir, poder hacerlo.
 
-               #tk.Label(self.ventana, text=f"Evento actual: {next(self.colonia._stream)}").pack(pady=10)
+               # ? Al pinchar se destruye la ventana
                tk.Button(self.ventana, text="Cerrar ventana", command=self.ventana.destroy).pack(pady=20)
 
-     # ---------- Subventanas (tooltips y menus) ----------
+     # TODO: SUBVENTANAS
      def mostrar_subventana(self, evento) -> bool:
-          """Crea la subventana junto al raton. Devuelve False si ya habia una abierta."""
+          # ? Crea una subventana y da False si ya hay una abierta. Con esto evitamos que se abran todas
           if self.estoyEnLaVentana is not None and self.estoyEnLaVentana.winfo_exists():
                return False
           self.estoyEnLaVentana = tk.Toplevel(self.ventana)
-          self.estoyEnLaVentana.wm_overrideredirect(True)
+          self.estoyEnLaVentana.wm_overrideredirect(True) # !wm_overrideredirect(true) -> en true nos "pinta" la ventana sin barra de título ni opciones de cerrar, minimizar ni maximizar
           
+
+          # ! x_root ; y_rooty_root -> Posición del ratón
           self._pos_subventana = (evento.x_root + 15, evento.y_root + 15)
           self.estoyEnLaVentana.geometry(f"+{self._pos_subventana[0]}+{self._pos_subventana[1]}")
           return True
 
      def _ajustar_posicion_subventana(self):
-          """Mueve la subventana para que no se salga de la pantalla."""
+          # ? Mueve la subventana para que no se salga de la pantalla.
           sub = self.estoyEnLaVentana
           if sub is None or not sub.winfo_exists():
                return
@@ -84,7 +87,7 @@ class VentanaColonia:
           sub.geometry(f"+{x}+{y}")
 
      def ocultar_subventana(self, evento):
-          # Al quitar el raton solo se cierran los tooltips, los menus se cierran con su boton
+          # ? Al quitar el raton solo se cierran los tooltips, los menus se cierran con su boton
           if self._es_menu:
                return
           self.cerrar_subventana()
@@ -100,7 +103,7 @@ class VentanaColonia:
           self._menu = None
 
      def _raiz(self):
-          # Los refrescos se programan en la ventana principal para que no fallen si se cierra esta
+          # ? Los refrescos se programan en la ventana principal para que no fallen si se cierra esta
           return self.ventana.nametowidget(".")
 
      def _abrir_menu(self, evento, firma, construir):
@@ -111,12 +114,12 @@ class VentanaColonia:
           self.mostrar_subventana(evento)
           self._es_menu = True
           self._menu = (firma, construir)
-          self._firma_menu = object()  # fuerza el primer dibujado
+          self._firma_menu = object()  # * fuerza el primer dibujado
           self._crear_esqueleto_menu()
           self._refrescar_menu()
 
      def _crear_esqueleto_menu(self):
-          """Boton de cerrar fijo abajo y, encima, una zona con scroll donde van los botones del menu."""
+          # ?Boton de cerrar fijo abajo y, encima, una zona con scroll donde van los botones del menu.
           sub = self.estoyEnLaVentana
           tk.Button(sub, text="Cerrar ventana", command=self.cerrar_subventana).pack(side=tk.BOTTOM, pady=5)
 
@@ -181,7 +184,7 @@ class VentanaColonia:
           btn.pack(fill=tk.X, expand=True, pady=1)
           return btn
 
-     # ---------- Poblacion ----------
+     # TODO:  Poblacion 
      def abrir_menu_colonos(self, evento):
           self._abrir_menu(evento, self._firma_colonos, self._construir_menu_colonos)
 
@@ -205,7 +208,7 @@ class VentanaColonia:
                     self._boton_menu(contenedor, texto, lambda c=colono: self.enviar_exploracion(c))
 
      def enviar_exploracion(self, colono):
-          # Sin ventana de aviso: la salida ya se ve en el registro y en el propio menu ("Explorando...")
+          # ? la salida ya se ve en el registro y en el menú ("Explorando...")
           colono.irDeExploracion(self.colonia)
           self._refrescar_ya()
 
@@ -214,8 +217,8 @@ class VentanaColonia:
                self._raiz().after_cancel(self._id_refresco)
           self._refrescar_menu()
 
-     # ---------- Recursos (tooltip) ----------
-     # Color de cada recurso en la tarjeta (los que no esten aqui usan COLOR_RECURSO_DEFECTO)
+     # TODO:  RECURSOS (TOOLTIP)
+     # ? Color de cada recurso en la tarjeta (los que no esten aqui usan COLOR_RECURSO_DEFECTO)
      COLORES_RECURSOS = {
           "Madera": "#b07840",
           "Piedra": "#9e9e9e",
@@ -235,7 +238,7 @@ class VentanaColonia:
 
      @staticmethod
      def _formatear_cantidad(cantidad) -> str:
-          # Algunas infraestructuras suman decimales (10 * eficiencia/100); mostramos enteros si se puede
+          # ? Pasamos la cantidad a int para evitar problemas
           if isinstance(cantidad, float) and not cantidad.is_integer():
                return f"{cantidad:.1f}"
           return str(int(cantidad))
@@ -264,21 +267,21 @@ class VentanaColonia:
                color_texto = Tema.TEXTO_APAGADO if vacio else Tema.TEXTO
                pady = (8 if fila == 1 else 2, 8 if fila == len(recursos) else 2)
 
-               # Punto de color
+               # ? Punto de color
                punto = tk.Canvas(tarjeta, width=12, height=12, bg=self.FONDO_TARJETA, highlightthickness=0)
                punto.create_oval(1, 1, 11, 11, fill=color if not vacio else Tema.TEXTO_APAGADO, outline="")
                punto.grid(row=fila, column=0, padx=(12, 6), pady=pady)
 
-               # Nombre
+               # ? Nombre
                tk.Label(tarjeta, text=tipo, bg=self.FONDO_TARJETA, fg=color_texto, font=("Arial", 10), anchor="w"
                         ).grid(row=fila, column=1, sticky="w", pady=pady)
 
-               # Cantidad alineada a la derecha
+               # ? Cantidad alineada a la derecha
                tk.Label(tarjeta, text=self._formatear_cantidad(cantidad), bg=self.FONDO_TARJETA, fg=color_texto,
                         font=("Arial", 10, "bold"), anchor="e", width=6
                         ).grid(row=fila, column=2, sticky="e", padx=(8, 8), pady=pady)
 
-               # Barra proporcional al recurso del que mas hay
+               # ? Barra de progreso de materiales que tenemos
                barra = tk.Canvas(tarjeta, width=self.ANCHO_BARRA, height=8, bg=self.FONDO_TARJETA, highlightthickness=0)
                barra.create_rectangle(0, 0, self.ANCHO_BARRA, 8, fill=Tema.BARRA_VACIA, outline="")
                relleno = int(self.ANCHO_BARRA * max(cantidad, 0) / maximo)
@@ -288,12 +291,12 @@ class VentanaColonia:
 
           self._ajustar_posicion_subventana()
 
-     # ---------- Infraestructuras ----------
+     # TODO: INFRAESTRUCTURAS
      def abrir_menu_infraestructuras(self, evento):
           self._abrir_menu(evento, self._firma_infraestructuras, self._construir_menu_infraestructuras)
 
      def _firma_infraestructuras(self):
-          # Se redibuja si cambia una infraestructura o los recursos (para activar/desactivar botones)
+          # ? Se redibuja si cambia una infraestructura o los recursos (para activar/desactivar botones)
           infra = tuple((id(i), i.eficiencia, i.nivel) for i in self.colonia.infraestructuras)
           return infra, tuple(sorted(self.colonia.recursos.items()))
 
@@ -380,7 +383,7 @@ class VentanaColonia:
                     if Infraestructura.Infraestructura._hay_recursos(self.colonia.recursos, coste):
                          self._boton_menu(contenedor, texto, lambda item=texto: self.nueva_infraestructura(item))
                     else:
-                         # sin recursos suficientes: desactivado y mas apagado
+                         # ? sin recursos suficientes: desactivado y mas apagado
                          self._boton_menu(contenedor, texto).config(disabledforeground=Tema.TEXTO_APAGADO)
 
      def nueva_infraestructura(self, linea):
