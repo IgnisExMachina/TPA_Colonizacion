@@ -46,7 +46,7 @@ class Interfaz:
                         nombre="Kukusclan", 
                         colonos=[Colono("Alfredo", "Kukusclan", 25, 1, "M")], 
                         recursos={"Madera": 20}, 
-                        infraestructuras= [Infraestructura.Mina(), Infraestructura.Granja(), Infraestructura.Aserradero(), Infraestructura.Huerto()]
+                        infraestructuras= []
                     ),
                 "B": Colonia(
                         nombre="La sociedad de la nieve", 

@@ -90,42 +90,46 @@
         ],
         "infraestructuras": [
             {
-                "tipo": "Huerto",
-                "eficiencia": 0,
-                "nivel": 5,
-                "plantas": [],
-                "__clase__": "Huerto"
+                "tipo": "Mina",
+                "eficiencia": 90,
+                "nivel": 1,
+                "__clase__": "Mina"
             },
             {
-                "tipo": "ExtractorDePlutonio",
-                "eficiencia": 10,
-                "nivel": 5,
-                "__clase__": "ExtractorDePlutonio"
+                "tipo": "Granja",
+                "eficiencia": 90,
+                "nivel": 1,
+                "__clase__": "Granja"
+            },
+            {
+                "tipo": "Aserradero",
+                "eficiencia": 90,
+                "nivel": 1,
+                "__clase__": "Aserradero"
+            },
+            {
+                "tipo": "Huerto",
+                "eficiencia": 90,
+                "nivel": 1,
+                "plantas": [],
+                "__clase__": "Huerto"
             }
         ],
         "recursos": {
-            "Madera": 1825,
-            "Piedra": 4000,
-            "Agua": 3260,
-            "Hierro": 1305,
-            "Comida": 1495,
-            "Plutonio": 2445.0,
+            "Madera": 36,
+            "Piedra": 61,
+            "Agua": 48,
+            "Hierro": 31,
+            "Comida": 27,
+            "Plutonio": 0,
             "Semillas": 0,
-            "Plantas": 19934.999999999996
+            "Plantas": 0
         },
+        "destruida": false,
         "__clase__": "Colonia"
     },
     "B": {
-        "destruida": true,
-        "nombre": "A",
-        "colonos": [],
-        "infraestructuras": [],
-        "recursos": {},
-        "__clase__": "Colonia"
-    },
-    "C": {
-        "destruida": false,
-        "nombre": "Sociópatas",
+        "nombre": "La sociedad de la nieve",
         "colonos": [
             {
                 "nombre": "Elena",
@@ -139,7 +143,34 @@
             }
         ],
         "infraestructuras": [],
-        "recursos": {},
+        "recursos": {
+            "Madera": 2,
+            "Piedra": 50,
+            "Agua": 50,
+            "Hierro": 30,
+            "Comida": 20,
+            "Plutonio": 0,
+            "Semillas": 2,
+            "Plantas": 0
+        },
+        "destruida": false,
+        "__clase__": "Colonia"
+    },
+    "C": {
+        "nombre": "Sociópatas",
+        "colonos": [],
+        "infraestructuras": [],
+        "recursos": {
+            "Madera": 50,
+            "Piedra": 50,
+            "Agua": 10,
+            "Hierro": 20,
+            "Comida": 20,
+            "Plutonio": 0,
+            "Semillas": 2,
+            "Plantas": 0
+        },
+        "destruida": false,
         "__clase__": "Colonia"
     }
 }
