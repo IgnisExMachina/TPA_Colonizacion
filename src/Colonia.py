@@ -190,7 +190,7 @@ class Colonia:
         Los colonos que estan explorando siguen en self.colonos, asi que mientras haya alguno la colonia sigue viva."""
         if self.destruida or self.colonos or self.infraestructuras:
             return False
-        if self.nombre != "-":
+        if not self.noFundada:
             print(f"La colonia {self.nombre} ha sido abandonada: no quedan colonos ni infraestructuras. La colonia desaparece.")
         self.abandonada = True
         self.destruida = True  # ? el resto del juego (mapa, nave...) ya trata 'destruida' como planeta libre

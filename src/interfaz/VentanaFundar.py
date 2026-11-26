@@ -2,7 +2,6 @@ import tkinter as tk
 from Colonia import Colonia
 from Colono import Colono
 
-#todo: necesita dar a elegir entre SOLO las colonias que tengan naves espaciales para fundar la nueva, SOLO si existen colonias
 
 class VentanaFundar():
     def __init__(self, ventanaPadre, coloniasExistentes: dict, key, colonosIniciales = None):
@@ -17,13 +16,13 @@ class VentanaFundar():
 
 
         anterior = coloniasExistentes.get(key)
-        if isinstance(anterior, Colonia) and anterior.abandonada and anterior.nombre != "-":
+        if isinstance(anterior, Colonia) and anterior.abandonada and not anterior.noFundada:
             texto = f"Aquí estaba la colonia {anterior.nombre}, abandonada al quedarse sin colonos ni infraestructuras."
-        elif isinstance(anterior, Colonia) and anterior.destruida and anterior.nombre != "-":
+        elif isinstance(anterior, Colonia) and anterior.destruida and not anterior.noFundada:
             texto = f"Aquí estaba la colonia {anterior.nombre}, destruida por un meteorito."
         elif isinstance(anterior, Colonia) and anterior.noFundada:
             texto = "Este planeta está libre. ¡Funda una colonia!"
-        else:
+        else: # * Probablemente sobra. Puesto por el caso especifico de que se cargue por error un diccionario
             texto = "Este planeta está libre. ¡Funda una colonia!"
         tk.Label(self.ventana, text=texto, wraplength=360, font=("Arial", 10, "bold")
                  ).grid(row=0, column=0, columnspan=2, padx=10, pady=(12, 4))
@@ -91,6 +90,6 @@ class VentanaFundar():
 
     def existen_colonias(self):
         for key in self.coloniasExistentes:
-            if isinstance(self.coloniasExistentes[key], Colonia) and not self.coloniasExistentes[key].noFundada:
+            if isinstance(self.coloniasExistentes[key], Colonia) and not self.coloniasExistentes[key].noFundada and not self.coloniasExistentes[key].destruida:
                 return True
         return False

@@ -53,7 +53,7 @@ class Interfaz:
 
         for key in self.colonias:
             # Las colonias destruidas por un meteorito no reciben eventos: su planeta esta libre
-            if isinstance(self.colonias[key], (Colonia)) and not self.colonias[key].destruida and not self.colonias[key].nombre == "-":
+            if isinstance(self.colonias[key], (Colonia)) and not self.colonias[key].destruida and not self.colonias[key].noFundada:
                 self.colonias[key].iniciar_gestion()
             else:
                 pass

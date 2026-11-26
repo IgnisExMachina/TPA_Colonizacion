@@ -69,6 +69,6 @@ class VentanaNave:
     def encontrar_planetas_vacios(self):
         vacios = {}
         for key in self.colonias:
-            if not self.colonias[key] or self.colonias[key].destruida:
+            if not self.colonias[key] or self.colonias[key].destruida or self.colonias[key].noFundada:
                 vacios[key] = self.colonias[key]
         return vacios
