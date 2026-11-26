@@ -41,6 +41,7 @@
                 "__clase__": "Huerto"
             }
         ],
+        "infraestructuras": [],
         "recursos": {
             "Madera": 20,
             "Piedra": 50,
@@ -136,32 +137,15 @@
                 "__clase__": "Colono"
             }
         ],
-        "infraestructuras": [
-            {
-                "tipo": "Huerto",
-                "eficiencia": 0,
-                "nivel": 1,
-                "plantas": [
-                    4,
-                    4
-                ],
-                "__clase__": "Huerto"
-            },
-            {
-                "tipo": "Pozo",
-                "eficiencia": 90,
-                "nivel": 2,
-                "__clase__": "Pozo"
-            }
-        ],
+        "infraestructuras": [],
         "recursos": {
-            "Madera": 1,
-            "Piedra": 35,
-            "Agua": 71,
-            "Hierro": 29,
-            "Comida": 19,
+            "Madera": 20,
+            "Piedra": 50,
+            "Agua": 50,
+            "Hierro": 30,
+            "Comida": 20,
             "Plutonio": 0,
-            "Semillas": 0,
+            "Semillas": 2,
             "Plantas": 0
         },
         "destruida": false,
@@ -181,8 +165,7 @@
             "Semillas": 2,
             "Plantas": 0
         },
-        "destruida": true,
-        "abandonada": true,
+        "destruida": false,
         "__clase__": "Colonia"
     }
 }
