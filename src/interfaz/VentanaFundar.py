@@ -17,18 +17,10 @@ class VentanaFundar():
 
 
         anterior = coloniasExistentes.get(key)
-<<<<<<< HEAD
         if isinstance(anterior, Colonia) and anterior.abandonada:
             texto = f"Aquí estaba la colonia {anterior.nombre}, abandonada al quedarse sin colonos ni infraestructuras."
         elif isinstance(anterior, Colonia) and anterior.destruida:
-=======
-        if isinstance(anterior, Colonia) and anterior.abandonada and anterior.nombre != "-":
-            texto = f"Aquí estaba la colonia {anterior.nombre}, abandonada al quedarse sin colonos ni infraestructuras."
-        elif isinstance(anterior, Colonia) and anterior.destruida and anterior.nombre != "-":
->>>>>>> 0255c801067af07317fa1a43c541eebfd1a934ca
             texto = f"Aquí estaba la colonia {anterior.nombre}, destruida por un meteorito."
-        elif isinstance(anterior, Colonia) and anterior.noFundada:
-            texto = "Este planeta está libre. ¡Funda una colonia!"
         else:
             texto = "Este planeta está libre. ¡Funda una colonia!"
         tk.Label(self.ventana, text=texto, wraplength=360, font=("Arial", 10, "bold")
@@ -97,6 +89,6 @@ class VentanaFundar():
 
     def existen_colonias(self):
         for key in self.coloniasExistentes:
-            if isinstance(self.coloniasExistentes[key], Colonia) and not self.coloniasExistentes[key].noFundada:
+            if isinstance(self.coloniasExistentes[key], Colonia):
                 return True
         return False
