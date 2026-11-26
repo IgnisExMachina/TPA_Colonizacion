@@ -1,16 +1,6 @@
 {
     "A": {
-<<<<<<< HEAD
-<<<<<<< HEAD
         "nombre": "Kukusclan",
-=======
-        "destruida": false,
-        "nombre": "qoqoqoqo",
->>>>>>> refs/rewritten/main-3
-=======
-        "destruida": false,
-        "nombre": "qoqoqoqo",
->>>>>>> refs/rewritten/main-14
         "colonos": [
             {
                 "nombre": "Alfredo",
@@ -21,38 +11,9 @@
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Pilar Rodríguez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 53,
-                "nivel": 5,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Javier Díaz",
-                "nombre_colonia": "Kukusclan",
-                "edad": 68,
-                "nivel": 10,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "José Gutiérrez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 30,
-                "nivel": 1,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "plantas": [],
-                "__clase__": "Huerto"
             }
         ],
+        "infraestructuras": [],
         "recursos": {
             "Madera": 20,
             "Piedra": 50,
@@ -69,278 +30,11 @@
     "B": {
         "nombre": "La sociedad de la nieve",
         "colonos": [
-=======
-=======
->>>>>>> refs/rewritten/main-14
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-<<<<<<< HEAD
->>>>>>> refs/rewritten/main-3
-=======
->>>>>>> refs/rewritten/main-14
             {
-                "nombre": "José Luis Álvarez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 37,
-                "nivel": 6,
-                "genero": "M",
-                "ocupado": true,
-                "exploracion_restante": 2,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Daniel Martínez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 18,
-                "nivel": 9,
-                "genero": "M",
-                "ocupado": true,
-                "exploracion_restante": 2,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Alejandro Martínez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 56,
-                "nivel": 7,
-                "genero": "F",
-                "ocupado": true,
-                "exploracion_restante": 3,
-                "__clase__": "Colono"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refs/rewritten/main-14
-            },
-            {
-                "nombre": "José Luis Jiménez",
-                "nombre_colonia": "Kukusclan",
-                "edad": 34,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": true,
-                "exploracion_restante": 3,
-                "__clase__": "Colono"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refs/rewritten/main-14
-            },
-            {
-                "nombre": "Javier Romero",
-                "nombre_colonia": "Kukusclan",
-                "edad": 79,
-                "nivel": 8,
-                "genero": "M",
-                "ocupado": true,
-                "exploracion_restante": 3,
-                "__clase__": "Colono"
-<<<<<<< HEAD
-=======
->>>>>>> refs/rewritten/fix-tripulacion-de-nave-a-colonos-de-nueva-colonia-feature-no-se-pueden-crear-colonias-adicionales-sin-naves-solo-la-primera-
-=======
->>>>>>> refs/rewritten/main-14
-            }
-        ],
-        "infraestructuras": [
-            {
-                "tipo": "Aserradero",
-                "eficiencia": 80,
-                "nivel": 5,
-                "__clase__": "Aserradero"
-            },
-            {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refs/rewritten/main-14
-                "tipo": "ExtractorDePlutonio",
-                "eficiencia": 10,
+                "nombre": "Rubén",
+                "nombre_colonia": "La sociedad de la nieve",
+                "edad": 30,
                 "nivel": 1,
-                "__clase__": "Granja"
-            },
-            {
-                "tipo": "Pozo",
-                "eficiencia": 12,
-                "nivel": 1,
-                "__clase__": "Pozo"
-            }
-        ],
-        "recursos": {
-            "Madera": 1825,
-            "Piedra": 4000,
-            "Agua": 3260,
-            "Hierro": 1305,
-            "Comida": 1495,
-            "Plutonio": 2445.0,
-            "Semillas": 0,
-            "Plantas": 19934.999999999996
-<<<<<<< HEAD
-=======
-                "tipo": "NaveEspacial",
-                "eficiencia": 0,
-                "nivel": 5,
-                "modificador": 0.3333333333333333,
-                "tripulacion": [
-                    {
-                        "nombre": "Alfredo",
-                        "nombre_colonia": "Kukusclan",
-                        "edad": 25,
-                        "nivel": 1,
-                        "genero": "M",
-                        "ocupado": false,
-                        "exploracion_restante": 0,
-                        "__clase__": "Colono"
-                    },
-                    {
-                        "nombre": "Alfredo",
-                        "nombre_colonia": "Kukusclan",
-                        "edad": 25,
-                        "nivel": 1,
-                        "genero": "M",
-                        "ocupado": false,
-                        "exploracion_restante": 0,
-                        "__clase__": "Colono"
-                    },
-                    {
-                        "nombre": "Manuel Rodríguez",
-                        "nombre_colonia": "qoqoqoqo",
-                        "edad": 42,
-                        "nivel": 10,
-                        "genero": "M",
-                        "ocupado": false,
-                        "exploracion_restante": 0,
-                        "__clase__": "Colono"
-                    },
-                    {
-                        "nombre": "Alfredo",
-                        "nombre_colonia": "Kukusclan",
-                        "edad": 25,
-                        "nivel": 1,
-                        "genero": "M",
-                        "ocupado": false,
-                        "exploracion_restante": 0,
-                        "__clase__": "Colono"
-                    },
-                    {
-                        "nombre": "Alfredo",
-                        "nombre_colonia": "Kukusclan",
-                        "edad": 25,
-                        "nivel": 1,
-                        "genero": "M",
-                        "ocupado": false,
-                        "exploracion_restante": 0,
-                        "__clase__": "Colono"
-                    }
-                ],
-                "requisitos": {
-                    "Plantas": 93.33333333333334,
-                    "Plutonio": 110.0
-                },
-                "__clase__": "NaveEspacial"
-            }
-        ],
-        "recursos": {
-            "Madera": 1818,
-            "Piedra": 4068,
-            "Agua": 3403,
-            "Hierro": 1343,
-            "Comida": 1488,
-            "Plutonio": 2478.0,
-            "Semillas": 0,
-            "Plantas": 19954.666666666664
->>>>>>> refs/rewritten/fix-tripulacion-de-nave-a-colonos-de-nueva-colonia-feature-no-se-pueden-crear-colonias-adicionales-sin-naves-solo-la-primera-
-=======
->>>>>>> refs/rewritten/main-14
-        },
-        "destruida": false,
-        "__clase__": "Colonia"
-    },
-    "B": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refs/rewritten/main-14
-        "destruida": true,
-        "nombre": "A",
-        "colonos": [],
-        "infraestructuras": [],
-        "recursos": {},
-<<<<<<< HEAD
-=======
-        "destruida": false,
-        "nombre": "Epstein",
-        "colonos": [
-            [
-                {
-                    "nombre": "Alfredo",
-                    "nombre_colonia": "Kukusclan",
-                    "edad": 25,
-                    "nivel": 1,
-                    "genero": "M",
-                    "ocupado": false,
-                    "exploracion_restante": 0,
-                    "__clase__": "Colono"
-                },
-                {
-                    "nombre": "Alfredo",
-                    "nombre_colonia": "Kukusclan",
-                    "edad": 25,
-                    "nivel": 1,
-                    "genero": "M",
-                    "ocupado": false,
-                    "exploracion_restante": 0,
-                    "__clase__": "Colono"
-                },
-                {
-                    "nombre": "Manuel Rodríguez",
-                    "nombre_colonia": "qoqoqoqo",
-                    "edad": 42,
-                    "nivel": 10,
-                    "genero": "M",
-                    "ocupado": false,
-                    "exploracion_restante": 0,
-                    "__clase__": "Colono"
-                },
-                {
-                    "nombre": "Alfredo",
-                    "nombre_colonia": "Kukusclan",
-                    "edad": 25,
-                    "nivel": 1,
-                    "genero": "M",
-                    "ocupado": false,
-                    "exploracion_restante": 0,
-                    "__clase__": "Colono"
-                },
-                {
-                    "nombre": "Alfredo",
-                    "nombre_colonia": "Kukusclan",
-                    "edad": 25,
-                    "nivel": 1,
-                    "genero": "M",
-                    "ocupado": false,
-                    "exploracion_restante": 0,
-                    "__clase__": "Colono"
-                }
-            ],
-            {
-                "nombre": "José Rodríguez",
-                "nombre_colonia": "Epstein",
-                "edad": 39,
-                "nivel": 3,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "David Rodríguez",
-                "nombre_colonia": "Epstein",
-                "edad": 23,
-                "nivel": 9,
                 "genero": "M",
                 "ocupado": false,
                 "exploracion_restante": 0,
@@ -349,106 +43,30 @@
         ],
         "infraestructuras": [],
         "recursos": {
-            "Madera": 47,
-            "Piedra": 47,
-            "Agua": 47,
-            "Hierro": 17,
-            "Comida": 17,
+            "Madera": 20,
+            "Piedra": 50,
+            "Agua": 50,
+            "Hierro": 30,
+            "Comida": 20,
             "Plutonio": 0,
-            "Semillas": 0,
+            "Semillas": 2,
             "Plantas": 0
         },
->>>>>>> refs/rewritten/fix-tripulacion-de-nave-a-colonos-de-nueva-colonia-feature-no-se-pueden-crear-colonias-adicionales-sin-naves-solo-la-primera-
-=======
->>>>>>> refs/rewritten/main-14
+        "destruida": false,
         "__clase__": "Colonia"
     },
     "C": {
-        "destruida": false,
         "nombre": "Sociópatas",
         "colonos": [
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 "nombre": "Elena",
-=======
-                "nombre": "Jesús Ruiz",
->>>>>>> refs/rewritten/main-3
-=======
-                "nombre": "Jesús Ruiz",
->>>>>>> refs/rewritten/main-14
                 "nombre_colonia": "Sociópatas",
-                "edad": 20,
-                "nivel": 6,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-<<<<<<< HEAD
-=======
-            },
-            {
-                "nombre": "María Pilar Muñoz",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 47,
-                "nivel": 9,
-                "genero": "F",
-                "ocupado": true,
-                "exploracion_restante": 4,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Laura Moreno",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 78,
-                "nivel": 7,
-                "genero": "M",
-                "ocupado": true,
-                "exploracion_restante": 4,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Ana María Pérez",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 39,
-                "nivel": 8,
-                "genero": "F",
-                "ocupado": true,
-                "exploracion_restante": 4,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "María Ruiz",
-                "nombre_colonia": "La sociedad de la nieve",
-                "edad": 79,
-                "nivel": 9,
-                "genero": "F",
-                "ocupado": true,
-                "exploracion_restante": 4,
-                "__clase__": "Colono"
-            }
-        ],
-        "infraestructuras": [
-            {
-                "tipo": "Huerto",
-                "eficiencia": 0,
+                "edad": 22,
                 "nivel": 1,
-                "plantas": [
-                    4,
-                    4
-                ],
-                "__clase__": "Huerto"
-            },
-            {
-                "nombre": "David Martín",
-                "nombre_colonia": "Sociópatas",
-                "edad": 46,
-                "nivel": 3,
                 "genero": "F",
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
->>>>>>> refs/rewritten/main-14
             }
         ],
         "infraestructuras": [],
@@ -462,8 +80,7 @@
             "Semillas": 2,
             "Plantas": 0
         },
-        "destruida": true,
-        "abandonada": true,
+        "destruida": false,
         "__clase__": "Colonia"
     }
 }
