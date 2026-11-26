@@ -27,9 +27,9 @@ class Interfaz:
             coloniasVaciasPorDefecto[i].noFundada = True
         self._directorio = Path(__file__).resolve().parent.parent
         self.ventana = tk.Tk()
-        Tema.aplicar_tema(self.ventana)  # todas las ventanas en azul oscuro
+        Tema.aplicar_tema(self.ventana)  # * todas las ventanas en azul oscuro
         self.ventana.title("Colonización de planetas")
-        # Tamaño inicial segun la pantalla: como mucho 1000x1000, pero que quepa en portatiles pequeños
+        # ? Tamaño inicial segun la pantalla: como mucho 1000x1000, pero que quepa en portatiles pequeños
         lado = int(min(1000, self.ventana.winfo_screenwidth() * 0.9, self.ventana.winfo_screenheight() * 0.85))
         x = (self.ventana.winfo_screenwidth() - lado) // 2
         y = max(0, (self.ventana.winfo_screenheight() - lado) // 2 - 30)

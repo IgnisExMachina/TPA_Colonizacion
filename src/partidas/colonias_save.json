@@ -1,0 +1,91 @@
+{
+    "A": {
+        "nombre": "Kukusclan",
+        "colonos": [],
+        "infraestructuras": [
+            {
+                "tipo": "Aserradero",
+                "eficiencia": 0,
+                "nivel": 5,
+                "__clase__": "Aserradero"
+            },
+            {
+                "tipo": "Mina",
+                "eficiencia": 0,
+                "nivel": 3,
+                "__clase__": "Mina"
+            },
+            {
+                "tipo": "Granja",
+                "eficiencia": 0,
+                "nivel": 2,
+                "__clase__": "Granja"
+            },
+            {
+                "tipo": "ExtractorDePlutonio",
+                "eficiencia": 0,
+                "nivel": 2,
+                "__clase__": "ExtractorDePlutonio"
+            },
+            {
+                "tipo": "Huerto",
+                "eficiencia": 0,
+                "nivel": 1,
+                "plantas": [
+                    9,
+                    9
+                ],
+                "__clase__": "Huerto"
+            }
+        ],
+        "recursos": {
+            "Madera": 264,
+            "Piedra": 113,
+            "Agua": 139,
+            "Hierro": 157,
+            "Comida": 86,
+            "Plutonio": 13,
+            "Semillas": 4,
+            "Plantas": 0,
+            "Semilla": 0
+        },
+        "destruida": false,
+        "__clase__": "Colonia"
+    },
+    "B": {
+        "nombre": "-",
+        "colonos": [],
+        "infraestructuras": [],
+        "recursos": {
+            "Madera": 50,
+            "Piedra": 50,
+            "Agua": 50,
+            "Hierro": 20,
+            "Comida": 20,
+            "Plutonio": 0,
+            "Semillas": 2,
+            "Plantas": 0
+        },
+        "destruida": false,
+        "noFundada": true,
+        "__clase__": "Colonia"
+    },
+    "C": {
+        "nombre": "-",
+        "colonos": [],
+        "infraestructuras": [],
+        "recursos": {
+            "Madera": 50,
+            "Piedra": 50,
+            "Agua": 50,
+            "Hierro": 20,
+            "Comida": 20,
+            "Plutonio": 0,
+            "Semillas": 2,
+            "Plantas": 0
+        },
+        "destruida": false,
+        "noFundada": true,
+        "__clase__": "Colonia"
+    }
+}
