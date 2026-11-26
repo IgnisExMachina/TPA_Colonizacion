@@ -17,7 +17,9 @@ class VentanaFundar():
 
 
         anterior = coloniasExistentes.get(key)
-        if isinstance(anterior, Colonia) and anterior.destruida:
+        if isinstance(anterior, Colonia) and anterior.abandonada:
+            texto = f"Aquí estaba la colonia {anterior.nombre}, abandonada al quedarse sin colonos ni infraestructuras."
+        elif isinstance(anterior, Colonia) and anterior.destruida:
             texto = f"Aquí estaba la colonia {anterior.nombre}, destruida por un meteorito."
         else:
             texto = "Este planeta está libre. ¡Funda una colonia!"

@@ -51,7 +51,7 @@ class Interfaz:
                 "B": Colonia(
                         nombre="La sociedad de la nieve", 
                         colonos=[Colono("Rubén", "La sociedad de la nieve", 30, 1, "M")], 
-                        recursos={"Hierro": 30, "Madera": 2}, 
+                        recursos={"Hierro": 30, "Madera": 20}, 
                         infraestructuras=None
                     ),
                 "C": Colonia(
