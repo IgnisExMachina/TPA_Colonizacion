@@ -23,29 +23,29 @@
                 "__clase__": "Colono"
             },
             {
-                "nombre": "Alfredo",
+                "nombre": "María Pilar Rodríguez",
                 "nombre_colonia": "Kukusclan",
-                "edad": 25,
-                "nivel": 1,
+                "edad": 53,
+                "nivel": 5,
+                "genero": "F",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Javier Díaz",
+                "nombre_colonia": "Kukusclan",
+                "edad": 68,
+                "nivel": 10,
                 "genero": "M",
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
             },
             {
-                "nombre": "Alfredo",
+                "nombre": "José Gutiérrez",
                 "nombre_colonia": "Kukusclan",
-                "edad": 25,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Alfredo",
-                "nombre_colonia": "Kukusclan",
-                "edad": 25,
+                "edad": 30,
                 "nivel": 1,
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -82,23 +82,33 @@
 =======
 >>>>>>> refs/rewritten/main-14
             {
-                "nombre": "Alfredo",
+                "nombre": "José Luis Álvarez",
                 "nombre_colonia": "Kukusclan",
-                "edad": 25,
-                "nivel": 1,
+                "edad": 37,
+                "nivel": 6,
                 "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
+                "ocupado": true,
+                "exploracion_restante": 2,
                 "__clase__": "Colono"
             },
             {
-                "nombre": "Alfredo",
+                "nombre": "Daniel Martínez",
                 "nombre_colonia": "Kukusclan",
-                "edad": 25,
-                "nivel": 1,
+                "edad": 18,
+                "nivel": 9,
                 "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
+                "ocupado": true,
+                "exploracion_restante": 2,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Alejandro Martínez",
+                "nombre_colonia": "Kukusclan",
+                "edad": 56,
+                "nivel": 7,
+                "genero": "F",
+                "ocupado": true,
+                "exploracion_restante": 3,
                 "__clase__": "Colono"
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -106,13 +116,27 @@
 >>>>>>> refs/rewritten/main-14
             },
             {
-                "nombre": "Manuel Rodríguez",
-                "nombre_colonia": "qoqoqoqo",
-                "edad": 42,
-                "nivel": 10,
+                "nombre": "José Luis Jiménez",
+                "nombre_colonia": "Kukusclan",
+                "edad": 34,
+                "nivel": 8,
+                "genero": "F",
+                "ocupado": true,
+                "exploracion_restante": 3,
+                "__clase__": "Colono"
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> refs/rewritten/main-14
+            },
+            {
+                "nombre": "Javier Romero",
+                "nombre_colonia": "Kukusclan",
+                "edad": 79,
+                "nivel": 8,
                 "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
+                "ocupado": true,
+                "exploracion_restante": 3,
                 "__clase__": "Colono"
 <<<<<<< HEAD
 =======
@@ -123,11 +147,10 @@
         ],
         "infraestructuras": [
             {
-                "tipo": "Huerto",
-                "eficiencia": 0,
+                "tipo": "Aserradero",
+                "eficiencia": 80,
                 "nivel": 5,
-                "plantas": [],
-                "__clase__": "Huerto"
+                "__clase__": "Aserradero"
             },
             {
 <<<<<<< HEAD
@@ -136,8 +159,14 @@
 >>>>>>> refs/rewritten/main-14
                 "tipo": "ExtractorDePlutonio",
                 "eficiencia": 10,
-                "nivel": 5,
-                "__clase__": "ExtractorDePlutonio"
+                "nivel": 1,
+                "__clase__": "Granja"
+            },
+            {
+                "tipo": "Pozo",
+                "eficiencia": 12,
+                "nivel": 1,
+                "__clase__": "Pozo"
             }
         ],
         "recursos": {
@@ -227,6 +256,7 @@
 =======
 >>>>>>> refs/rewritten/main-14
         },
+        "destruida": false,
         "__clase__": "Colonia"
     },
     "B": {
@@ -358,54 +388,56 @@
 =======
             },
             {
-                "nombre": "José Luis Moreno",
-                "nombre_colonia": "Sociópatas",
-                "edad": 79,
-                "nivel": 8,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Antonio Jiménez",
-                "nombre_colonia": "Sociópatas",
-                "edad": 31,
-                "nivel": 1,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Manuel Fernández",
-                "nombre_colonia": "Sociópatas",
-                "edad": 27,
-                "nivel": 10,
-                "genero": "F",
-                "ocupado": false,
-                "exploracion_restante": 0,
-                "__clase__": "Colono"
-            },
-            {
-                "nombre": "Javier Martín",
-                "nombre_colonia": "Sociópatas",
-                "edad": 67,
+                "nombre": "María Pilar Muñoz",
+                "nombre_colonia": "La sociedad de la nieve",
+                "edad": 47,
                 "nivel": 9,
-                "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
+                "genero": "F",
+                "ocupado": true,
+                "exploracion_restante": 4,
                 "__clase__": "Colono"
             },
             {
-                "nombre": "José Luis Muñoz",
-                "nombre_colonia": "Sociópatas",
-                "edad": 58,
-                "nivel": 5,
+                "nombre": "Laura Moreno",
+                "nombre_colonia": "La sociedad de la nieve",
+                "edad": 78,
+                "nivel": 7,
                 "genero": "M",
-                "ocupado": false,
-                "exploracion_restante": 0,
+                "ocupado": true,
+                "exploracion_restante": 4,
                 "__clase__": "Colono"
+            },
+            {
+                "nombre": "Ana María Pérez",
+                "nombre_colonia": "La sociedad de la nieve",
+                "edad": 39,
+                "nivel": 8,
+                "genero": "F",
+                "ocupado": true,
+                "exploracion_restante": 4,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "María Ruiz",
+                "nombre_colonia": "La sociedad de la nieve",
+                "edad": 79,
+                "nivel": 9,
+                "genero": "F",
+                "ocupado": true,
+                "exploracion_restante": 4,
+                "__clase__": "Colono"
+            }
+        ],
+        "infraestructuras": [
+            {
+                "tipo": "Huerto",
+                "eficiencia": 0,
+                "nivel": 1,
+                "plantas": [
+                    4,
+                    4
+                ],
+                "__clase__": "Huerto"
             },
             {
                 "nombre": "David Martín",
@@ -420,7 +452,18 @@
             }
         ],
         "infraestructuras": [],
-        "recursos": {},
+        "recursos": {
+            "Madera": 50,
+            "Piedra": 50,
+            "Agua": 10,
+            "Hierro": 20,
+            "Comida": 20,
+            "Plutonio": 0,
+            "Semillas": 2,
+            "Plantas": 0
+        },
+        "destruida": true,
+        "abandonada": true,
         "__clase__": "Colonia"
     }
 }
