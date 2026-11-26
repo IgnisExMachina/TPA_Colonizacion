@@ -9,7 +9,7 @@ import queue
 import random
 
 class Colonia:
-    destruida = False  # True tras un meteorito: el planeta queda libre (valor de clase para partidas antiguas)
+    destruida = False  # ? True tras un meteorito: el planeta queda libre (valor de clase para partidas antiguas)
     RECURSOS_BASE = {"Madera": 50, "Piedra": 50, "Agua": 50, "Hierro": 20, "Comida": 20, "Plutonio": 0, "Semillas": 2, "Plantas": 0}
     def __init__(self, nombre: str = "NOMBRE", colonos: list = None, recursos: dict = None, infraestructuras: list = None):
         self.nombre = nombre
@@ -110,7 +110,7 @@ class Colonia:
             print(infraestructura.tipo)
             print(infraestructura.eficiencia)
 
-    @property #getter
+    @property 
     def nombre(self):
         return self._nombre
 
@@ -133,8 +133,8 @@ class Colonia:
             try:
                 self._aplicar_evento(evento)
             except Exception as e:
-                # Un fallo en un evento no puede dejar a la colonia sin eventos para siempre
-                # A stderr: se ve en la terminal pero no en el registro de la app
+                # ? Un fallo en un evento no puede dejar a la colonia sin eventos para siempre
+                # ? A stderr: se ve en la terminal pero no en el registro de la app
                 print(f"Error procesando el evento {evento} en {self.nombre}: {e!r}", file=sys.stderr)
 
     def _aplicar_evento(self, evento):

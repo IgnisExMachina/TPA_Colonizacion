@@ -21,7 +21,7 @@ class Colono():
         self.nivel = nivel
         self.genero = genero
         self.ocupado = False
-        self.exploracion_restante = 0  # eventos que faltan para volver de explorar (0 = en la colonia)
+        self.exploracion_restante = 0  # ? eventos que faltan para volver de explorar (0 = en la colonia)
 
     @property
     def nombre(self):
@@ -102,7 +102,7 @@ class Colono():
         return True
 
     def esta_explorando(self) -> bool:
-        # getattr por si el colono viene de una partida guardada antes de existir este atributo
+        # ? getattr por si el colono viene de una partida guardada antes de existir este atributo
         return getattr(self, "exploracion_restante", 0) > 0
 
     RECURSOS_EXPLORACION = ["Madera", "Agua", "Piedra", "Semilla"]
@@ -115,7 +115,7 @@ class Colono():
         if self.exploracion_restante > 0:
             return None
 
-        # Vuelve de la exploracion. Cuanto mas nivel, mas probable es que encuentre algo.
+        # ? Vuelve de la exploracion. Cuanto mas nivel, mas probable es que encuentre algo.
         hallazgos = {"Semillas" : 0}
         intentos = 1 + self.nivel // 4   # nivel 1-3: 1 intento, 4-7: 2, 8+: 3...
         for _ in range(intentos):
