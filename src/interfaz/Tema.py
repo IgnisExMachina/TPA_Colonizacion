@@ -4,16 +4,16 @@ Si quereis cambiar el aspecto del juego, basta con tocar los colores de aqui:
 todas las ventanas los cogen de este archivo.
 """
 
-FONDO = "#0b1730"           # fondo de todas las ventanas
-PANEL = "#12224a"           # tarjetas, menus y campos de texto
-CABECERA = "#1c3566"        # titulos de tarjetas y paneles
+FONDO = "#0b1730"           # * fondo de todas las ventanas
+PANEL = "#12224a"           # * tarjetas, menus y campos de texto
+CABECERA = "#1c3566"        # * titulos de tarjetas y paneles
 BOTON = "#1c3566"
-BOTON_ACTIVO = "#2a4d8f"    # boton con el raton encima / pulsado
+BOTON_ACTIVO = "#2a4d8f"    # * boton con el raton encima / pulsado
 BORDE = "#3e6ac9"
 TEXTO = "#e8eefc"
-TEXTO_SUAVE = "#93a7cc"     # textos secundarios
-TEXTO_APAGADO = "#5a6d94"   # cosas desactivadas o a cero
-BARRA_VACIA = "#1a2c55"     # fondo de las barras de progreso
+TEXTO_SUAVE = "#93a7cc"     # * textos secundarios
+TEXTO_APAGADO = "#5a6d94"   # * cosas desactivadas o a cero
+BARRA_VACIA = "#1a2c55"     # * fondo de las barras de progreso
 
 
 def aplicar_tema(raiz):
