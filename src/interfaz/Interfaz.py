@@ -21,6 +21,10 @@ from eventos.Evento import Evento
 
 class Interfaz:
     def __init__(self):
+        coloniasVaciasPorDefecto = []
+        for i in range(3):
+            coloniasVaciasPorDefecto.append(Colonia())
+            coloniasVaciasPorDefecto[i].noFundada = True
         self._directorio = Path(__file__).resolve().parent.parent
         self.ventana = tk.Tk()
         Tema.aplicar_tema(self.ventana)  # todas las ventanas en azul oscuro
@@ -42,6 +46,7 @@ class Interfaz:
         except (FileNotFoundError, ValueError):
             print("No se encontró partida previa. Inicializando colonias por defecto...")
             self.colonias = {
+<<<<<<< HEAD
                 "A": Colonia(
                         nombre="Kukusclan", 
                         colonos=[Colono("Alfredo", "Kukusclan", 25, 1, "M")], 
@@ -60,11 +65,16 @@ class Interfaz:
                         recursos={"Agua": 10}, 
                         infraestructuras=None
                     ),
+=======
+                "A": coloniasVaciasPorDefecto[0],
+                "B": coloniasVaciasPorDefecto[1],
+                "C": coloniasVaciasPorDefecto[2],
+>>>>>>> 0255c801067af07317fa1a43c541eebfd1a934ca
                 }
 
         for key in self.colonias:
             # Las colonias destruidas por un meteorito no reciben eventos: su planeta esta libre
-            if isinstance(self.colonias[key], (Colonia)) and not self.colonias[key].destruida:
+            if isinstance(self.colonias[key], (Colonia)) and not self.colonias[key].destruida and not self.colonias[key].nombre == "-":
                 self.colonias[key].iniciar_gestion()
             else:
                 pass
@@ -174,7 +184,7 @@ class Interfaz:
     def entrarEnPlaneta(self, evento, colonia: Colonia, key: str):
         """Abre la ventana detallada al hacer clic en un planeta invocando la nueva clase."""
         # Se instancia la ventana pasándole la ventana principal de tkinter como padre y la colonia a mostrar
-        if not colonia or colonia.destruida:
+        if not colonia or colonia.destruida or colonia.abandonada or colonia.noFundada:
             # Planeta libre (nunca colonizado o colonia destruida por un meteorito)
              VentanaFundar(self.ventana, self.colonias, key)
         else:
