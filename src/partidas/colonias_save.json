@@ -1,11 +1,16 @@
 {
     "A": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "nombre": "Kukusclan",
 =======
         "destruida": false,
         "nombre": "qoqoqoqo",
 >>>>>>> refs/rewritten/main-3
+=======
+        "destruida": false,
+        "nombre": "qoqoqoqo",
+>>>>>>> refs/rewritten/main-14
         "colonos": [
             {
                 "nombre": "Alfredo",
@@ -42,6 +47,7 @@
                 "nombre_colonia": "Kukusclan",
                 "edad": 25,
                 "nivel": 1,
+<<<<<<< HEAD
 <<<<<<< HEAD
                 "plantas": [],
                 "__clase__": "Huerto"
@@ -64,12 +70,17 @@
         "nombre": "La sociedad de la nieve",
         "colonos": [
 =======
+=======
+>>>>>>> refs/rewritten/main-14
                 "genero": "M",
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
             },
+<<<<<<< HEAD
 >>>>>>> refs/rewritten/main-3
+=======
+>>>>>>> refs/rewritten/main-14
             {
                 "nombre": "Alfredo",
                 "nombre_colonia": "Kukusclan",
@@ -90,6 +101,9 @@
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> refs/rewritten/main-14
             },
             {
                 "nombre": "Manuel Rodríguez",
@@ -100,8 +114,11 @@
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
+<<<<<<< HEAD
 =======
 >>>>>>> refs/rewritten/fix-tripulacion-de-nave-a-colonos-de-nueva-colonia-feature-no-se-pueden-crear-colonias-adicionales-sin-naves-solo-la-primera-
+=======
+>>>>>>> refs/rewritten/main-14
             }
         ],
         "infraestructuras": [
@@ -114,6 +131,9 @@
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> refs/rewritten/main-14
                 "tipo": "ExtractorDePlutonio",
                 "eficiencia": 10,
                 "nivel": 5,
@@ -129,6 +149,7 @@
             "Plutonio": 2445.0,
             "Semillas": 0,
             "Plantas": 19934.999999999996
+<<<<<<< HEAD
 =======
                 "tipo": "NaveEspacial",
                 "eficiencia": 0,
@@ -203,16 +224,22 @@
             "Semillas": 0,
             "Plantas": 19954.666666666664
 >>>>>>> refs/rewritten/fix-tripulacion-de-nave-a-colonos-de-nueva-colonia-feature-no-se-pueden-crear-colonias-adicionales-sin-naves-solo-la-primera-
+=======
+>>>>>>> refs/rewritten/main-14
         },
         "__clase__": "Colonia"
     },
     "B": {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> refs/rewritten/main-14
         "destruida": true,
         "nombre": "A",
         "colonos": [],
         "infraestructuras": [],
         "recursos": {},
+<<<<<<< HEAD
 =======
         "destruida": false,
         "nombre": "Epstein",
@@ -302,6 +329,8 @@
             "Plantas": 0
         },
 >>>>>>> refs/rewritten/fix-tripulacion-de-nave-a-colonos-de-nueva-colonia-feature-no-se-pueden-crear-colonias-adicionales-sin-naves-solo-la-primera-
+=======
+>>>>>>> refs/rewritten/main-14
         "__clase__": "Colonia"
     },
     "C": {
@@ -310,10 +339,14 @@
         "colonos": [
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "nombre": "Elena",
 =======
                 "nombre": "Jesús Ruiz",
 >>>>>>> refs/rewritten/main-3
+=======
+                "nombre": "Jesús Ruiz",
+>>>>>>> refs/rewritten/main-14
                 "nombre_colonia": "Sociópatas",
                 "edad": 20,
                 "nivel": 6,
@@ -321,6 +354,69 @@
                 "ocupado": false,
                 "exploracion_restante": 0,
                 "__clase__": "Colono"
+<<<<<<< HEAD
+=======
+            },
+            {
+                "nombre": "José Luis Moreno",
+                "nombre_colonia": "Sociópatas",
+                "edad": 79,
+                "nivel": 8,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Antonio Jiménez",
+                "nombre_colonia": "Sociópatas",
+                "edad": 31,
+                "nivel": 1,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Manuel Fernández",
+                "nombre_colonia": "Sociópatas",
+                "edad": 27,
+                "nivel": 10,
+                "genero": "F",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "Javier Martín",
+                "nombre_colonia": "Sociópatas",
+                "edad": 67,
+                "nivel": 9,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "José Luis Muñoz",
+                "nombre_colonia": "Sociópatas",
+                "edad": 58,
+                "nivel": 5,
+                "genero": "M",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+            },
+            {
+                "nombre": "David Martín",
+                "nombre_colonia": "Sociópatas",
+                "edad": 46,
+                "nivel": 3,
+                "genero": "F",
+                "ocupado": false,
+                "exploracion_restante": 0,
+                "__clase__": "Colono"
+>>>>>>> refs/rewritten/main-14
             }
         ],
         "infraestructuras": [],
