@@ -21,6 +21,10 @@ from eventos.Evento import Evento
 
 class Interfaz:
     def __init__(self):
+        coloniasVaciasPorDefecto = []
+        for i in range(3):
+            coloniasVaciasPorDefecto.append(Colonia())
+            coloniasVaciasPorDefecto[i].noFundada = True
         self._directorio = Path(__file__).resolve().parent.parent
         self.ventana = tk.Tk()
         Tema.aplicar_tema(self.ventana)  # todas las ventanas en azul oscuro
@@ -42,29 +46,14 @@ class Interfaz:
         except (FileNotFoundError, ValueError):
             print("No se encontró partida previa. Inicializando colonias por defecto...")
             self.colonias = {
-                "A": Colonia(
-                        nombre="Kukusclan", 
-                        colonos=[Colono("Alfredo", "Kukusclan", 25, 1, "M")], 
-                        recursos={"Madera": 20}, 
-                        infraestructuras= []
-                    ),
-                "B": Colonia(
-                        nombre="La sociedad de la nieve", 
-                        colonos=[Colono("Rubén", "La sociedad de la nieve", 30, 1, "M")], 
-                        recursos={"Hierro": 30, "Madera": 20}, 
-                        infraestructuras=None
-                    ),
-                "C": Colonia(
-                        nombre="Sociópatas", 
-                        colonos=[Colono("Elena", "Sociópatas" ,22, 1, "F")], 
-                        recursos={"Agua": 10}, 
-                        infraestructuras=None
-                    ),
+                "A": coloniasVaciasPorDefecto[0],
+                "B": coloniasVaciasPorDefecto[1],
+                "C": coloniasVaciasPorDefecto[2],
                 }
 
         for key in self.colonias:
             # Las colonias destruidas por un meteorito no reciben eventos: su planeta esta libre
-            if isinstance(self.colonias[key], (Colonia)) and not self.colonias[key].destruida:
+            if isinstance(self.colonias[key], (Colonia)) and not self.colonias[key].destruida and not self.colonias[key].nombre == "-":
                 self.colonias[key].iniciar_gestion()
             else:
                 pass
@@ -174,7 +163,7 @@ class Interfaz:
     def entrarEnPlaneta(self, evento, colonia: Colonia, key: str):
         """Abre la ventana detallada al hacer clic en un planeta invocando la nueva clase."""
         # Se instancia la ventana pasándole la ventana principal de tkinter como padre y la colonia a mostrar
-        if not colonia or colonia.destruida:
+        if not colonia or colonia.destruida or colonia.abandonada or colonia.noFundada:
             # Planeta libre (nunca colonizado o colonia destruida por un meteorito)
              VentanaFundar(self.ventana, self.colonias, key)
         else:
